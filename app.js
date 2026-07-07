@@ -30,9 +30,13 @@ window.addEventListener('load', () => {
     if (initialScrollTarget) {
         const targetElement = document.getElementById(initialScrollTarget);
         if (targetElement) {
+            // Scroll 1: Immediate on load
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+            
+            // Scroll 2: Correct height shifts after a small delay (handles fonts/images loading late)
             setTimeout(() => {
                 targetElement.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
+            }, 350);
         }
     }
 });
@@ -358,8 +362,12 @@ function initPortfolioLinks() {
 
     portfolioLinks.forEach(link => {
         const subdomain = link.getAttribute('data-subdomain');
-        // Always resolve to portfolio subdirectory to get clean /portfolio/name/ URLs
-        link.href = `./portfolio/${subdomain}/`;
+        // Use root-relative paths on servers to prevent URL stacking, fall back to relative paths on local file system
+        if (window.location.protocol === 'file:') {
+            link.href = `./portfolio/${subdomain}/index.html`;
+        } else {
+            link.href = `/portfolio/${subdomain}/`;
+        }
     });
 }
 
