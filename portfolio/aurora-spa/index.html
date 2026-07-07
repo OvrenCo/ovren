@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Spa | Serene Massages & Facial Therapies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #faf7f2;
+            --bg-card: #ffffff;
+            --accent-purple: #8b5cf6;
+            --accent-lavender: #ddd6fe;
+            --text-dark: #3b2a20;
+            --text-muted: #786558;
+            --border: rgba(139, 92, 246, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 45px;
+        }
+
+        h1, h2, h3, h4, .serif-font {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Portfolio Warning Banner */
+        .portfolio-banner {
+            background: #251d18;
+            border-bottom: 2px solid var(--accent-purple);
+            color: #ffffff;
+            padding: 0 24px;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 45px;
+            z-index: 99999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-banner a {
+            color: var(--accent-lavender);
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        .portfolio-banner .banner-back-btn {
+            background: var(--accent-purple);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        .portfolio-banner .banner-back-btn:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-banner {
+                position: relative;
+                height: auto;
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 12px;
+            }
+            body {
+                padding-top: 0;
+            }
+            header {
+                top: 0;
+            }
+        }
+
+        /* Header */
+        header {
+            background: rgba(250, 247, 242, 0.9);
+            backdrop-filter: blur(8px);
+            border-bottom: 1.5px solid rgba(120, 101, 88, 0.08);
+            padding: 24px 0;
+            position: sticky;
+            top: 45px;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-purple);
+        }
+
+        .btn-reserve {
+            background: #ffffff;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+            padding: 8px 20px;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-reserve:hover {
+            background: var(--text-dark);
+            color: var(--bg-cream);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+        }
+
+        .hero h1 span {
+            font-style: italic;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 36px;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Services Showcase */
+        .services-section {
+            padding: 60px 0;
+        }
+
+        .section-hdr {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-hdr h2 {
+            font-size: 2.4rem;
+            color: var(--text-dark);
+        }
+
+        .service-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .service-row {
+            background: var(--bg-card);
+            border: 1px solid rgba(120, 101, 88, 0.08);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .service-row:hover {
+            box-shadow: 0 10px 20px rgba(120, 101, 88, 0.02);
+            border-color: var(--accent-purple);
+        }
+
+        .srv-details h3 {
+            font-size: 1.3rem;
+            margin-bottom: 6px;
+        }
+
+        .srv-details p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        .srv-price {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Wellness Rituals/Policies */
+        .rituals-section {
+            padding: 80px 0;
+            background: var(--bg-card);
+            border-top: 1.5px solid rgba(120, 101, 88, 0.05);
+            border-bottom: 1.5px solid rgba(120, 101, 88, 0.05);
+            margin-bottom: 60px;
+        }
+
+        .rituals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .ritual-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--text-dark);
+        }
+
+        .ritual-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Review Carousel Slider */
+        .reviews-section {
+            padding: 80px 0;
+            background: #faf4eb;
+            border-top: 1.5px solid rgba(120, 101, 88, 0.05);
+            border-bottom: 1.5px solid rgba(120, 101, 88, 0.05);
+            text-align: center;
+        }
+
+        .review-box {
+            max-width: 600px;
+            margin: 0 auto;
+            min-height: 120px;
+        }
+
+        .review-text {
+            font-size: 1.3rem;
+            font-style: italic;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .review-author {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .slide-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(120, 101, 88, 0.25);
+            cursor: pointer;
+            border: none;
+        }
+
+        .slide-dot.active {
+            background: var(--text-dark);
+        }
+
+        /* Floating Booking Scheduler Widget */
+        .booking-widget {
+            background: var(--bg-card);
+            border: 1px solid rgba(120, 101, 88, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            max-width: 550px;
+            margin: 60px auto 40px;
+            box-shadow: 0 15px 35px rgba(120, 101, 88, 0.04);
+        }
+
+        .widget-hdr h3 {
+            font-size: 1.6rem;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
+            padding: 12px;
+            border: 1px solid rgba(120, 101, 88, 0.15);
+            border-radius: 6px;
+            outline: none;
+            font-family: inherit;
+            background: var(--bg-cream);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: var(--accent-purple);
+        }
+
+        .booking-submit-btn {
+            width: 100%;
+            background: var(--text-dark);
+            color: var(--bg-cream);
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .booking-submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .success-box {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            border: 1px dashed var(--text-dark);
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer p { margin-top: 8px; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .rituals-grid { grid-template-columns: 1fr; gap: 24px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .service-row { flex-direction: column; text-align: center; gap: 12px; }
+            .booking-widget { padding: 24px; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Warning Banner -->
+    <div class="portfolio-banner">
+        <span>✨ <strong>Portfolio Mockup Concept</strong> by <a href="../../">ovren.co/home</a> — This is a design demo. None of the treatments or scheduler elements are real.</span>
+        <a href="../../" class="banner-back-btn">Back to Agency</a>
+    </div>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">AURORA</a>
+            <nav>
+                <a href="#services">Treatments</a>
+                <a href="#rituals">Rituals</a>
+                <a href="#booking">Book Appointment</a>
+            </nav>
+            <a href="#booking" class="btn-reserve">Schedule</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Serene Retreats For The <span>Mind & Body</span></h1>
+                <p>Reconnect with your natural energy. Aurora Spa provides calming organic facial procedures, deep tissue stone massages, and private holistic aromatherapy sessions.</p>
+                <a href="#services" class="btn-reserve" style="background: var(--text-dark); color: var(--bg-cream);">Explore Treatments</a>
+            </div>
+        </section>
+
+        <!-- Treatments Showcase -->
+        <section class="services-section" id="services">
+            <div class="container">
+                <div class="section-hdr">
+                    <h2>Signature Spa Services</h2>
+                </div>
+
+                <div class="service-list">
+                    <!-- Srv 1 -->
+                    <div class="service-row">
+                        <div class="srv-details">
+                            <h3>Hot Stone Deep Massage</h3>
+                            <p>Relaxation of tight muscles utilizing heated basalt river stones and organic lavender oils. (60 min)</p>
+                        </div>
+                        <span class="srv-price">$120</span>
+                    </div>
+
+                    <!-- Srv 2 -->
+                    <div class="service-row">
+                        <div class="srv-details">
+                            <h3>Hydrating Facial Glow</h3>
+                            <p>Custom cleansing, exfoliation, and advanced hyaluronic moisture mask to restore radiant skin. (45 min)</p>
+                        </div>
+                        <span class="srv-price">$95</span>
+                    </div>
+
+                    <!-- Srv 3 -->
+                    <div class="service-row">
+                        <div class="srv-details">
+                            <h3>Organic Aromatherapy</h3>
+                            <p>Light pressure relaxation massage incorporating pure eucalyptus, lavender, and peppermint extracts. (75 min)</p>
+                        </div>
+                        <span class="srv-price">$145</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rituals & Policies -->
+        <section class="rituals-section" id="rituals">
+            <div class="container">
+                <div class="section-hdr">
+                    <h2>Rituals & Care Guidelines</h2>
+                </div>
+                <div class="rituals-grid">
+                    <div class="ritual-card">
+                        <h3>01. Arrival Custom</h3>
+                        <p>We request clients arrive 15 minutes before their scheduled time to transition into our quiet robes and enjoy organic chamomile tea.</p>
+                    </div>
+                    <div class="ritual-card">
+                        <h3>02. Silent Sanctuary</h3>
+                        <p>To preserve our peaceful atmosphere, we enforce a strict zero-mobile phone policy across all massage chambers and lounges.</p>
+                    </div>
+                    <div class="ritual-card">
+                        <h3>03. Tailored Pressure</h3>
+                        <p>Our licensed therapists consult with you before every session, customizing massage depth, essential oils, and hot stone applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Carousel Slider -->
+        <section class="reviews-section">
+            <div class="container">
+                <div class="review-box">
+                    <div class="review-text" id="review-text">"The Hot Stone Deep Massage at Aurora is absolute heaven. The peaceful atmosphere instantly washes away all weekly work stress."</div>
+                    <div class="review-author" id="review-author">— SARAH JENKINS, PEACHTREE CITY</div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slide-dot active" onclick="setSlide(0, this)"></button>
+                    <button class="slide-dot" onclick="setSlide(1, this)"></button>
+                    <button class="slide-dot" onclick="setSlide(2, this)"></button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Floating Scheduler -->
+        <section style="padding: 40px 0;" id="booking">
+            <div class="container">
+                <div class="booking-widget">
+                    <div class="form-wrapper" id="form-wrapper">
+                        <div class="widget-hdr">
+                            <h3>Schedule Appointment</h3>
+                        </div>
+                        <form onsubmit="submitForm(event)">
+                            <div class="form-group">
+                                <label for="a-name">Full Name</label>
+                                <input type="text" id="a-name" placeholder="Sarah Jenkins" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="a-treatment">Select Treatment</label>
+                                <select id="a-treatment" required>
+                                    <option value="Stone Massage">Hot Stone Deep Massage - $120</option>
+                                    <option value="Facial Glow">Hydrating Facial Glow - $95</option>
+                                    <option value="Aromatherapy">Organic Aromatherapy - $145</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="a-date">Requested Date</label>
+                                <input type="date" id="a-date" required>
+                            </div>
+                            <button type="submit" class="booking-submit-btn">Schedule Session</button>
+                        </form>
+                    </div>
+
+                    <div class="success-box" id="success-box">
+                        <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Appointment Requested!</h3>
+                        <p style="color: var(--text-muted); font-size: 0.92rem;">Thank you for scheduling with Aurora. We have sent a simulated booking invitation to your email. We look forward to hosting you!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <span class="logo" style="display: block; margin-bottom: 12px;">AURORA SPA</span>
+            <p>140 Serenity Way, Peachtree City, GA 30269</p>
+            <p>Aurora Spa. Peachtree City, Georgia. Hand-Coded by ovren.co.</p>
+        </div>
+    </footer>
+
+    <script>
+        const reviews = [
+            {
+                text: `"The Hot Stone Deep Massage at Aurora is absolute heaven. The peaceful atmosphere instantly washes away all weekly work stress."`,
+                author: "— SARAH JENKINS, PEACHTREE CITY"
+            },
+            {
+                text: `"The hydrating facial glow left my skin feeling completely refreshed and radiant. Outstanding attention to detail by the therapists."`,
+                author: "— AMY FLORES, FAYETTEVILLE"
+            },
+            {
+                text: `"Quiet, beautiful, and extremely professional. The eucalyptus aromatherapy is highly recommended after travel."`,
+                author: "— MARCUS REED, ATLANTA"
+            }
+        ];
+
+        function setSlide(index, button) {
+            document.querySelectorAll('.slide-dot').forEach(b => b.classList.remove('active'));
+            button.classList.add('active');
+
+            const textEl = document.getElementById('review-text');
+            const authEl = document.getElementById('review-author');
+            
+            textEl.style.opacity = '0';
+            authEl.style.opacity = '0';
+
+            setTimeout(() => {
+                textEl.innerText = reviews[index].text;
+                authEl.innerText = reviews[index].author;
+                textEl.style.opacity = '1';
+                authEl.style.opacity = '1';
+            }, 150);
+        }
+
+        function submitForm(e) {
+            e.preventDefault();
+            document.getElementById('form-wrapper').style.display = 'none';
+            document.getElementById('success-box').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

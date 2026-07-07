@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Fitness | Elite Training Gym & Classes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-black: #0c0a09;
+            --bg-card: #1c1917;
+            --accent-lime: #84cc16;
+            --text-light: #f5f5f4;
+            --text-muted: #a8a29e;
+            --border: rgba(255, 255, 255, 0.05);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-light);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 45px;
+        }
+
+        .display-font {
+            font-family: 'Teko', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Portfolio Warning Banner */
+        .portfolio-banner {
+            background: #111111;
+            border-bottom: 2px solid var(--accent-lime);
+            color: #ffffff;
+            padding: 0 24px;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 45px;
+            z-index: 99999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .portfolio-banner a {
+            color: var(--accent-lime);
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        .portfolio-banner .banner-back-btn {
+            background: var(--accent-lime);
+            color: #000000;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        .portfolio-banner .banner-back-btn:hover {
+            background: #a3e635;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-banner {
+                position: relative;
+                height: auto;
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 12px;
+            }
+            body {
+                padding-top: 0;
+            }
+            header {
+                top: 0;
+            }
+        }
+
+        /* Header */
+        header {
+            background: rgba(12, 10, 9, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+            position: sticky;
+            top: 45px;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2.2rem;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .logo span {
+            color: var(--accent-lime);
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-lime);
+        }
+
+        .btn-lime {
+            background: var(--accent-lime);
+            color: var(--bg-black);
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-lime:hover {
+            background: #a3e635;
+            transform: scale(1.03);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 120px 0 80px;
+            background: radial-gradient(circle at 80% 20%, rgba(132, 204, 22, 0.06) 0%, transparent 60%);
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .hero h1 span {
+            color: var(--accent-lime);
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            max-width: 600px;
+        }
+
+        /* Classes Section */
+        .classes-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-hdr {
+            margin-bottom: 48px;
+        }
+
+        .section-hdr h2 {
+            font-size: 3.5rem;
+            color: #ffffff;
+        }
+
+        .section-hdr h2 span {
+            color: var(--accent-lime);
+        }
+
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .class-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .class-card:hover {
+            border-color: var(--accent-lime);
+            transform: translateY(-4px);
+        }
+
+        .class-img-placeholder {
+            height: 180px;
+            background: #292524;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border-bottom: 1.5px solid var(--border);
+        }
+
+        .class-body {
+            padding: 24px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .class-body h3 {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .class-body p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Schedule Section */
+        .schedule-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 16px;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .schedule-table th {
+            background: rgba(0,0,0,0.3);
+            font-weight: 700;
+            color: var(--accent-lime);
+            font-family: 'Teko', sans-serif;
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .schedule-table td strong {
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .schedule-table td span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Membership Plans */
+        .membership-section {
+            padding: 80px 0;
+            background: #100f0e;
+            border-top: 1px solid var(--border);
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .plan-card {
+            background: #110f0e;
+            border: 2px solid #292524;
+            border-radius: 0;
+            padding: 44px 28px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            transform: skewX(-2deg);
+        }
+
+        .plan-card:hover, .plan-card.active {
+            border-color: var(--accent-lime);
+            background: #181615;
+            box-shadow: 8px 8px 0px var(--accent-lime);
+            transform: skewX(-2deg) translateY(-4px);
+        }
+
+        .plan-card.active {
+            box-shadow: 8px 8px 0px var(--accent-lime);
+        }
+
+        .plan-hdr {
+            text-align: left;
+            margin-bottom: 24px;
+            border-bottom: 2px solid #292524;
+            padding-bottom: 16px;
+        }
+
+        .plan-card.active .plan-hdr {
+            border-bottom-color: var(--accent-lime);
+        }
+
+        .plan-name {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .plan-card.active .plan-name {
+            color: var(--accent-lime);
+        }
+
+        .plan-price {
+            font-size: 4rem;
+            color: #ffffff;
+            font-weight: 700;
+            font-style: italic;
+        }
+
+        .plan-price span {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-style: normal;
+        }
+
+        .plan-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1.5px solid var(--border);
+            padding-top: 24px;
+            margin-bottom: 32px;
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--accent-lime);
+            font-weight: 800;
+        }
+
+        /* FAQ List */
+        .faq-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 40px auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .faq-item h3 {
+            font-size: 1.2rem;
+            color: var(--accent-lime);
+            margin-bottom: 8px;
+        }
+
+        .faq-item p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 0;
+            background: var(--bg-black);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer p { margin-top: 8px; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .plans-grid { grid-template-columns: 1fr; gap: 20px; }
+            .schedule-table { display: block; overflow-x: auto; }
+        }
+
+        @media (max-width: 768px) {
+            .hero-inner { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero p { margin: 0 auto 32px; }
+            .classes-grid { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Warning Banner -->
+    <div class="portfolio-banner">
+        <span>✨ <strong>Portfolio Mockup Concept</strong> by <a href="../../">ovren.co/home</a> — This is a design demo. None of the fitness packages or schedules are real.</span>
+        <a href="../../" class="banner-back-btn">Back to Agency</a>
+    </div>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo display-font">NOVA<span>FIT</span></a>
+            <nav>
+                <a href="#classes">Classes</a>
+                <a href="#schedule">Schedule</a>
+                <a href="#pricing">Memberships</a>
+                <a href="#faq">FAQ</a>
+            </nav>
+            <a href="#pricing" class="btn-lime">Join Now</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-inner">
+                <div>
+                    <h1 class="display-font">REDEFINE YOUR <span>LIMITS</span></h1>
+                    <p>Access high-intensity strength training, expert coaching staffs, and custom nutrition frameworks tailored specifically to help you build raw power and longevity.</p>
+                    <a href="#pricing" class="btn-lime" style="font-size: 1.1rem; padding: 14px 36px;">Start Training</a>
+                </div>
+                <!-- Mini mock visual grid -->
+                <div style="background: rgba(255,255,255,0.01); border: 1px solid var(--border); border-radius: 12px; height: 300px; padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 16px;">
+                    <div style="display:flex; justify-content: space-between; border-bottom: 1.5px solid var(--border); padding-bottom: 8px;">
+                        <span style="font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Next Class Schedule</span>
+                        <span style="color: var(--accent-lime); font-size: 0.8rem; font-weight: 800;">● LIVE</span>
+                    </div>
+                    <div style="font-size: 0.9rem;">
+                        <strong>06:00 AM — Strength Circuit</strong>
+                        <p style="color: var(--text-muted); font-size: 0.8rem;">Coach Marcus (12 spots left)</p>
+                    </div>
+                    <div style="font-size: 0.9rem;">
+                        <strong>08:30 AM — Tactical HIIT</strong>
+                        <p style="color: var(--text-muted); font-size: 0.8rem;">Coach Elena (Full)</p>
+                    </div>
+                    <div style="font-size: 0.9rem;">
+                        <strong>10:00 AM — Powerlifting Confit</strong>
+                        <p style="color: var(--text-muted); font-size: 0.8rem;">Coach Brandon (4 spots left)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Classes -->
+        <section class="classes-section" id="classes">
+            <div class="container">
+                <div class="section-hdr">
+                    <h2 class="display-font">TRAINING <span>PROGRAMS</span></h2>
+                </div>
+
+                <div class="classes-grid">
+                    <div class="class-card">
+                        <div class="class-img-placeholder">🏋️</div>
+                        <div class="class-body">
+                            <h3 class="display-font">Strength & Power</h3>
+                            <p>Focused barbell work, deadlifts, and structured compound movements designed to optimize muscle growth and core bone density.</p>
+                        </div>
+                    </div>
+
+                    <div class="class-card">
+                        <div class="class-img-placeholder">🏃</div>
+                        <div class="class-body">
+                            <h3 class="display-font">Tactical HIIT</h3>
+                            <p>High-energy cardio circuits incorporating rowing machines, kettlebell carries, and short sprints to boost lung capacity.</p>
+                        </div>
+                    </div>
+
+                    <div class="class-card">
+                        <div class="class-img-placeholder">🤸</div>
+                        <div class="class-body">
+                            <h3 class="display-font">Flexibility & Flow</h3>
+                            <p>Active recovery classes including mobility flows, yoga poses, and functional stretching to prevent athletic injury.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Schedule Section -->
+        <section class="schedule-section" id="schedule">
+            <div class="container">
+                <div class="section-hdr">
+                    <h2 class="display-font">WEEKLY <span>SCHEDULE</span></h2>
+                </div>
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Monday</th>
+                            <th>Wednesday</th>
+                            <th>Friday</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>06:00 AM</strong></td>
+                            <td><strong>Strength Circuit</strong><span>Coach Marcus</span></td>
+                            <td><strong>HIIT Conditioning</strong><span>Coach Elena</span></td>
+                            <td><strong>Strength Circuit</strong><span>Coach Marcus</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>09:00 AM</strong></td>
+                            <td><strong>Mobility Flow</strong><span>Coach Amy</span></td>
+                            <td><strong>Powerlifting Basics</strong><span>Coach Brandon</span></td>
+                            <td><strong>Mobility Flow</strong><span>Coach Amy</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>05:30 PM</strong></td>
+                            <td><strong>Tactical HIIT</strong><span>Coach Elena</span></td>
+                            <td><strong>Strength Circuit</strong><span>Coach Marcus</span></td>
+                            <td><strong>Team Shred</strong><span>All Coaches</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Pricing / Memberships -->
+        <section class="membership-section" id="pricing">
+            <div class="container">
+                <div class="section-hdr" style="text-align: center; margin-bottom: 60px;">
+                    <h2 class="display-font">MEMBERSHIP <span>PLANS</span></h2>
+                    <p style="color: var(--text-muted); max-width: 500px; margin: 12px auto 0;">Click on a membership plan card to select it and finalize enrollment details.</p>
+                </div>
+
+                <div class="plans-grid">
+                    <!-- Standard -->
+                    <div class="plan-card" onclick="selectPlan(this)">
+                        <div class="plan-hdr">
+                            <h3 class="plan-name display-font">Basic Gym</h3>
+                            <div class="plan-price display-font">$49<span>/mo</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li>24/7 Access to Gym Floor</li>
+                            <li>Locker Room & Showers</li>
+                            <li>1 Initial Fitness Assessment</li>
+                        </ul>
+                        <button type="button" class="btn-lime" style="width: 100%; text-align: center;">Choose Plan</button>
+                    </div>
+
+                    <!-- Recommended -->
+                    <div class="plan-card active" onclick="selectPlan(this)">
+                        <div class="plan-hdr">
+                            <h3 class="plan-name display-font">Elite Coach</h3>
+                            <div class="plan-price display-font">$99<span>/mo</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li>Everything in Basic Plan</li>
+                            <li>Unlimited Fitness Classes</li>
+                            <li>2 Guest Passes Per Month</li>
+                            <li>1 Monthly Coach Assessment</li>
+                        </ul>
+                        <button type="button" class="btn-lime" style="width: 100%; text-align: center;">Choose Plan</button>
+                    </div>
+
+                    <!-- Pro -->
+                    <div class="plan-card" onclick="selectPlan(this)">
+                        <div class="plan-hdr">
+                            <h3 class="plan-name display-font">VIP Platinum</h3>
+                            <div class="plan-price display-font">$199<span>/mo</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li>Everything in Elite Plan</li>
+                            <li>Unlimited Personal Coaching</li>
+                            <li>Bespoke Nutrition Plans</li>
+                            <li>Custom Recovery Spa Access</li>
+                        </ul>
+                        <button type="button" class="btn-lime" style="width: 100%; text-align: center;">Choose Plan</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <div class="section-hdr">
+                    <h2 class="display-font">FITNESS <span>FAQ</span></h2>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h3>Do I need to sign a yearly contract?</h3>
+                        <p>No. All our membership plans run month-to-month. You can freeze or terminate your active subscription with a 7-day notice before your next billing cycle starts.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Can beginners attend Tactical HIIT classes?</h3>
+                        <p>Absolutely. Our professional coaches scale the difficulty levels and dumbbell parameters for all participants, ensuring high safety and conditioning outcomes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <a href="#" class="logo display-font" style="justify-content: center; margin-bottom: 12px;">NOVA<span>FITNESS</span></a>
+            <p>120 Athletic Avenue, Fayetteville, GA 30214</p>
+            <p>Nova Fitness. Fayetteville, Georgia. Hand-Coded by ovren.co.</p>
+        </div>
+    </footer>
+
+    <script>
+        function selectPlan(card) {
+            document.querySelectorAll('.plan-card').forEach(c => {
+                c.classList.remove('active');
+            });
+            card.classList.add('active');
+        }
+    </script>
+</body>
+</html>
