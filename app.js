@@ -332,9 +332,23 @@ function initPortfolioLinks() {
 function initCleanUrls() {
     if (window.location.protocol === 'file:') return;
 
-    // Rewrite root / index.html to /home on load
+    const hash = window.location.hash;
+    // Rewrite root / index.html to /home (or /section-name if hash exists) on load
     if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
-        window.history.replaceState({}, '', '/home');
+        if (hash) {
+            const targetId = hash.substring(1);
+            window.history.replaceState({}, '', `/${targetId}`);
+            
+            // Smooth scroll to target element on page load
+            setTimeout(() => {
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 150);
+        } else {
+            window.history.replaceState({}, '', '/home');
+        }
     }
 
     // Intercept navbar and footer anchors for /name instead of /#name
