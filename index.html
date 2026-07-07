@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ovren.co | Professional Websites for Small Businesses</title>
+    <meta name="description" content="ovren.co designs beautiful, fast, and user-friendly websites for small businesses and provides reliable monthly maintenance. Based in Fayetteville, Georgia.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="ovrentransparent.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-light">
+    <!-- Three.js Canvas Container -->
+    <div id="hero-canvas-container"></div>
+
+    <!-- Sticky Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">
+                <img src="ovrentransparent.png" alt="ovren.co" class="logo-img">
+                <span class="logo-text">ovren.co</span>
+            </a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#standards" class="nav-link">Standards</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <!-- Theme Toggle Button -->
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme">
+                    <!-- Sun Icon (shows in Dark Mode) -->
+                    <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <path d="M12 2v2"></path>
+                        <path d="M12 20v2"></path>
+                        <path d="m4.93 4.93 1.41 1.41"></path>
+                        <path d="m17.66 17.66 1.41 1.41"></path>
+                        <path d="M2 12h2"></path>
+                        <path d="M20 12h2"></path>
+                        <path d="m6.34 17.66-1.41 1.41"></path>
+                        <path d="m19.07 4.93-1.41 1.41"></path>
+                    </svg>
+                    <!-- Moon Icon (shows in Light Mode) -->
+                    <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+                    </svg>
+                </button>
+                
+                <a href="#contact" class="btn btn-primary btn-sm nav-cta">Get Started</a>
+                
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Open navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Drawer Overlay Menu -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <div class="mobile-drawer-content">
+            <nav class="mobile-nav-menu">
+                <a href="#home" class="mobile-nav-link">Home</a>
+                <a href="#services" class="mobile-nav-link">Services</a>
+                <a href="#standards" class="mobile-nav-link">Standards</a>
+                <a href="#portfolio" class="mobile-nav-link">Portfolio</a>
+                <a href="#pricing" class="mobile-nav-link">Pricing</a>
+                <a href="#contact" class="mobile-nav-link">Contact</a>
+            </nav>
+            <div class="mobile-drawer-footer">
+                <a href="#contact" class="btn btn-primary w-full text-center mobile-cta">Get Started</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <!-- Decorative background gradient glow orbs -->
+            <div class="bg-glow-orb orb-1"></div>
+            <div class="bg-glow-orb orb-2"></div>
+            
+            <div class="container hero-container scroll-reveal">
+                <span class="badge hero-badge">Premium Web Development Agency</span>
+                <h1 class="hero-headline">We Craft Digital Flagships For Modern Brands</h1>
+                <p class="hero-subtext">Elite, custom-coded web solutions designed to elevate your brand, command attention, and drive conversion. No slow templates, no generic templates, just bespoke digital craftsmanship.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary btn-lg">Request a Custom Quote</a>
+                    <a href="#portfolio" class="btn btn-secondary btn-lg">Request Custom Portfolios</a>
+                </div>
+
+                <!-- Trust badges strip -->
+                <div class="hero-trust">
+                    <div class="trust-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" /></svg>
+                        <span>100% Bespoke Craft</span>
+                    </div>
+                    <span class="trust-divider"></span>
+                    <div class="trust-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                        <span>Lightning Fast Speeds</span>
+                    </div>
+                    <span class="trust-divider"></span>
+                    <div class="trust-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-6 18.75h9" /></svg>
+                        <span>Perfect Responsive Layouts</span>
+                    </div>
+                    <span class="trust-divider"></span>
+                    <div class="trust-badge">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></svg>
+                        <span>Dedicated Support</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-scroll-indicator">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+            </div>
+        </section>
+
+        <!-- Stats Strip -->
+        <section class="stats-strip">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-block scroll-reveal">
+                        <span class="stat-big-num">24h</span>
+                        <span class="stat-big-label">Response Time</span>
+                        <p class="stat-big-sub">We reply to every inquiry within one business day, guaranteed.</p>
+                    </div>
+                    <div class="stat-block scroll-reveal">
+                        <span class="stat-big-num">100%</span>
+                        <span class="stat-big-label">Mobile Responsive</span>
+                        <p class="stat-big-sub">Every site we deliver works perfectly on all screen sizes.</p>
+                    </div>
+                    <div class="stat-block scroll-reveal">
+                        <span class="stat-big-num">$50</span>
+                        <span class="stat-big-label">Monthly Maintenance</span>
+                        <p class="stat-big-sub">Affordable ongoing support so your site stays fast and secure.</p>
+                    </div>
+                    <div class="stat-block scroll-reveal">
+                        <span class="stat-big-num">3wk</span>
+                        <span class="stat-big-label">Average Delivery</span>
+                        <p class="stat-big-sub">From first call to live website, we move fast without cutting corners.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services section-padding" id="services">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="badge">Our Services</span>
+                    <h2 class="section-title">High-End Web Solutions</h2>
+                    <p class="section-subtitle">We build premium digital experiences and handle all technical operations so you don't have to.</p>
+                </div>
+                <div class="services-grid">
+                    <!-- Service 1: Custom Website Design -->
+                    <div class="service-card scroll-reveal">
+                        <div class="service-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                                <rect width="18" height="18" x="3" y="3" rx="2"></rect>
+                                <path d="M21 16H3"></path>
+                                <path d="M8 21v-5"></path>
+                                <circle cx="7.5" cy="9.5" r="1.5"></circle>
+                                <circle cx="16.5" cy="9.5" r="1.5"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Custom Website Design</h3>
+                        <p class="service-description">Tailored designs that reflect your brand identity, engage visitors, and convert them into loyal customers.</p>
+                    </div>
+
+                    <!-- Service 2: Responsive Mobile Design -->
+                    <div class="service-card scroll-reveal">
+                        <div class="service-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                                <rect width="14" height="20" x="5" y="2" rx="2" ry="2"></rect>
+                                <path d="M12 18h.01"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Responsive Mobile Design</h3>
+                        <p class="service-description">Seamlessly optimized layouts that look and function beautifully on smartphones, tablets, and desktops.</p>
+                    </div>
+
+                    <!-- Service 3: Website Maintenance -->
+                    <div class="service-card scroll-reveal">
+                        <div class="service-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Website Maintenance</h3>
+                        <p class="service-description">Reliable updates, content edits, form tracking, and plug-in management for absolute peace of mind.</p>
+                    </div>
+
+                    <!-- Service 4: Performance Optimization -->
+                    <div class="service-card scroll-reveal">
+                        <div class="service-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                                <path d="m12 14 4-4"></path>
+                                <path d="M3.34 19a10 10 0 1 1 17.32 0"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Performance Optimization</h3>
+                        <p class="service-description">Blazing fast loading speeds to enhance user experience, reduce bounce rates, and boost SEO rankings.</p>
+                    </div>
+
+                    <!-- Service 5: Website Security -->
+                    <div class="service-card scroll-reveal">
+                        <div class="service-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Website Security</h3>
+                        <p class="service-description">Advanced firewalls, active malware monitoring, SSL deployment, and daily cloud backups to secure your data.</p>
+                    </div>
+
+                    <!-- Service 6: Technical Support -->
+                    <div class="service-card scroll-reveal">
+                        <div class="service-icon-wrapper">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="service-icon">
+                                <path d="M14 9a2 2 0 0 1-2 2H6l-4 4V4c0-1.1.9-2 2-2h8a2 2 0 0 1 2 2v5Z"></path>
+                                <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Technical Support</h3>
+                        <p class="service-description">Direct access to responsive tech support. No ticket queues; just fast resolutions to keep you online.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How We Work Section -->
+        <section class="process section-padding bg-muted" id="process">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="badge">Our Process</span>
+                    <h2 class="section-title">How We Work</h2>
+                    <p class="section-subtitle">A simple, transparent four-step process from first conversation to a live, polished website.</p>
+                </div>
+                <div class="process-grid">
+                    <div class="process-step scroll-reveal">
+                        <div class="process-num">01</div>
+                        <div class="process-body">
+                            <h3 class="process-title">Discovery Call</h3>
+                            <p class="process-desc">We start with a quick 15-minute call to understand your business, goals, and vision. No technical knowledge required — just tell us what you need.</p>
+                        </div>
+                    </div>
+                    <div class="process-connector"></div>
+                    <div class="process-step scroll-reveal">
+                        <div class="process-num">02</div>
+                        <div class="process-body">
+                            <h3 class="process-title">Design & Build</h3>
+                            <p class="process-desc">Our team crafts a custom design tailored to your brand. You'll see a live preview before anything is finalized and can request revisions freely.</p>
+                        </div>
+                    </div>
+                    <div class="process-connector"></div>
+                    <div class="process-step scroll-reveal">
+                        <div class="process-num">03</div>
+                        <div class="process-body">
+                            <h3 class="process-title">Review & Refine</h3>
+                            <p class="process-desc">You review the full site, we collect your feedback, and we polish every detail until you love it. We don't go live until you're completely satisfied.</p>
+                        </div>
+                    </div>
+                    <div class="process-connector"></div>
+                    <div class="process-step scroll-reveal">
+                        <div class="process-num">04</div>
+                        <div class="process-body">
+                            <h3 class="process-title">Launch & Maintain</h3>
+                            <p class="process-desc">We deploy your site and handle everything — hosting, security, updates, and monthly maintenance — so you can focus entirely on your business.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Standards Section -->
+        <section class="about section-padding" id="standards">
+            <!-- Background decorative glow -->
+            <div class="bg-glow-orb orb-3"></div>
+            
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-info scroll-reveal">
+                        <span class="badge">Our Standards</span>
+                        <h2 class="section-title">Zero Templates. Just Pure Digital Craftsmanship.</h2>
+                        <p class="about-p">Most web agencies use bloated WordPress templates or drag-and-drop page builders that load slow, break easily, and look generic. We believe your business deserves a digital flagship, not a cookie-cutter template.</p>
+                        <p class="about-p">We hand-code our client projects from the ground up using light, modern, and SEO-optimized structures. The result? Sites that load in milliseconds, rank higher on Google, and convert visitors into active clients.</p>
+                        
+                        <div class="standards-checklist">
+                            <div class="std-item">
+                                <div class="std-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                </div>
+                                <div class="std-text">
+                                    <h4>Bespoke UI/UX Design</h4>
+                                    <p>Tailored layouts matching your exact brand positioning and visual aesthetic.</p>
+                                </div>
+                            </div>
+                            <div class="std-item">
+                                <div class="std-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                </div>
+                                <div class="std-text">
+                                    <h4>Raw Code Performance</h4>
+                                    <p>No bloated plugins. Just clean, optimized semantic code for maximum speed.</p>
+                                </div>
+                            </div>
+                            <div class="std-item">
+                                <div class="std-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                </div>
+                                <div class="std-text">
+                                    <h4>SEO-First Infrastructure</h4>
+                                    <p>Integrated schema markup, meta structures, and accessibility tags built-in.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-visual scroll-reveal">
+                        <div class="stack-visual-container">
+                            <!-- Design Layer -->
+                            <div class="stack-layer layer-design">
+                                <div class="layer-header">
+                                    <span class="layer-dot"></span>
+                                    <span class="layer-title">Visual Design System</span>
+                                </div>
+                                <div class="layer-body">
+                                    <div class="mock-grid">
+                                        <div class="mock-block large"></div>
+                                        <div class="mock-block"></div>
+                                        <div class="mock-block"></div>
+                                    </div>
+                                    <div class="mock-line-glow"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Performance Layer -->
+                            <div class="stack-layer layer-performance">
+                                <div class="layer-header">
+                                    <span class="layer-dot green"></span>
+                                    <span class="layer-title">Core Performance</span>
+                                </div>
+                                <div class="layer-body">
+                                    <div class="metric-row">
+                                        <span class="metric-name">Google PageSpeed</span>
+                                        <span class="metric-number">100/100</span>
+                                    </div>
+                                    <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 100%;"></div></div>
+                                    <div class="metric-row">
+                                        <span class="metric-name">Largest Contentful Paint</span>
+                                        <span class="metric-number">0.4s</span>
+                                    </div>
+                                    <div class="metric-bar-bg"><div class="metric-bar-fill" style="width: 95%;"></div></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Infrastructure Layer -->
+                            <div class="stack-layer layer-infrastructure">
+                                <div class="layer-header">
+                                    <span class="layer-dot blue"></span>
+                                    <span class="layer-title">SEO & Schema Infrastructure</span>
+                                </div>
+                                <div class="layer-body">
+                                    <div class="seo-chips">
+                                        <span class="seo-chip">&lt;meta&gt;</span>
+                                        <span class="seo-chip">JSON-LD</span>
+                                        <span class="seo-chip">Semantic HTML5</span>
+                                        <span class="seo-chip">SSL Secure</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Webora -->
+        <section class="why-choose section-padding bg-muted" id="why-choose">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="badge">Why ovren.co</span>
+                    <h2 class="section-title">Engineered to Convert</h2>
+                    <p class="section-subtitle">We design and optimize websites that help small businesses stand out and grow consistently.</p>
+                </div>
+                <div class="why-grid">
+                    <!-- Point 1 -->
+                    <div class="why-card scroll-reveal">
+                        <div class="why-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="why-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122A3 3 0 0 0 11.75 17h.5a3 3 0 0 0 2.22-.878M9.53 16.122A3 3 0 0 1 8.5 14H6.5a3 3 0 0 1-2.22-.878m7.97 3v-2.244m0 2.244a3 3 0 0 0 2.22-.878M15.5 14h2a3 3 0 0 0 2.22-.878M12 11h.01M12 7h.01M16.5 14h.01M7.5 14h.01" />
+                            </svg>
+                        </div>
+                        <h3 class="why-card-title">Modern Professional Design</h3>
+                        <p class="why-card-text">Clean, ultra-premium designs inspired by Stripe, Framer, and Linear. We position you as an industry leader.</p>
+                    </div>
+                    <!-- Point 2 -->
+                    <div class="why-card scroll-reveal">
+                        <div class="why-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="why-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                            </svg>
+                        </div>
+                        <h3 class="why-card-title">Fast Loading Websites</h3>
+                        <p class="why-card-text">Every line of code is optimized for raw speed. Better loading times lead to higher search results and client retention.</p>
+                    </div>
+                    <!-- Point 3 -->
+                    <div class="why-card scroll-reveal">
+                        <div class="why-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="why-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-6 18.75h9" />
+                            </svg>
+                        </div>
+                        <h3 class="why-card-title">Mobile Friendly</h3>
+                        <p class="why-card-text">Meticulous desktop-first & mobile-first layouts so your site renders flawlessly on all screen shapes and sizes.</p>
+                    </div>
+                    <!-- Point 4 -->
+                    <div class="why-card scroll-reveal">
+                        <div class="why-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="why-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+                            </svg>
+                        </div>
+                        <h3 class="why-card-title">Reliable Monthly Maintenance</h3>
+                        <p class="why-card-text">We keep everything up-to-date, monitored, and running. You'll never see a database error or layout failure.</p>
+                    </div>
+                    <!-- Point 5 -->
+                    <div class="why-card scroll-reveal">
+                        <div class="why-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="why-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.22.11a3.118 3.118 0 003.738-3.414l-.096-.481a3.118 3.118 0 012.352-3.414l.22-.11M9 12.75h6m-1.5 5.25L12 18m0-12v-1.5M12 3v1.5" />
+                            </svg>
+                        </div>
+                        <h3 class="why-card-title">Affordable Pricing</h3>
+                        <p class="why-card-text">Premium, top-tier design outputs matching large-scale agencies, priced fairly for growing local businesses.</p>
+                    </div>
+                    <!-- Point 6 -->
+                    <div class="why-card scroll-reveal">
+                        <div class="why-icon-box">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="why-icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m0 0a8.967 8.967 0 01-3.741-.479 3 3 0 014.682-2.72m.94 3.198l-.001.031c0 .225.012.447.037.666A11.94 11.94 0 0012 21c2.17 0 4.207-.576 5.963-1.584" />
+                            </svg>
+                        </div>
+                        <h3 class="why-card-title">Dedicated Customer Support</h3>
+                        <p class="why-card-text">No robotic chatbots or outsourced centers. You have our direct contact, resolving updates inside hours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing section-padding" id="pricing">
+            <div class="container">
+                <div class="section-header scroll-reveal">
+                    <span class="badge">Pricing Plans</span>
+                    <h2 class="section-title">Simple, Transparent Pricing</h2>
+                    <p class="section-subtitle">Choose the perfect package for your business needs. No hidden setup costs.</p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <!-- Standard Package -->
+                    <div class="pricing-card scroll-reveal">
+                        <div class="card-plan-header">
+                            <h3 class="plan-name">Standard Package</h3>
+                            <p class="plan-pages">1–2 Pages</p>
+                            <p class="plan-desc">Perfect for individuals, startups, and small businesses needing a simple but professional online presence.</p>
+                            <div class="plan-price">
+                                <span class="amount">$100–$250</span>
+                                <span class="period">one-time</span>
+                            </div>
+                        </div>
+                        <div class="plan-divider"></div>
+                        <ul class="plan-features">
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="feat-check"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                1–2 Bespoke Web Pages
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="feat-check"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                Responsive Mobile Layouts
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="feat-check"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                Lightning Fast Performance
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="feat-check"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                Secure SSL & Contact Forms
+                            </li>
+                        </ul>
+                        <div class="card-plan-footer">
+                            <a href="#contact" class="btn btn-secondary w-full text-center">Request Package</a>
+                        </div>
+                    </div>
+
+                    <!-- Premium Package (Featured) -->
+                    <div class="pricing-card featured scroll-reveal">
+                        <div class="popular-tag">Recommended</div>
+                        <div class="card-plan-header">
+                            <h3 class="plan-name">Premium Package</h3>
+                            <p class="plan-pages">3–5 Pages</p>
+                            <p class="plan-desc">A more complete website solution with additional pages, improved functionality, and a stronger brand presence.</p>
+                            <div class="plan-price">
+                                <span class="amount">$300–$400</span>
+                                <span class="period">one-time</span>
+                            </div>
+                        </div>
+                        <div class="plan-divider"></div>
+                        <ul class="plan-features">
+                            <li class="feat-header">Everything in Standard, plus:</li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="feat-check"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                3–5 Bespoke Web Pages
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="feat-check"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                Advanced CSS Micro-Animations
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="feat-check"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                Enhanced Brand UI & Spacing
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="feat-check"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                Priority Email & Chat Support
+                            </li>
+                        </ul>
+                        <div class="card-plan-footer">
+                            <a href="#contact" class="btn btn-primary w-full text-center">Request Package</a>
+                        </div>
+                    </div>
+
+                    <!-- Business Package -->
+                    <div class="pricing-card scroll-reveal">
+                        <div class="card-plan-header">
+                            <h3 class="plan-name">Business Package</h3>
+                            <p class="plan-pages">5–9 Pages</p>
+                            <p class="plan-desc">Designed for established businesses needing a larger website with more features and a polished professional experience.</p>
+                            <div class="plan-price">
+                                <span class="amount">$400–$600</span>
+                                <span class="period">one-time</span>
+                            </div>
+                            <div class="plan-maintenance-text">+$100/year maintenance</div>
+                        </div>
+                        <div class="plan-divider"></div>
+                        <ul class="plan-features">
+                            <li class="feat-header">Everything in Premium, plus:</li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="feat-check"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                5–9 Bespoke Web Pages
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="feat-check"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                Advanced SEO & Metadata Schema
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="feat-check"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                Custom System Integrations
+                            </li>
+                            <li>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="feat-check"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                                Priority Ongoing Changes
+                            </li>
+                        </ul>
+                        <div class="card-plan-footer">
+                            <a href="#contact" class="btn btn-secondary w-full text-center">Request Package</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section class="portfolio section-padding bg-secondary" id="portfolio">
+            <div class="container text-center">
+                <div class="section-header scroll-reveal">
+                    <span class="badge">Portfolio Policy</span>
+                    <h2 class="section-title">Industry-Specific Portfolios On Request</h2>
+                    <p class="section-subtitle">Because we design entirely custom websites tailored to brand-specific conversion goals, we share tailored, real-world portfolios during your alignment call rather than hosting generic public templates.</p>
+                </div>
+                
+                <div class="portfolio-request-card glass-card scroll-reveal" style="max-width: 680px; margin: 40px auto 0; padding: 48px 36px; border: 1px solid var(--border-color); border-radius: var(--radius-lg); text-align: center;">
+                    <div class="req-icon-box" style="width: 60px; height: 60px; background: rgba(247,148,29,0.1); border: 1px solid rgba(247,148,29,0.25); color: var(--accent-primary); border-radius: var(--radius-full); display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 28px; height: 28px;"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.23 13.438l-2.25-2.25a.75.75 0 0 0-1.06 0l-2.25 2.25M12 18.75V12m-9.75 9h19.5" /></svg>
+                    </div>
+                    <h3 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 12px;">Get a Curated Portfolio Brief</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 28px;">When you request a quote, mention your business niche (e.g. Photography, Fine Dining, SaaS, Real Estate, or Charity). We will pack and send highly relevant design case studies alongside your project proposal.</p>
+                    <a href="#contact" class="btn btn-primary btn-lg" style="display: inline-flex; align-items: center; gap: 8px;">
+                        <span>Request Custom Portfolios</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width: 16px; height: 16px;"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq section-padding" id="faq">
+            <div class="container max-w-3xl">
+                <div class="section-header scroll-reveal">
+                    <span class="badge">FAQ</span>
+                    <h2 class="section-title">Frequently Asked Questions</h2>
+                    <p class="section-subtitle">Everything you need to know about our web design process and maintenance.</p>
+                </div>
+                
+                <div class="faq-list">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item scroll-reveal">
+                        <button class="faq-question">
+                            <span>How long does a website take to build?</span>
+                            <span class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="icon-plus"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>On average, our Starter package is completed in 2 to 3 weeks, and Business/Premium takes between 4 to 6 weeks depending on requirements. We maintain detailed milestones and keep you updated throughout the entire build process.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item scroll-reveal">
+                        <button class="faq-question">
+                            <span>What is included in the monthly maintenance?</span>
+                            <span class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="icon-plus"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Our maintenance ($50/month) covers high-performance hosting management, SSL certificate renewals, daily automated database backups, security scans, uptime checks, and up to 2 hours of copy/image updates per month to ensure your site is never stale.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item scroll-reveal">
+                        <button class="faq-question">
+                            <span>Can I update my website later on?</span>
+                            <span class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="icon-plus"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Absolutely! We can either manage edits for you under our monthly plan, or provide a simple, clean training video along with access dashboard credentials if you prefer to make basic copy edits or upload news/blogs yourself.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item scroll-reveal">
+                        <button class="faq-question">
+                            <span>Is my website mobile friendly?</span>
+                            <span class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="icon-plus"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Yes, 100%. Over 60% of modern web traffic comes from mobile screens. We build every layout with a fluid grid, fully responsive layouts, and retina-ready visuals so it displays beautifully on iPhones, Androids, iPads, and large desktop screens.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item scroll-reveal">
+                        <button class="faq-question">
+                            <span>How do I get started?</span>
+                            <span class="faq-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="icon-plus"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
+                            </span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-content">
+                                <p>Getting started is easy! Simply fill out our contact form below or email us. We will set up a quick 15-minute alignment call to map your business needs, select the right plan, and kickstart your design mockups.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Banner -->
+        <section class="cta-banner">
+            <div class="cta-orb cta-orb-1"></div>
+            <div class="cta-orb cta-orb-2"></div>
+            <div class="container cta-inner scroll-reveal">
+                <div class="cta-icon-row">
+                    <div class="cta-icon-chip">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+                    </div>
+                </div>
+                <h2 class="cta-headline">Ready to grow your business online?</h2>
+                <p class="cta-sub">Join the businesses that trust ovren.co for premium websites that actually convert. Let's build something great together.</p>
+                <div class="cta-actions">
+                    <a href="#contact" class="btn btn-cta-primary btn-lg">Get a Free Quote</a>
+                    <a href="#pricing" class="btn btn-cta-ghost btn-lg">View Pricing</a>
+                </div>
+                <div class="cta-features">
+                    <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>No upfront commitment</span>
+                    <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Free consultation call</span>
+                    <span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>Reply within 24 hours</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact section-padding" id="contact">
+            <div class="container">
+                <div class="contact-grid">
+                    <!-- Form side -->
+                    <div class="contact-form-wrapper scroll-reveal">
+                        <span class="badge">Contact Us</span>
+                        <h2 class="section-title text-left">Get a Free Quote Today</h2>
+                        <p class="contact-intro">Fill out the form below, and we'll get back to you within 24 hours with a custom project proposal.</p>
+                        
+                        <form id="contact-form" class="contact-form" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="form-name">Name</label>
+                                    <input type="text" id="form-name" placeholder="John Doe" required>
+                                    <span class="error-msg">Please enter your name</span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="form-email">Email</label>
+                                    <input type="email" id="form-email" placeholder="john@example.com" required>
+                                    <span class="error-msg">Please enter a valid email address</span>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="form-message">Message</label>
+                                    <textarea id="form-message" rows="5" placeholder="Tell us about your project..." required></textarea>
+                                    <span class="error-msg">Please enter your project message</span>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg w-full flex-center justify-center">
+                                <span>Send Message</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="btn-arrow"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" /></svg>
+                            </button>
+                        </form>
+                        
+                        <!-- Success Toast/Overlay -->
+                        <div id="contact-success" class="contact-success-toast">
+                            <div class="success-icon-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="success-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                            </div>
+                            <h3>Message Sent!</h3>
+                            <p>Thank you for reaching out. We will contact you within 24 hours.</p>
+                            <button class="btn btn-secondary btn-sm" id="success-close-btn">Send another message</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Info side -->
+                    <div class="contact-info-wrapper scroll-reveal">
+                        <div class="glass-card info-card">
+                            <h3 class="info-card-title">Agency Details</h3>
+                            
+                            <div class="info-list">
+                                <div class="info-item">
+                                    <div class="info-icon-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="info-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+                                    </div>
+                                    <div class="info-text">
+                                        <span class="info-label">Location</span>
+                                        <span class="info-val">Fayetteville, Georgia</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="info-item">
+                                    <div class="info-icon-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="info-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3a1 1 0 011-1h4a1 1 0 011 1v3" /></svg>
+                                    </div>
+                                    <div class="info-text">
+                                        <span class="info-label">Business Type</span>
+                                        <span class="info-val">Online Web Design Agency</span>
+                                    </div>
+                                </div>
+
+                                 <div class="info-item">
+                                    <div class="info-icon-box">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="info-icon"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                                    </div>
+                                    <div class="info-text">
+                                        <span class="info-label">Email Us</span>
+                                        <span class="info-val"><a href="mailto:contact@ovren.co" style="color: inherit; text-decoration: none;">contact@ovren.co</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="info-map-placeholder">
+                                <div class="pulse-container">
+                                    <div class="pulse-dot"></div>
+                                    <div class="pulse-ring"></div>
+                                </div>
+                                <span class="map-label">Serving Businesses Nationwide from Fayetteville, GA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Agency column -->
+                <div class="footer-brand">
+                    <a href="#home" class="footer-logo">
+                        <img src="ovrentransparent.png" alt="ovren.co" class="footer-logo-img">
+                        <span>ovren.co</span>
+                    </a>
+                    <p class="footer-desc">Premium websites tailored for small businesses. Elite design standards, performance optimization, and reliable monthly maintenance.</p>
+                </div>
+                
+                <!-- Quick links -->
+                <div class="footer-nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Services list -->
+                <div class="footer-nav">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="#services">Custom Web Design</a></li>
+                        <li><a href="#services">Responsive Mobile Design</a></li>
+                        <li><a href="#services">Website Maintenance</a></li>
+                        <li><a href="#services">SEO Optimization</a></li>
+                        <li><a href="#services">Technical Support</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social links -->
+                <div class="footer-nav">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+                        </a>
+                        <a href="#" aria-label="GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-divider"></div>
+            
+            <div class="footer-bottom" style="justify-content: flex-end;">
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- Three.js Background Script -->
+    <script src="three-bg.js"></script>
+
+    <!-- Custom JavaScript App -->
+    <script src="app.js"></script>
+</body>
+</html>
