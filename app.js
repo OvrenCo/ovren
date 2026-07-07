@@ -12,7 +12,7 @@ let initialScrollTarget = '';
         const decodedPath = decodeURIComponent(redirectPath);
         // Extract section ID if it points to a section or a hash
         const parts = decodedPath.split('#');
-        const pathPart = parts[0].replace('/', '');
+        const pathPart = parts[0].replace(/^\/|\/$/g, '');
         const hashPart = parts[1];
         
         initialScrollTarget = hashPart || pathPart;
