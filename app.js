@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFaqAccordion();
     initContactForm();
     initPortfolioLinks();
+    initCleanUrls();
 });
 
 /* ==========================================================================
@@ -322,8 +323,34 @@ function initPortfolioLinks() {
 
     portfolioLinks.forEach(link => {
         const subdomain = link.getAttribute('data-subdomain');
-        // Always resolve to subdirectory to prevent GoDaddy/DNS configuration overhead
-        link.href = `./subdomains/${subdomain}/index.html`;
+        // Always resolve to portfolio subdirectory to get clean /portfolio/name/ URLs
+        link.href = `./portfolio/${subdomain}/`;
+    });
+}
+
+// Custom URL history rewriting for clean URLs (e.g. /home, /services)
+function initCleanUrls() {
+    if (window.location.protocol === 'file:') return;
+
+    // Rewrite root / index.html to /home on load
+    if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
+        window.history.replaceState({}, '', '/home');
+    }
+
+    // Intercept navbar and footer anchors for /name instead of /#name
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    anchors.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (href === '#' || href === '') return;
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+                window.history.pushState({}, '', `/${targetId}`);
+            }
+        });
     });
 }
 
