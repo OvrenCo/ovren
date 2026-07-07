@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex SaaS | Automate Your Digital Operations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #090b11;
+            --bg-card: #0f1320;
+            --primary-grad: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --text-light: #f8fafc;
+            --text-gray: #94a3b8;
+            --border: rgba(255,255,255,0.06);
+            --border-glow: rgba(99, 102, 241, 0.25);
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 45px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Portfolio Warning Banner */
+        .portfolio-banner {
+            background: #0d0f17;
+            border-bottom: 2px solid #6366f1;
+            color: #ffffff;
+            padding: 0 24px;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 45px;
+            z-index: 99999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-banner a {
+            color: #a855f7;
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        .portfolio-banner .banner-back-btn {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        .portfolio-banner .banner-back-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-banner {
+                position: relative;
+                height: auto;
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 12px;
+            }
+            body {
+                padding-top: 0;
+            }
+            header {
+                top: 0;
+            }
+        }
+
+        /* Header */
+        header {
+            background: rgba(9, 11, 17, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            position: sticky;
+            top: 45px;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            background: var(--primary-grad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--text-light);
+        }
+
+        .btn-cta {
+            background: var(--primary-grad);
+            color: #ffffff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+        }
+
+        .btn-cta:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 500px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(40px);
+        }
+
+        .badge {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            color: #818cf8;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.03em;
+            margin-bottom: 24px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 36px;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+        }
+
+        /* Interactive Dashboard Preview */
+        .dash-preview {
+            max-width: 900px;
+            margin: 0 auto 80px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(99, 102, 241, 0.03);
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            text-align: left;
+        }
+
+        .dash-sidebar {
+            background: rgba(0,0,0,0.15);
+            padding: 24px;
+            border-right: 1px solid var(--border);
+        }
+
+        .side-logo {
+            font-weight: 800;
+            font-size: 1rem;
+            margin-bottom: 32px;
+            color: #818cf8;
+        }
+
+        .side-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .side-link-mock {
+            height: 10px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 3px;
+        }
+
+        .side-link-mock:nth-child(1) { width: 85%; background: var(--primary-grad); }
+        .side-link-mock:nth-child(2) { width: 65%; }
+        .side-link-mock:nth-child(3) { width: 75%; }
+        .side-link-mock:nth-child(4) { width: 50%; }
+
+        .dash-main {
+            padding: 32px;
+        }
+
+        .dash-hdr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .dash-hdr-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .dash-hdr-badge {
+            font-size: 0.72rem;
+            background: rgba(16, 185, 129, 0.12);
+            color: #10b981;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .dash-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card-mock {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .stat-card-mock span {
+            font-size: 0.72rem;
+            color: var(--text-gray);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .stat-card-mock strong {
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+
+        .dash-chart {
+            height: 140px;
+            background: rgba(255,255,255,0.01);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 0 10px;
+            gap: 8px;
+        }
+
+        .chart-bar-mock {
+            flex-grow: 1;
+            background: rgba(99, 102, 241, 0.2);
+            border-radius: 3px 3px 0 0;
+            transition: height 0.8s ease-out;
+            height: 10%;
+        }
+
+        /* Trusted By Strip */
+        .trusted-strip {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: rgba(255,255,255,0.01);
+        }
+
+        .trusted-inner {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+            font-weight: 800;
+            color: var(--text-gray);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 100px 0;
+        }
+
+        .features-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .feature-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .acc-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .acc-item.active {
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 0 15px rgba(99,102,241,0.05);
+        }
+
+        .acc-hdr {
+            padding: 20px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .acc-body {
+            max-height: 0;
+            padding: 0 20px;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .acc-item.active .acc-body {
+            max-height: 120px;
+            padding-bottom: 20px;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 48px;
+        }
+
+        .faq-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .faq-card p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 100px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .toggle-container {
+            display: inline-flex;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 9999px;
+            padding: 4px;
+            margin-bottom: 50px;
+        }
+
+        .toggle-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-gray);
+            padding: 8px 18px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border-radius: 9999px;
+            transition: var(--transition);
+        }
+
+        .toggle-btn.active {
+            background: var(--primary-grad);
+            color: #ffffff;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+        .pricing-card {
+            background: #0b0d16;
+            border: 1px solid rgba(99, 102, 241, 0.15);
+            border-radius: 16px;
+            padding: 44px 32px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            transition: var(--transition);
+        }
+
+        .pricing-card:hover {
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.12), 0 0 20px rgba(99, 102, 241, 0.05);
+            transform: translateY(-8px);
+        }
+
+        .pricing-card.featured {
+            border-color: rgba(99, 102, 241, 0.45);
+            box-shadow: 0 20px 50px rgba(99, 102, 241, 0.18);
+            background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.12) 0%, #0b0d16 75%);
+            position: relative;
+        }
+
+        .pricing-card.featured::after {
+            background: var(--primary-grad);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 14px;
+            right: 24px;
+            background: var(--primary-grad);
+            color: #ffffff;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            letter-spacing: 0.05em;
+            z-index: 10;
+        }
+
+        .plan-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .plan-price {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: #ffffff;
+            letter-spacing: -1px;
+        }
+
+        .plan-price span {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        .plan-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 32px;
+            font-size: 0.88rem;
+            color: var(--text-gray);
+        }
+
+        .plan-features li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: #818cf8;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 0;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.88rem;
+        }
+
+        footer p { margin-top: 8px; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .pricing-grid { grid-template-columns: 1fr; gap: 24px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.4rem; }
+            .dash-preview { grid-template-columns: 1fr; }
+            .dash-sidebar { display: none; }
+            .dash-stats { grid-template-columns: 1fr; }
+            .features-layout { grid-template-columns: 1fr; gap: 40px; }
+            .faq-grid { grid-template-columns: 1fr; gap: 24px; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Warning Banner -->
+    <div class="portfolio-banner">
+        <span>✨ <strong>Portfolio Mockup Concept</strong> by <a href="../../index.html">ovren.co</a> — This is a design demo. None of the content, registration, or SaaS metrics are real.</span>
+        <a href="../../index.html" class="banner-back-btn">Back to Agency</a>
+    </div>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">APEX</a>
+            <nav>
+                <a href="#features">Features</a>
+                <a href="#faq">FAQ</a>
+                <a href="#pricing">Pricing</a>
+            </nav>
+            <a href="#pricing" class="btn-cta">Start Free Trial</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-glow"></div>
+            <div class="container">
+                <span class="badge">Next Gen Automation</span>
+                <h1>Connect Your Team. Automate Workflows.</h1>
+                <p>Deploy AI-powered pipelines that connect to your database, clean operational data, and deliver clean custom analytical dashboards instantly.</p>
+                
+                <!-- Interactive Dashboard Mockup -->
+                <div class="dash-preview">
+                    <div class="dash-sidebar">
+                        <div class="side-logo">APEX APP</div>
+                        <div class="side-links">
+                            <span class="side-link-mock"></span>
+                            <span class="side-link-mock"></span>
+                            <span class="side-link-mock"></span>
+                            <span class="side-link-mock"></span>
+                        </div>
+                    </div>
+                    <div class="dash-main">
+                        <div class="dash-hdr">
+                            <span class="dash-hdr-title">Executive Pipeline Overview</span>
+                            <span class="dash-hdr-badge">● Active Pipeline</span>
+                        </div>
+                        <div class="dash-stats">
+                            <div class="stat-card-mock">
+                                <span>Monthly Subscriptions</span>
+                                <strong>$48,250</strong>
+                            </div>
+                            <div class="stat-card-mock">
+                                <span>Pipelines Ran</span>
+                                <strong>124,591</strong>
+                            </div>
+                            <div class="stat-card-mock">
+                                <span>Active Users</span>
+                                <strong>8,901</strong>
+                            </div>
+                        </div>
+                        <div class="dash-chart" id="chart-container">
+                            <div class="chart-bar-mock" style="height: 40%;"></div>
+                            <div class="chart-bar-mock" style="height: 60%;"></div>
+                            <div class="chart-bar-mock" style="height: 55%;"></div>
+                            <div class="chart-bar-mock" style="height: 85%;"></div>
+                            <div class="chart-bar-mock" style="height: 70%;"></div>
+                            <div class="chart-bar-mock" style="height: 95%;"></div>
+                            <div class="chart-bar-mock" style="height: 100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trusted By Strip -->
+        <section class="trusted-strip">
+            <div class="container trusted-inner">
+                <span>VOLTA</span>
+                <span>INDIGO</span>
+                <span>SPECTRA</span>
+                <span>VERTEX</span>
+            </div>
+        </section>
+
+        <!-- Features Accordion -->
+        <section class="features-section" id="features">
+            <div class="container">
+                <div class="features-layout">
+                    <div>
+                        <span class="badge">Advanced Engine</span>
+                        <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 20px;">Built for the Future of Operations</h2>
+                        <p style="color: var(--text-gray); margin-bottom: 24px;">Discover why dev ops and growth teams choose Apex. Click each feature to inspect the details.</p>
+                        <a href="#pricing" class="btn-cta">Explore Sandbox Integration</a>
+                    </div>
+                    
+                    <div class="feature-accordion">
+                        <div class="acc-item active" onclick="toggleAcc(this)">
+                            <div class="acc-hdr">
+                                <span>Dynamic Database Integration</span>
+                                <span>↓</span>
+                            </div>
+                            <div class="acc-body">
+                                <p>Connect securely to Postgres, MySQL, MongoDB, and Snowflake in just three clicks. Full SSL encryption and OAuth support built-in.</p>
+                            </div>
+                        </div>
+
+                        <div class="acc-item" onclick="toggleAcc(this)">
+                            <div class="acc-hdr">
+                                <span>AI Data Cleaning Models</span>
+                                <span>↓</span>
+                            </div>
+                            <div class="acc-body">
+                                <p>Our autonomous pipelines scan incoming data records, detect standard duplicates, sanitize text strings, and log discrepancies.</p>
+                            </div>
+                        </div>
+
+                        <div class="acc-item" onclick="toggleAcc(this)">
+                            <div class="acc-hdr">
+                                <span>Instant Webhook Notifications</span>
+                                <span>↓</span>
+                            </div>
+                            <div class="acc-body">
+                                <p>Ping Slack, Microsoft Teams, Discord, or run a custom HTTPS POST webhook whenever pipeline states trigger anomalies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <div class="section-hdr text-center">
+                    <span class="badge">FAQ</span>
+                    <h2 style="font-size: 2.2rem; font-weight:800;">Frequently Answered</h2>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-card">
+                        <h3>Is my database data encrypted?</h3>
+                        <p>Yes, all connections are tunneled through TLS 1.3 with AES-256 GCM encryption. Your analytical data is stored only in-memory during processing runs.</p>
+                    </div>
+                    <div class="faq-card">
+                        <h3>Can I cancel my billing subscription anytime?</h3>
+                        <p>Yes, Apex has zero long-term contract requirements. You can cancel, downgrade, or upgrade your plan directly in your settings menu.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Grid -->
+        <section class="pricing-section" id="pricing">
+            <div class="container">
+                <span class="badge">Simple Plans</span>
+                <h2 style="font-size: 2.2rem; font-weight: 800; margin-bottom: 20px;">Choose Your Acceleration</h2>
+                
+                <div class="toggle-container">
+                    <button class="toggle-btn active" id="btn-monthly" onclick="setBilling('monthly')">Monthly</button>
+                    <button class="toggle-btn" id="btn-annual" onclick="setBilling('annual')">Annual (Save 20%)</button>
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- Standard -->
+                    <div class="pricing-card">
+                        <div>
+                            <h3 class="plan-title">Starter</h3>
+                            <div class="plan-price" id="price-starter">$29<span>/mo</span></div>
+                            <ul class="plan-features">
+                                <li>5 Active Pipelines</li>
+                                <li>10,000 runs per month</li>
+                                <li>Community Slack Support</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="btn-cta" style="background: transparent; border: 1.5px solid var(--text-gray); box-shadow: none; text-align: center; color: var(--text-light);">Start Starter Plan</a>
+                    </div>
+
+                    <!-- Growth -->
+                    <div class="pricing-card featured">
+                        <div>
+                            <h3 class="plan-title">Growth</h3>
+                            <div class="plan-price" id="price-growth">$79<span>/mo</span></div>
+                            <ul class="plan-features">
+                                <li>25 Active Pipelines</li>
+                                <li>150,000 runs per month</li>
+                                <li>24h Email Support</li>
+                                <li>AI Schema Cleaning</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="btn-cta" style="text-align: center;">Start Growth Plan</a>
+                    </div>
+
+                    <!-- Enterprise -->
+                    <div class="pricing-card">
+                        <div>
+                            <h3 class="plan-title">Pro</h3>
+                            <div class="plan-price" id="price-pro">$199<span>/mo</span></div>
+                            <ul class="plan-features">
+                                <li>Unlimited Pipelines</li>
+                                <li>1M runs per month</li>
+                                <li>Dedicated Success Manager</li>
+                                <li>Private Sandbox Node</li>
+                            </ul>
+                        </div>
+                        <a href="#" class="btn-cta" style="background: transparent; border: 1.5px solid var(--text-gray); box-shadow: none; text-align: center; color: var(--text-light);">Start Pro Plan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <span class="logo" style="display: block; margin-bottom: 12px;">APEX SAAS</span>
+            <p>1200 Innovation Parkway, Suite 400, Fayetteville, GA 30214</p>
+            <p>Apex SaaS. Hand-Coded by ovren.co.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.chart-bar-mock');
+            const targetHeights = ['40%', '60%', '55%', '85%', '70%', '95%', '100%'];
+            
+            bars.forEach((bar, index) => {
+                bar.style.height = '0%';
+                setTimeout(() => {
+                    bar.style.height = targetHeights[index];
+                }, 100 * index + 100);
+            });
+        });
+
+        function toggleAcc(element) {
+            const isActive = element.classList.contains('active');
+            
+            document.querySelectorAll('.acc-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            if (!isActive) {
+                element.classList.add('active');
+            }
+        }
+
+        function setBilling(period) {
+            const mBtn = document.getElementById('btn-monthly');
+            const aBtn = document.getElementById('btn-annual');
+            const pStarter = document.getElementById('price-starter');
+            const pGrowth = document.getElementById('price-growth');
+            const pPro = document.getElementById('price-pro');
+
+            if (period === 'monthly') {
+                mBtn.classList.add('active');
+                aBtn.classList.remove('active');
+                
+                pStarter.innerHTML = '$29<span>/mo</span>';
+                pGrowth.innerHTML = '$79<span>/mo</span>';
+                pPro.innerHTML = '$199<span>/mo</span>';
+            } else {
+                mBtn.classList.remove('active');
+                aBtn.classList.add('active');
+                
+                pStarter.innerHTML = '$23<span>/mo</span>';
+                pGrowth.innerHTML = '$63<span>/mo</span>';
+                pPro.innerHTML = '$159<span>/mo</span>';
+            }
+        }
+    </script>
+</body>
+</html>

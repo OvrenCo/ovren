@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initFaqAccordion();
     initContactForm();
+    initPortfolioLinks();
 });
 
 /* ==========================================================================
@@ -311,5 +312,35 @@ function initContactForm() {
         }, 300);
     });
 }
+
+
+/* ==========================================================================
+   8. Dynamic Portfolio Subdomain Links
+   ========================================================================== */
+function initPortfolioLinks() {
+    const portfolioLinks = document.querySelectorAll('[data-subdomain]');
+    const hostname = window.location.hostname;
+    const protocol = window.location.protocol;
+
+    portfolioLinks.forEach(link => {
+        const subdomain = link.getAttribute('data-subdomain');
+        let url = '';
+        // If we are not in production (e.g. localhost, local files, local network IPs), use relative paths
+        const isProduction = hostname.includes('ovren.co');
+        if (!isProduction) {
+            url = `./subdomains/${subdomain}/index.html`;
+        } else {
+            // Production deployment - resolve to subdomain
+            const domainParts = hostname.split('.');
+            let baseDomain = hostname;
+            if (domainParts.length > 2) {
+                baseDomain = domainParts.slice(-2).join('.');
+            }
+            url = `${protocol}//${subdomain}.${baseDomain}/`;
+        }
+        link.href = url;
+    });
+}
+
 
 

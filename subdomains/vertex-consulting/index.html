@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vertex Consulting | Corporate Advisory & Legal Counsel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --accent-slate: #64748b;
+            --accent-blue: #38bdf8;
+            --text-light: #f8fafc;
+            --text-muted: #cbd5e1;
+            --border: rgba(255, 255, 255, 0.08);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-light);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 45px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Portfolio Warning Banner */
+        .portfolio-banner {
+            background: #090e1a;
+            border-bottom: 2px solid var(--accent-blue);
+            color: #ffffff;
+            padding: 0 24px;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 45px;
+            z-index: 99999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-banner a {
+            color: var(--accent-blue);
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        .portfolio-banner .banner-back-btn {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        .portfolio-banner .banner-back-btn:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-banner {
+                position: relative;
+                height: auto;
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 12px;
+            }
+            body {
+                padding-top: 0;
+            }
+            header {
+                top: 0;
+            }
+        }
+
+        /* Header */
+        header {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1.5px solid var(--border);
+            padding: 22px 0;
+            position: sticky;
+            top: 45px;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--accent-blue);
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.88rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+        }
+
+        .btn-consult {
+            background: transparent;
+            color: var(--accent-blue);
+            border: 1.5px solid var(--accent-blue);
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-consult:hover {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 100px 0 60px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 36px;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Core Values Section */
+        .values-section {
+            padding: 80px 0;
+            border-top: 1.5px solid var(--border);
+            background: rgba(255,255,255,0.01);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 32px 24px;
+            border-radius: 6px;
+        }
+
+        .value-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: var(--accent-blue);
+        }
+
+        .value-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        /* Expertise Accordion */
+        .expertise-section {
+            padding: 80px 0;
+            border-top: 1.5px solid var(--border);
+        }
+
+        .expertise-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .expertise-hdr h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .expertise-accordion {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .exp-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .exp-item.active {
+            border-color: var(--accent-blue);
+        }
+
+        .exp-title {
+            padding: 20px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .exp-body {
+            max-height: 0;
+            padding: 0 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .exp-item.active .exp-body {
+            max-height: 120px;
+            padding-bottom: 20px;
+        }
+
+        /* Whitepaper / Lead Intake Form */
+        .whitepaper-section {
+            background: var(--bg-secondary);
+            padding: 60px 40px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 80px;
+        }
+
+        .whitepaper-section h3 {
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .whitepaper-section p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 28px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .lead-form {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .lead-form input {
+            flex-grow: 1;
+            padding: 12px 16px;
+            border: 1.5px solid var(--border);
+            border-radius: 4px;
+            outline: none;
+            font-family: inherit;
+            background: var(--bg-primary);
+            color: white;
+        }
+
+        .lead-form input:focus {
+            border-color: var(--accent-blue);
+        }
+
+        .lead-form button {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            border: none;
+            padding: 0 24px;
+            font-weight: 700;
+            border-radius: 4px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .lead-form button:hover {
+            opacity: 0.9;
+        }
+
+        .success-box {
+            display: none;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1.5px solid var(--border);
+            padding: 60px 0;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        footer p { margin-top: 8px; }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .values-grid { grid-template-columns: 1fr; gap: 24px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .expertise-layout { grid-template-columns: 1fr; gap: 40px; }
+            .lead-form { flex-direction: column; }
+            .lead-form button { padding: 14px 0; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Warning Banner -->
+    <div class="portfolio-banner">
+        <span>✨ <strong>Portfolio Mockup Concept</strong> by <a href="../../index.html">ovren.co</a> — This is a design demo. None of the reports, consultation bookings, or advisories are real.</span>
+        <a href="../../index.html" class="banner-back-btn">Back to Agency</a>
+    </div>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">VERTEX<span>.</span></a>
+            <nav>
+                <a href="#values">Core Values</a>
+                <a href="#expertise">Expertise</a>
+                <a href="#insights">Insights</a>
+            </nav>
+            <a href="#contact" class="btn-consult">Request Proposal</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Strategic Counsel For Complex Operations</h1>
+                <p>Vertex provides elite legal structure planning, tax optimization strategies, and corporate restructuring advisory for middle-market operations.</p>
+                <a href="#expertise" class="btn-consult" style="background: var(--accent-blue); color: var(--bg-primary);">Inspect Expertise</a>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-section" id="values">
+            <div class="container">
+                <div class="section-hdr text-center">
+                    <h2>Core Consulting Pillars</h2>
+                    <p style="color:var(--text-muted);">How we systematically advise client boards.</p>
+                </div>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3>Capital Protection</h3>
+                        <p>Protecting corporate liquidity holdings during restructure events via safe tax shelter plans.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Fiduciary Clarity</h3>
+                        <p>Ensuring clarity of board governance policies and audit pathways during acquisitions.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Compliance Focus</h3>
+                        <p>Detailed mapping of SEC rules and anti-trust guidelines relative to industry sectors.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise Accordion Section -->
+        <section class="expertise-section" id="expertise">
+            <div class="container expertise-layout">
+                <div class="expertise-hdr">
+                    <h2>Custom Advisory Fields</h2>
+                    <p style="color: var(--text-muted); margin-bottom: 20px;">We structure our legal and corporate consultancy around four key areas of middle-market operation.</p>
+                    <div style="background: rgba(255,255,255,0.01); border: 1.5px solid var(--border); padding: 20px; border-radius: 6px; font-size: 0.88rem; color: var(--text-muted);">
+                        "Our target is securing corporate liquidity and structural safety."
+                    </div>
+                </div>
+
+                <div class="expertise-accordion">
+                    <div class="exp-item active" onclick="toggleAccordion(this)">
+                        <div class="exp-title">
+                            <span>Corporate M&A Structure</span>
+                            <span>↓</span>
+                        </div>
+                        <div class="exp-body">
+                            <p>Full advisory services on corporate merges, cross-border acquisitions, joint ventures, and capital raising events.</p>
+                        </div>
+                    </div>
+
+                    <div class="exp-item" onclick="toggleAccordion(this)">
+                        <div class="exp-title">
+                            <span>Tax Compliance & Optimization</span>
+                            <span>↓</span>
+                        </div>
+                        <div class="exp-body">
+                            <p>Assessing local and federal tax liabilities, identifying restructuring exemptions, and mapping multi-tier tax structures.</p>
+                        </div>
+                    </div>
+
+                    <div class="exp-item" onclick="toggleAccordion(this)">
+                        <div class="exp-title">
+                            <span>Regulatory Strategy</span>
+                            <span>↓</span>
+                        </div>
+                        <div class="exp-body">
+                            <p>Compliance mapping for data residency guidelines, trade policies, SEC reporting standards, and environmental requirements.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Whitepaper Download Section -->
+        <section class="container" id="insights">
+            <div class="whitepaper-section">
+                <h3>Download Executive Briefing</h3>
+                <p>Get our free 2026 Whitepaper: <em>"Restructuring Tax Exemptions in Middle Market Mergers"</em> directly to your inbox.</p>
+                
+                <div id="form-wrapper">
+                    <form class="lead-form" onsubmit="submitLead(event)">
+                        <input type="email" id="l-email" placeholder="executive@company.com" required>
+                        <button type="submit">Download Brief</button>
+                    </form>
+                </div>
+
+                <div class="success-box" id="success-box">
+                    <span>✓ PDF download link has been simulated and sent to your email. Thank you!</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <span class="logo" style="display: block; margin-bottom: 12px;">VERTEX ADVISORY</span>
+            <p>1200 Financial Plaza, Fayetteville, GA 30214</p>
+            <p>Vertex Advisory. Hand-Coded by ovren.co.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleAccordion(element) {
+            const isActive = element.classList.contains('active');
+            
+            document.querySelectorAll('.exp-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            if (!isActive) {
+                element.classList.add('active');
+            }
+        }
+
+        function submitLead(e) {
+            e.preventDefault();
+            document.getElementById('form-wrapper').style.display = 'none';
+            document.getElementById('success-box').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

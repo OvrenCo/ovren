@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hope Foundation | Clean Water & Education For All</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-teal: #0d9488;
+            --primary-green: #10b981;
+            --text-dark: #0f172a;
+            --text-secondary: #475569;
+            --bg-light: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --radius-lg: 16px;
+            --radius-md: 8px;
+            --transition: all 0.25s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            padding-top: 45px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Portfolio Warning Banner */
+        .portfolio-banner {
+            background: #0f172a;
+            border-bottom: 2.5px solid var(--primary-teal);
+            color: #ffffff;
+            padding: 0 24px;
+            font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Outfit', sans-serif;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 45px;
+            z-index: 99999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .portfolio-banner a {
+            color: var(--primary-green);
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        .portfolio-banner .banner-back-btn {
+            background: var(--primary-teal);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: var(--transition);
+        }
+
+        .portfolio-banner .banner-back-btn:hover {
+            background: #0f766e;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-banner {
+                position: relative;
+                height: auto;
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 12px;
+            }
+            body {
+                padding-top: 0;
+            }
+            header {
+                top: 0;
+            }
+        }
+
+        /* Header */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+            position: sticky;
+            top: 45px;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.4rem;
+            color: var(--primary-teal);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--primary-green);
+            border-radius: 50%;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--primary-teal);
+        }
+
+        .btn-donate {
+            background: var(--primary-teal);
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-donate:hover {
+            background: #0f766e;
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: #0f172a;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 36px;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            line-height: 1.7;
+        }
+
+        /* Thermometer Section */
+        .thermometer-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+            margin-bottom: 60px;
+        }
+
+        .thermometer-hdr {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .thermometer-hdr .raised {
+            font-size: 2.4rem;
+            color: var(--primary-teal);
+        }
+
+        .thermometer-hdr .goal {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        .thermometer-track {
+            height: 18px;
+            background: #f1f5f9;
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .thermometer-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-teal), var(--primary-green));
+            width: 0%;
+            border-radius: var(--radius-full);
+            transition: width 1s ease-out;
+        }
+
+        .thermometer-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Impact Section */
+        .impact-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .section-hdr {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-hdr h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 40px;
+        }
+
+        .impact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 36px 32px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(13, 148, 136, 0.06);
+            border-color: rgba(13, 148, 136, 0.3);
+        }
+
+        .impact-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(13, 148, 136, 0.1);
+            color: var(--primary-teal);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 1.5rem;
+        }
+
+        .impact-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .impact-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Stats Grid */
+        .stats-strip {
+            background: var(--primary-teal);
+            color: white;
+            padding: 60px 0;
+            border-radius: var(--radius-lg);
+            margin-bottom: 80px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .stat-block h3 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .stat-block p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* News / Blog Section */
+        .news-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .news-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            transition: var(--transition);
+        }
+
+        .news-item:hover {
+            border-color: var(--primary-teal);
+        }
+
+        .news-date {
+            font-size: 0.8rem;
+            color: var(--primary-teal);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .news-item h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .news-item p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Donation Widget */
+        .donation-widget {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 48px;
+            max-width: 650px;
+            margin: 0 auto 80px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+        }
+
+        .widget-hdr {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .widget-hdr h3 {
+            font-size: 1.7rem;
+            font-weight: 800;
+        }
+
+        .donation-amounts {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .amt-btn {
+            background: var(--bg-light);
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .amt-btn:hover, .amt-btn.active {
+            background: var(--primary-teal);
+            color: #ffffff;
+            border-color: var(--primary-teal);
+        }
+
+        .custom-input-box {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        .custom-input-box input {
+            width: 100%;
+            padding: 14px 14px 14px 32px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            outline: none;
+            font-weight: 600;
+        }
+
+        .custom-input-box::before {
+            content: '$';
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .submit-donation {
+            width: 100%;
+            background: var(--primary-teal);
+            color: #ffffff;
+            border: none;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-donation:hover {
+            background: #0f766e;
+        }
+
+        .donation-success {
+            display: none;
+            text-align: center;
+        }
+
+        .success-heart {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 16px;
+        }
+
+        /* Volunteer Section */
+        .volunteer-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .volunteer-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+        }
+
+        .volunteer-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .volunteer-form input {
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            outline: none;
+        }
+
+        .volunteer-form button {
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 0;
+            background: #ffffff;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        footer p {
+            margin-top: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .impact-grid { grid-template-columns: 1fr; gap: 20px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 30px; }
+            .news-grid { grid-template-columns: 1fr; }
+            .donation-amounts { grid-template-columns: repeat(2, 1fr); }
+            .donation-widget { padding: 24px; }
+            .volunteer-card { padding: 24px; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Warning Banner -->
+    <div class="portfolio-banner">
+        <span>✨ <strong>Portfolio Mockup Concept</strong> by <a href="../../index.html">ovren.co</a> — This is a design demo. None of the content, donations, or newsletter forms are real.</span>
+        <a href="../../index.html" class="banner-back-btn">Back to Agency</a>
+    </div>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo"><span class="logo-dot"></span>HOPE</a>
+            <nav>
+                <a href="#about">Our Impact</a>
+                <a href="#news">Campaign News</a>
+                <a href="#donate">Donate</a>
+                <a href="#volunteer">Volunteer</a>
+            </nav>
+            <a href="#donate" class="btn-donate">Give Now</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="about">
+            <div class="container">
+                <h1>Bringing Hope, Clean Water, and Bright Futures</h1>
+                <p>We work on the ground in rural communities worldwide to deploy sustainable clean water wells and build modern educational classrooms for local children.</p>
+                
+                <!-- Campaign Thermometer -->
+                <div class="thermometer-section">
+                    <div class="thermometer-hdr">
+                        <div>
+                            <span class="raised">$72,450</span>
+                            <span style="font-weight:500; font-size: 1rem; color: var(--text-secondary); margin-left: 8px;">raised of</span>
+                        </div>
+                        <span class="goal">$100,000 goal</span>
+                    </div>
+                    <div class="thermometer-track">
+                        <div class="thermometer-fill" id="therm-fill"></div>
+                    </div>
+                    <div class="thermometer-meta">
+                        <span>72% Funded</span>
+                        <span>1,245 Donors</span>
+                        <span>18 Days Left</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats strip -->
+        <section class="container" style="margin-bottom: 60px;">
+            <div class="stats-strip">
+                <div class="stats-grid">
+                    <div class="stat-block">
+                        <h3>24</h3>
+                        <p>Wells Deployed</p>
+                    </div>
+                    <div class="stat-block">
+                        <h3>12,400+</h3>
+                        <p>People Served</p>
+                    </div>
+                    <div class="stat-block">
+                        <h3>8</h3>
+                        <p>Classrooms Built</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact Grid -->
+        <section class="impact-section">
+            <div class="container">
+                <div class="section-hdr">
+                    <h2>Our Active Initiatives</h2>
+                    <p style="color: var(--text-secondary); max-width: 500px; margin: 0 auto;">How your contributions are systematically transforming lives every day.</p>
+                </div>
+
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <div class="impact-icon">💧</div>
+                        <h3>Clean Water Wells</h3>
+                        <p>Providing safe, disease-free drinking water systems directly to schools and medical outposts in water-scarce communities.</p>
+                    </div>
+
+                    <div class="impact-card">
+                        <div class="impact-icon">📚</div>
+                        <h3>Rural Education</h3>
+                        <p>Constructing school facilities, equipping student labs, and funding teacher training to secure quality primary education.</p>
+                    </div>
+
+                    <div class="impact-card">
+                        <div class="impact-icon">🌱</div>
+                        <h3>Sustainable Farms</h3>
+                        <p>Educating local farmers on soil preservation, irrigation techniques, and providing drought-resistant farming seeds.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News Section -->
+        <section class="news-section" id="news">
+            <div class="container">
+                <div class="section-hdr">
+                    <h2>Campaign News</h2>
+                    <p style="color: var(--text-secondary);">Updates directly from our field offices.</p>
+                </div>
+                <div class="news-grid">
+                    <div class="news-item">
+                        <span class="news-date">July 2026</span>
+                        <h3>Fayetteville Schools Fundraising Drive</h3>
+                        <p>Local high school student councils in Fayetteville, GA raised over $4,500 to fund classroom desks and library materials for our new education wing.</p>
+                    </div>
+                    <div class="news-item">
+                        <span class="news-date">June 2026</span>
+                        <h3>Clean Water Reaches Village of Matan</h3>
+                        <p>With help from community volunteers, our engineer crews successfully finished digging a solar-powered water well, bringing fresh water to 500 homes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Widget Section -->
+        <section style="padding: 60px 0;" id="donate">
+            <div class="container">
+                <div class="donation-widget">
+                    <div class="donation-form-wrapper" id="donation-form-wrapper">
+                        <div class="widget-hdr">
+                            <h3>Choose Donation Amount</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 6px;">Every dollar directly translates into local development actions.</p>
+                        </div>
+                        
+                        <div class="donation-amounts">
+                            <button type="button" class="amt-btn" onclick="selectAmount(15, this)">$15</button>
+                            <button type="button" class="amt-btn active" onclick="selectAmount(50, this)">$50</button>
+                            <button type="button" class="amt-btn" onclick="selectAmount(100, this)">$100</button>
+                            <button type="button" class="amt-btn" onclick="selectAmount(250, this)">$250</button>
+                        </div>
+
+                        <div class="custom-input-box">
+                            <input type="number" id="custom-amount" placeholder="Custom Amount" oninput="clearAmountActive()" value="50">
+                        </div>
+
+                        <button type="button" class="submit-donation" onclick="submitDonation()">Process Donation</button>
+                    </div>
+
+                    <div class="donation-success" id="donation-success">
+                        <div class="success-heart">❤️</div>
+                        <h3 style="font-size: 1.8rem; margin-bottom: 8px;">Thank You for Your Generosity!</h3>
+                        <p style="color: var(--text-secondary); max-width: 450px; margin: 0 auto 24px;">Your donation has been simulated successfully. We've sent a mock confirmation and impact brief to your email.</p>
+                        <button type="button" class="btn-donate" onclick="resetWidget()">Make Another Donation</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Volunteer Section -->
+        <section class="volunteer-section" id="volunteer">
+            <div class="container">
+                <div class="volunteer-card">
+                    <div class="section-hdr" style="margin-bottom: 0;">
+                        <h2>Join Our Volunteer Cohort</h2>
+                        <p style="color: var(--text-secondary); margin-top: 8px;">Help organize local drives or apply for overseas field support missions.</p>
+                    </div>
+                    <form class="volunteer-form" onsubmit="submitVolunteer(event)">
+                        <input type="text" placeholder="Full Name" required>
+                        <input type="email" placeholder="Email Address" required>
+                        <button type="submit">Submit Volunteer Application</button>
+                    </form>
+                    <div id="volunteer-success" style="display:none; color: var(--primary-teal); font-weight:700; margin-top: 20px;">
+                        Application sent! We will reach out shortly.
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <a href="#" class="logo" style="justify-content: center; margin-bottom: 12px;"><span class="logo-dot"></span>HOPE FOUNDATION</a>
+            <p>120 Giving Avenue, Fayetteville, GA 30214</p>
+            <p>Hope Foundation. Fayetteville, Georgia. Hand-Coded by ovren.co.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('therm-fill').style.width = '72.4%';
+            }, 200);
+        });
+
+        let currentAmount = 50;
+
+        function selectAmount(amount, button) {
+            document.querySelectorAll('.amt-btn').forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            currentAmount = amount;
+            document.getElementById('custom-amount').value = amount;
+        }
+
+        function clearAmountActive() {
+            document.querySelectorAll('.amt-btn').forEach(btn => btn.classList.remove('active'));
+            const customVal = document.getElementById('custom-amount').value;
+            currentAmount = customVal ? parseFloat(customVal) : 0;
+        }
+
+        function submitDonation() {
+            if (currentAmount <= 0) {
+                alert('Please enter a valid donation amount.');
+                return;
+            }
+            document.getElementById('donation-form-wrapper').style.display = 'none';
+            document.getElementById('donation-success').style.display = 'block';
+        }
+
+        function resetWidget() {
+            document.getElementById('donation-success').style.display = 'none';
+            document.getElementById('donation-form-wrapper').style.display = 'block';
+            document.getElementById('custom-amount').value = 50;
+            currentAmount = 50;
+            
+            document.querySelectorAll('.amt-btn').forEach(btn => {
+                if (btn.innerText === '$50') {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        function submitVolunteer(e) {
+            e.preventDefault();
+            e.target.style.display = 'none';
+            document.getElementById('volunteer-success').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
