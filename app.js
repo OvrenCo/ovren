@@ -2,6 +2,41 @@
    WEBORA DESIGN AGENCY INTERACTIVE CORE (app.js)
    ---------------------------------------------------- */
 
+// Track dynamic static SPA redirects & hashes
+let initialScrollTarget = '';
+(function checkInitialTarget() {
+    if (window.location.protocol === 'file:') return;
+    const params = new URLSearchParams(window.location.search);
+    const redirectPath = params.get('p');
+    if (redirectPath) {
+        const decodedPath = decodeURIComponent(redirectPath);
+        // Extract section ID if it points to a section or a hash
+        const parts = decodedPath.split('#');
+        const pathPart = parts[0].replace('/', '');
+        const hashPart = parts[1];
+        
+        initialScrollTarget = hashPart || pathPart;
+        window.history.replaceState({}, '', decodedPath);
+    } else if (window.location.hash) {
+        initialScrollTarget = window.location.hash.substring(1);
+        window.history.replaceState({}, '', `/${initialScrollTarget}`);
+    } else if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
+        window.history.replaceState({}, '', '/home');
+    }
+})();
+
+// Scroll to the target once the layout and assets are fully loaded (prevents halfway scrolls)
+window.addEventListener('load', () => {
+    if (initialScrollTarget) {
+        const targetElement = document.getElementById(initialScrollTarget);
+        if (targetElement) {
+            setTimeout(() => {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize functions
     initTheme();
@@ -331,25 +366,6 @@ function initPortfolioLinks() {
 // Custom URL history rewriting for clean URLs (e.g. /home, /services)
 function initCleanUrls() {
     if (window.location.protocol === 'file:') return;
-
-    const hash = window.location.hash;
-    // Rewrite root / index.html to /home (or /section-name if hash exists) on load
-    if (window.location.pathname === '/' || window.location.pathname.endsWith('index.html')) {
-        if (hash) {
-            const targetId = hash.substring(1);
-            window.history.replaceState({}, '', `/${targetId}`);
-            
-            // Smooth scroll to target element on page load
-            setTimeout(() => {
-                const targetElement = document.getElementById(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 150);
-        } else {
-            window.history.replaceState({}, '', '/home');
-        }
-    }
 
     // Intercept navbar and footer anchors for /name instead of /#name
     const anchors = document.querySelectorAll('a[href^="#"]');

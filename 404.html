@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ovren.co | Professional Web Design</title>
+    <script type="text/javascript">
+        // Redirect to root with a query parameter containing the requested path details
+        var pathSegment = window.location.pathname + window.location.search + window.location.hash;
+        window.location.replace(
+            window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + '/?p=' + encodeURIComponent(pathSegment)
+        );
+    </script>
+</head>
+<body>
+</body>
+</html>
