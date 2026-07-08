@@ -45,7 +45,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
         /* Portfolio Warning Banner */
@@ -181,7 +181,7 @@
             box-shadow: 0 8px 25px rgba(var(--accent-lime-rgb), 0.4);
         }
 
-        /* Hero */
+        /* Hero: High-Octane Skew Layout */
         .hero {
             padding: 120px 0 100px;
             position: relative;
@@ -189,8 +189,8 @@
 
         .hero-inner {
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
+            grid-template-columns: 1.25fr 0.75fr;
+            gap: 64px;
             align-items: center;
         }
 
@@ -207,7 +207,7 @@
         }
 
         .hero p {
-            max-width: 550px;
+            max-width: 580px;
             margin-bottom: 40px;
             color: var(--text-muted);
             font-size: 1.15rem;
@@ -245,7 +245,7 @@
             padding-bottom: 12px;
         }
 
-        .live-hdr span:nth-child(1) {
+        .live-hdr span:first-child {
             font-weight: 800;
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -295,9 +295,36 @@
             font-size: 0.85rem;
         }
 
+        /* Diagonal skew banner divider */
+        .skew-divider {
+            height: 80px;
+            background: var(--accent-lime);
+            transform: skewY(-2.5deg);
+            margin: 40px 0 -40px 0;
+            z-index: 2;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .skew-divider-text {
+            color: #000000;
+            white-space: nowrap;
+            animation: ticker-skew 25s linear infinite;
+            font-family: 'Archivo Black', sans-serif;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
+        }
+
+        @keyframes ticker-skew {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
         /* Programs Showcase */
         .classes-section {
-            padding: 100px 0;
+            padding: 140px 0 100px;
             border-top: 1px solid var(--border);
             background: rgba(0, 0, 0, 0.2);
         }
@@ -331,7 +358,7 @@
 
         .class-card:hover {
             border-color: var(--accent-lime);
-            transform: scale(1.02);
+            transform: translateY(-4px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         }
 
@@ -362,18 +389,45 @@
             line-height: 1.6;
         }
 
-        /* Timetable Schedule */
+        /* Timetable Schedule: Interactive calendar board */
         .schedule-section {
             padding: 100px 0;
             border-top: 1px solid var(--border);
         }
 
+        .schedule-day-tabs {
+            display: flex;
+            gap: 16px;
+            margin: 32px 0;
+        }
+
+        .day-tab-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 10px 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .day-tab-btn.active, .day-tab-btn:hover {
+            border-color: var(--accent-lime);
+            color: var(--accent-lime);
+            background: rgba(163, 230, 53, 0.05);
+        }
+
+        .schedule-table-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+        }
+
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 40px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
         }
 
         .schedule-table th, .schedule-table td {
@@ -404,7 +458,32 @@
             margin-top: 4px;
         }
 
-        /* Memberships */
+        /* Capacity details inside calendar cells */
+        .capacity-indicator {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+
+        .capacity-bar {
+            width: 80px;
+            height: 5px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 99px;
+            overflow: hidden;
+            display: inline-block;
+        }
+
+        .capacity-fill {
+            height: 100%;
+            background: var(--accent-lime);
+            border-radius: 99px;
+        }
+
+        /* Memberships: Notched active styles */
         .membership-section {
             padding: 120px 0;
             border-top: 1px solid var(--border);
@@ -548,6 +627,7 @@
             text-decoration: none;
             justify-content: center;
             margin-bottom: 16px;
+            display: inline-flex;
         }
 
         footer p { margin-top: 8px; }
@@ -589,6 +669,7 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div class="container hero-inner">
                 <div>
@@ -611,12 +692,19 @@
                         <p>Coach Elena (Full)</p>
                     </div>
                     <div class="live-schedule-item">
-                        <strong>10:00 AM — Powerlifting Confit</strong>
+                        <strong>10:00 AM — Powerlifting</strong>
                         <p>Coach Brandon (4 spots left)</p>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- Skew Divider Ticker Banner -->
+        <div class="skew-divider">
+            <div class="skew-divider-text">
+                GO HEAVY OR GO HOME * 100% RAW PERFORMANCE * LIMITLESS ENERGY * BREAK YOUR BOUNDARIES * GO HEAVY OR GO HOME * 100% RAW PERFORMANCE * LIMITLESS ENERGY * BREAK YOUR BOUNDARIES *
+            </div>
+        </div>
 
         <!-- Classes -->
         <section class="classes-section" id="classes">
@@ -659,36 +747,101 @@
                 <div class="section-hdr">
                     <h2 class="display-font">WEEKLY <span>SCHEDULE</span></h2>
                 </div>
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>Time</th>
-                            <th>Monday</th>
-                            <th>Wednesday</th>
-                            <th>Friday</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>06:00 AM</strong></td>
-                            <td><strong>Strength Circuit</strong><span>Coach Marcus</span></td>
-                            <td><strong>HIIT Conditioning</strong><span>Coach Elena</span></td>
-                            <td><strong>Strength Circuit</strong><span>Coach Marcus</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>09:00 AM</strong></td>
-                            <td><strong>Mobility Flow</strong><span>Coach Amy</span></td>
-                            <td><strong>Powerlifting Basics</strong><span>Coach Brandon</span></td>
-                            <td><strong>Mobility Flow</strong><span>Coach Amy</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>05:30 PM</strong></td>
-                            <td><strong>Tactical HIIT</strong><span>Coach Elena</span></td>
-                            <td><strong>Strength Circuit</strong><span>Coach Marcus</span></td>
-                            <td><strong>Team Shred</strong><span>All Coaches</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <!-- Interactive day tabs -->
+                <div class="schedule-day-tabs">
+                    <button class="day-tab-btn active" onclick="filterSchedule('all', this)">All Days</button>
+                    <button class="day-tab-btn" onclick="filterSchedule('mon', this)">Monday</button>
+                    <button class="day-tab-btn" onclick="filterSchedule('wed', this)">Wednesday</button>
+                    <button class="day-tab-btn" onclick="filterSchedule('fri', this)">Friday</button>
+                </div>
+
+                <div class="schedule-table-wrapper">
+                    <table class="schedule-table" id="timetable">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th class="col-mon">Monday</th>
+                                <th class="col-wed">Wednesday</th>
+                                <th class="col-fri">Friday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>06:00 AM</strong></td>
+                                <td class="col-mon">
+                                    <strong>Strength Circuit</strong><span>Coach Marcus</span>
+                                    <div class="capacity-indicator">
+                                        <span class="capacity-bar"><span class="capacity-fill" style="width: 80%;"></span></span>
+                                        <span>10/12 spots booked</span>
+                                    </div>
+                                </td>
+                                <td class="col-wed">
+                                    <strong>HIIT Conditioning</strong><span>Coach Elena</span>
+                                    <div class="capacity-indicator">
+                                        <span class="capacity-bar"><span class="capacity-fill" style="width: 50%;"></span></span>
+                                        <span>6/12 spots booked</span>
+                                    </div>
+                                </td>
+                                <td class="col-fri">
+                                    <strong>Strength Circuit</strong><span>Coach Marcus</span>
+                                    <div class="capacity-indicator">
+                                        <span class="capacity-bar"><span class="capacity-fill" style="width: 90%;"></span></span>
+                                        <span>11/12 spots booked</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>09:00 AM</strong></td>
+                                <td class="col-mon">
+                                    <strong>Mobility Flow</strong><span>Coach Amy</span>
+                                    <div class="capacity-indicator">
+                                        <span class="capacity-bar"><span class="capacity-fill" style="width: 30%;"></span></span>
+                                        <span>4/12 spots booked</span>
+                                    </div>
+                                </td>
+                                <td class="col-wed">
+                                    <strong>Powerlifting Basics</strong><span>Coach Brandon</span>
+                                    <div class="capacity-indicator">
+                                        <span class="capacity-bar"><span class="capacity-fill" style="width: 100%;"></span></span>
+                                        <span>CLASS FULL</span>
+                                    </div>
+                                </td>
+                                <td class="col-fri">
+                                    <strong>Mobility Flow</strong><span>Coach Amy</span>
+                                    <div class="capacity-indicator">
+                                        <span class="capacity-bar"><span class="capacity-fill" style="width: 40%;"></span></span>
+                                        <span>5/12 spots booked</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>05:30 PM</strong></td>
+                                <td class="col-mon">
+                                    <strong>Tactical HIIT</strong><span>Coach Elena</span>
+                                    <div class="capacity-indicator">
+                                        <span class="capacity-bar"><span class="capacity-fill" style="width: 100%;"></span></span>
+                                        <span>CLASS FULL</span>
+                                    </div>
+                                </td>
+                                <td class="col-wed">
+                                    <strong>Strength Circuit</strong><span>Coach Marcus</span>
+                                    <div class="capacity-indicator">
+                                        <span class="capacity-bar"><span class="capacity-fill" style="width: 75%;"></span></span>
+                                        <span>9/12 spots booked</span>
+                                    </div>
+                                </td>
+                                <td class="col-fri">
+                                    <strong>Team Shred</strong><span>All Coaches</span>
+                                    <div class="capacity-indicator">
+                                        <span class="capacity-bar"><span class="capacity-fill" style="width: 95%;"></span></span>
+                                        <span>19/20 spots booked</span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
@@ -782,6 +935,37 @@
                 c.classList.remove('active');
             });
             card.classList.add('active');
+        }
+
+        function filterSchedule(day, button) {
+            // Update tabs active state
+            document.querySelectorAll('.day-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            button.classList.add('active');
+
+            // Find all columns
+            const monCols = document.querySelectorAll('.col-mon');
+            const wedCols = document.querySelectorAll('.col-wed');
+            const friCols = document.querySelectorAll('.col-fri');
+
+            if (day === 'all') {
+                monCols.forEach(c => c.style.display = '');
+                wedCols.forEach(c => c.style.display = '');
+                friCols.forEach(c => c.style.display = '');
+            } else if (day === 'mon') {
+                monCols.forEach(c => c.style.display = '');
+                wedCols.forEach(c => c.style.display = 'none');
+                friCols.forEach(c => c.style.display = 'none');
+            } else if (day === 'wed') {
+                monCols.forEach(c => c.style.display = 'none');
+                wedCols.forEach(c => c.style.display = '');
+                friCols.forEach(c => c.style.display = 'none');
+            } else if (day === 'fri') {
+                monCols.forEach(c => c.style.display = 'none');
+                wedCols.forEach(c => c.style.display = 'none');
+                friCols.forEach(c => c.style.display = '');
+            }
         }
     </script>
 </body>

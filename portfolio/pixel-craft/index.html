@@ -34,6 +34,7 @@
             padding-top: 48px;
             background-image: radial-gradient(#000000 1.5px, transparent 1.5px);
             background-size: 24px 24px;
+            overflow-x: hidden;
         }
 
         .mono {
@@ -42,9 +43,9 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
         /* Portfolio Warning Banner */
@@ -145,7 +146,7 @@
 
         nav {
             display: flex;
-            gap: 28px;
+            gap: 24px;
             align-items: center;
         }
 
@@ -155,16 +156,16 @@
             font-weight: 800;
             font-size: 0.95rem;
             text-transform: uppercase;
-            border-bottom: 3px solid transparent;
-            padding-bottom: 2px;
+            border: 2px solid transparent;
+            padding: 4px 10px;
             transition: var(--transition);
         }
 
         nav a:hover {
-            border-color: var(--bg-magenta);
+            border-color: #000000;
             background: var(--bg-cyan);
-            padding: 2px 6px;
-            transform: rotate(-2deg);
+            box-shadow: 3px 3px 0px #000000;
+            transform: translateY(-2px);
         }
 
         .btn-brutal {
@@ -189,9 +190,47 @@
             color: #000000;
         }
 
-        /* Hero */
+        /* Continuous Running Marquee Ticker */
+        .marquee-container {
+            background: var(--text-dark);
+            color: #ffffff;
+            border-bottom: var(--brutal-border);
+            padding: 12px 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            user-select: none;
+        }
+
+        .marquee-inner {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-inner span {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.1rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-right: 48px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Hero: Asymmetrical Split Layout */
         .hero {
-            padding: 100px 0 60px;
+            padding: 80px 0 60px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 60px;
+            align-items: center;
         }
 
         .hero-card {
@@ -201,29 +240,13 @@
             box-shadow: var(--brutal-shadow);
             text-align: left;
             position: relative;
-            overflow: hidden;
-        }
-
-        /* Brutalist Sticker Badges */
-        .sticker-badge {
-            position: absolute;
-            background: var(--bg-cyan);
-            border: var(--brutal-border);
-            padding: 6px 16px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            transform: rotate(12deg);
-            right: 40px;
-            top: 40px;
-            box-shadow: 4px 4px 0px #000000;
         }
 
         .hero h1 {
             font-size: 4.2rem;
             font-weight: 800;
-            line-height: 1;
+            line-height: 1.05;
             margin-bottom: 28px;
-            max-width: 800px;
             letter-spacing: -0.03em;
         }
 
@@ -232,9 +255,63 @@
             font-weight: 700;
             font-size: 1.1rem;
             color: #3f3f46;
-            max-width: 600px;
             margin-bottom: 40px;
             line-height: 1.6;
+        }
+
+        /* Overlapping Rotated Sticker Stack on Right */
+        .hero-sticker-stack {
+            position: relative;
+            height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sticker-card {
+            position: absolute;
+            background: #ffffff;
+            border: var(--brutal-border);
+            padding: 24px;
+            box-shadow: var(--brutal-shadow);
+            width: 280px;
+            transition: var(--transition);
+        }
+
+        .sticker-card:nth-child(1) {
+            background: var(--bg-yellow);
+            transform: rotate(-8deg) translate(-20px, -20px);
+            z-index: 1;
+        }
+
+        .sticker-card:nth-child(2) {
+            background: var(--bg-cyan);
+            transform: rotate(5deg) translate(10px, 10px);
+            z-index: 2;
+        }
+
+        .sticker-card:nth-child(3) {
+            background: var(--bg-magenta);
+            color: #ffffff;
+            transform: rotate(-2deg) translate(0px, 60px);
+            z-index: 3;
+        }
+
+        .sticker-card:hover {
+            transform: scale(1.08) rotate(0deg) !important;
+            z-index: 10;
+        }
+
+        .sticker-card h3 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .sticker-card p {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.82rem;
+            line-height: 1.4;
         }
 
         /* Philosophy Section */
@@ -251,7 +328,7 @@
             border: var(--brutal-border);
             padding: 8px 24px;
             box-shadow: 6px 6px 0px #000000;
-            margin-bottom: 48px;
+            margin-bottom: 60px;
             transform: rotate(-1.5deg);
         }
 
@@ -292,7 +369,7 @@
             line-height: 1.6;
         }
 
-        /* Works Grid */
+        /* Works Staggered List Layout */
         .works-section {
             padding: 80px 0;
         }
@@ -300,7 +377,7 @@
         .works-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            gap: 40px;
         }
 
         .work-card {
@@ -313,13 +390,18 @@
             flex-direction: column;
         }
 
+        /* Stagger height columns for visual variance */
+        .works-grid .work-card:nth-child(2) {
+            transform: translateY(32px);
+        }
+
         .work-card:hover {
-            transform: translate(-4px, -4px);
+            transform: translate(-4px, -4px) !important;
             box-shadow: var(--brutal-shadow-hover);
         }
 
         .work-img-mock {
-            height: 200px;
+            height: 220px;
             border-bottom: var(--brutal-border);
             display: flex;
             align-items: center;
@@ -366,7 +448,7 @@
             line-height: 1.6;
         }
 
-        /* Slide Contact Drawer */
+        /* Slide Contact Drawer Overlay */
         .drawer-overlay {
             position: fixed;
             top: 0;
@@ -445,6 +527,17 @@
             box-shadow: 2px 2px 0px #000000;
         }
 
+        .terminal-log-output {
+            background: #000000;
+            color: #00ff00;
+            font-family: monospace;
+            padding: 16px;
+            border: var(--brutal-border);
+            font-size: 0.8rem;
+            margin-top: 10px;
+            display: none;
+        }
+
         /* Footer */
         footer {
             border-top: var(--brutal-border);
@@ -456,8 +549,11 @@
 
         /* Responsive */
         @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+            .hero-sticker-stack { height: 280px; }
             .core-grid { grid-template-columns: 1fr; gap: 24px; }
-            .works-grid { grid-template-columns: 1fr; gap: 24px; max-width: 450px; margin: 0 auto; }
+            .works-grid { grid-template-columns: 1fr; gap: 48px; max-width: 450px; margin: 0 auto; }
+            .works-grid .work-card:nth-child(2) { transform: none; }
         }
 
         @media (max-width: 768px) {
@@ -489,6 +585,11 @@
                 </div>
                 <button type="submit" class="btn-brutal" style="width: 100%; text-align: center;">Send Request</button>
             </form>
+            <div class="terminal-log-output" id="terminal-log">
+                [PIXEL CLIENT PORTAL] Sending packet handshake...<br>
+                [PIXEL CLIENT PORTAL] Mock secure post completed.<br>
+                [PIXEL CLIENT PORTAL] Connection closed. Thank you!
+            </div>
         </div>
     </div>
 
@@ -510,14 +611,42 @@
         </div>
     </header>
 
+    <!-- Marquee Ticker -->
+    <div class="marquee-container">
+        <div class="marquee-inner">
+            <span>* STAND OUT FROM THE CROWD *</span>
+            <span>* BREAK THE CLEAN CORPORATE GRID *</span>
+            <span>* DESIGN SITES THAT COMMAND ATTENTION *</span>
+            <span>* WE BUILD FLAGSHIPS NOT TEMPLATES *</span>
+            <span>* STAND OUT FROM THE CROWD *</span>
+            <span>* BREAK THE CLEAN CORPORATE GRID *</span>
+            <span>* DESIGN SITES THAT COMMAND ATTENTION *</span>
+            <span>* WE BUILD FLAGSHIPS NOT TEMPLATES *</span>
+        </div>
+    </div>
+
     <main>
+        <!-- Hero Section -->
         <section class="hero">
-            <div class="container">
+            <div class="container hero-grid">
                 <div class="hero-card">
-                    <span class="sticker-badge">LOUD DESIGN</span>
                     <h1>We Design Sites That Command Attention.</h1>
                     <p>No clean corporate boring shapes. We make loud, high-converting digital products for brands that aren't afraid of standing out.</p>
                     <a href="#work" class="btn-brutal" style="background: var(--bg-cyan); color: #000;">See Our Projects</a>
+                </div>
+                <div class="hero-sticker-stack">
+                    <div class="sticker-card">
+                        <h3>⚡ Fast Coding</h3>
+                        <p>No bloated builders. Handcrafted raw JS pages optimized to hit 100 on PageSpeed.</p>
+                    </div>
+                    <div class="sticker-card">
+                        <h3>🎨 Loud Branding</h3>
+                        <p>Websites should stop the scroll. We use aggressive grids and custom color splits.</p>
+                    </div>
+                    <div class="sticker-card">
+                        <h3>👾 Flat UI</h3>
+                        <p>Heavy black borders and solid shapes that demand user interaction instantly.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -543,6 +672,7 @@
             </div>
         </section>
 
+        <!-- Works Section: Staggered columns -->
         <section class="works-section" id="work">
             <div class="container">
                 <h2 class="section-title" style="background: var(--bg-magenta); color: #ffffff;">Recent Crafts</h2>
@@ -604,6 +734,7 @@
             setTimeout(() => {
                 const overlay = document.getElementById('drawer-overlay-box');
                 overlay.style.display = 'none';
+                document.getElementById('terminal-log').style.display = 'none';
             }, 300);
         }
 
@@ -615,8 +746,10 @@
 
         function submitForm(e) {
             e.preventDefault();
-            alert('Form submitted! This is a mockup.');
-            closeDrawer();
+            document.getElementById('terminal-log').style.display = 'block';
+            setTimeout(() => {
+                closeDrawer();
+            }, 2500);
         }
     </script>
 </body>

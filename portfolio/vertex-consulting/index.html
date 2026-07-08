@@ -33,9 +33,9 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
         /* Portfolio Warning Banner */
@@ -171,11 +171,21 @@
             box-shadow: 0 8px 24px rgba(6, 182, 212, 0.2);
         }
 
-        /* Hero */
+        /* Hero: Left-aligned Corporate Structure with stats highlight */
         .hero {
-            padding: 140px 0 100px;
-            text-align: center;
+            padding: 120px 0 80px;
             background: linear-gradient(180deg, rgba(6, 182, 212, 0.03) 0%, rgba(10, 14, 23, 0) 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .hero-content {
+            text-align: left;
         }
 
         .hero h1 {
@@ -185,20 +195,54 @@
             letter-spacing: -0.02em;
             margin-bottom: 24px;
             color: #ffffff;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .hero p {
-            max-width: 600px;
-            margin: 0 auto 40px;
+            margin-bottom: 40px;
             color: var(--text-muted);
             font-size: 1.15rem;
             font-weight: 300;
+            line-height: 1.7;
         }
 
-        /* Core Pillars Grid */
+        /* Corporate Stats Ticker Card */
+        .hero-stats-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 36px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .stats-ticker-item {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+            margin-bottom: 16px;
+        }
+
+        .stats-ticker-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .stats-ticker-item strong {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent-blue);
+            line-height: 1.1;
+        }
+
+        .stats-ticker-item span {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+
+        /* Core Consulting Pillars Grid */
         .values-section {
             padding: 100px 0;
             background: var(--bg-secondary);
@@ -208,6 +252,7 @@
 
         .section-hdr {
             margin-bottom: 60px;
+            text-align: center;
         }
 
         .section-hdr h2 {
@@ -250,7 +295,7 @@
             line-height: 1.6;
         }
 
-        /* Accordion / Expertise */
+        /* Expertise Accordion Section with Interactive Left Pillar Quote */
         .expertise-section {
             padding: 120px 0;
             background: var(--bg-primary);
@@ -267,6 +312,29 @@
             font-size: 2.8rem;
             font-weight: 800;
             margin-bottom: 24px;
+        }
+
+        .interactive-quote-card {
+            background: rgba(255,255,255,0.01);
+            border: 1px solid var(--border);
+            padding: 32px;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .interactive-quote-card h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+        }
+
+        .interactive-quote-card p {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            line-height: 1.6;
+            font-style: italic;
         }
 
         .expertise-accordion {
@@ -330,75 +398,158 @@
             line-height: 1.6;
         }
 
-        /* Whitepaper section */
-        .whitepaper-section {
+        /* Executive Briefings Library */
+        .library-section {
+            padding: 100px 0;
             background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            padding: 60px;
-            border-radius: 8px;
-            text-align: center;
-            margin: 60px 0 120px;
-            position: relative;
-            overflow: hidden;
+            border-top: 1px solid var(--border);
         }
 
-        .whitepaper-section h3 {
-            font-size: 1.8rem;
-            font-weight: 800;
+        .briefs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 48px;
+        }
+
+        .brief-card {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            padding: 36px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .brief-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-4px);
+        }
+
+        .brief-meta {
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 12px;
         }
 
-        .whitepaper-section p {
-            color: var(--text-muted);
-            margin-bottom: 32px;
-            font-size: 1rem;
-        }
-
-        .lead-form {
-            display: flex;
-            max-width: 550px;
-            margin: 0 auto;
-            gap: 16px;
-        }
-
-        .lead-form input {
-            flex-grow: 1;
-            padding: 14px 20px;
-            border: 1px solid var(--border);
-            background: var(--bg-primary);
+        .brief-card h3 {
+            font-size: 1.25rem;
+            font-weight: 800;
             color: #ffffff;
-            outline: none;
-            transition: var(--transition);
-            border-radius: 4px;
+            margin-bottom: 16px;
+            line-height: 1.4;
         }
 
-        .lead-form input:focus {
+        .brief-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 28px;
+        }
+
+        .brief-action-btn {
+            background: transparent;
+            color: #ffffff;
+            border: 1px solid var(--border);
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .brief-card:hover .brief-action-btn {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
             border-color: var(--accent-blue);
         }
 
-        .lead-form button {
-            background: var(--accent-blue);
-            color: var(--bg-primary);
+        /* Lead Modal Form */
+        .lead-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 14, 23, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 99999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lead-modal {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            max-width: 480px;
+            width: 100%;
+            border-radius: 12px;
+            padding: 44px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
             border: none;
-            padding: 0 32px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            font-size: 1.25rem;
             cursor: pointer;
-            border-radius: 4px;
+        }
+
+        .modal-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .modal-form input {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            color: #ffffff;
+            padding: 14px 18px;
+            border-radius: 6px;
+            outline: none;
+            font-family: inherit;
             transition: var(--transition);
         }
 
-        .lead-form button:hover {
-            background: var(--accent-blue-hover);
+        .modal-form input:focus {
+            border-color: var(--accent-blue);
         }
 
-        .success-box {
+        .modal-submit-btn {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            border: none;
+            padding: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-success-msg {
             display: none;
+            text-align: center;
             color: var(--accent-blue);
             font-weight: 600;
-            font-size: 1rem;
-            margin-top: 16px;
+            padding: 20px 0;
         }
 
         /* Footer */
@@ -421,11 +572,11 @@
 
         /* Responsive */
         @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+            .hero-stats-card { max-width: 450px; }
             .values-grid { grid-template-columns: 1fr; gap: 24px; max-width: 450px; margin: 0 auto; }
             .expertise-layout { grid-template-columns: 1fr; gap: 40px; }
-            .whitepaper-section { padding: 40px 24px; }
-            .lead-form { flex-direction: column; }
-            .lead-form button { padding: 14px 0; }
+            .briefs-grid { grid-template-columns: 1fr; gap: 24px; max-width: 450px; margin: 0 auto; }
         }
 
         @media (max-width: 768px) {
@@ -442,24 +593,58 @@
         <a href="/#portfolio" class="banner-back-btn">Back to Agency</a>
     </div>
 
+    <!-- Executive Briefings Lead Modal -->
+    <div class="lead-modal-overlay" id="lead-modal-overlay" onclick="closeModalOutside(event)">
+        <div class="lead-modal">
+            <button class="close-modal-btn" onclick="closeModal()">✕</button>
+            <h3 style="font-size: 1.6rem; font-weight: 800;">Request Executive Brief</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 6px;">Submit your work credentials to receive this PDF strategy brief directly to your inbox.</p>
+            <form class="modal-form" id="modal-form" onsubmit="submitModal(event)">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="corporate@company.com" required>
+                <button type="submit" class="modal-submit-btn">Download PDF</button>
+            </form>
+            <div class="modal-success-msg" id="modal-success">
+                <span>✓ Simulated brief download link has been dispatched to your email.</span>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="container header-inner">
             <a href="#" class="logo">VERTEX<span>.</span></a>
             <nav>
-                <a href="#values">Core Values</a>
+                <a href="#values">Core Pillars</a>
                 <a href="#expertise">Expertise</a>
-                <a href="#insights">Insights</a>
+                <a href="#insights">Insights Library</a>
             </nav>
-            <a href="#contact" class="btn-consult">Request Proposal</a>
+            <a href="#" onclick="openModal('Vertex Consulting Strategy', event)" class="btn-consult">Request Proposal</a>
         </div>
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
-            <div class="container">
-                <h1>Strategic Counsel For Complex Operations</h1>
-                <p>Vertex provides elite legal structure planning, tax optimization strategies, and corporate restructuring advisory for middle-market operations.</p>
-                <a href="#expertise" class="btn-consult" style="background: var(--accent-blue); color: var(--bg-primary);">Inspect Expertise</a>
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>Strategic Counsel For Complex Operations</h1>
+                    <p>Vertex provides elite legal structure planning, tax optimization strategies, and corporate restructuring advisory for middle-market operations.</p>
+                    <a href="#expertise" class="btn-consult" style="background: var(--accent-blue); color: var(--bg-primary);">Inspect Expertise</a>
+                </div>
+                <div class="hero-stats-card">
+                    <div class="stats-ticker-item">
+                        <strong>$4.2B+</strong>
+                        <span>Assets Under Advisory</span>
+                    </div>
+                    <div class="stats-ticker-item">
+                        <strong>180+</strong>
+                        <span>Active Audited Portfolios</span>
+                    </div>
+                    <div class="stats-ticker-item">
+                        <strong>24h</strong>
+                        <span>Fiduciary Audit Turnaround</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -493,13 +678,16 @@
                 <div class="expertise-hdr">
                     <h2>Custom Advisory Fields</h2>
                     <p style="color: var(--text-muted); margin-bottom: 24px;">We structure our legal and corporate consultancy around three key areas of middle-market operation.</p>
-                    <div style="background: rgba(255,255,255,0.01); border: 1px solid var(--border); padding: 20px; border-radius: 4px; font-size: 0.88rem; color: var(--text-muted); line-height: 1.5;">
-                        "Our target is securing corporate liquidity and structural safety."
+                    
+                    <!-- Interactive Quote Block -->
+                    <div class="interactive-quote-card">
+                        <h4>Expert Insight</h4>
+                        <p id="insight-quote-text">"Capital allocation strategies must prioritize tax shield structures during multi-entity merges."</p>
                     </div>
                 </div>
 
                 <div class="expertise-accordion">
-                    <div class="exp-item active" onclick="toggleAccordion(this)">
+                    <div class="exp-item active" onclick="activateExpertise('mna', this)">
                         <div class="exp-title">
                             <span>Corporate M&A Structure</span>
                             <span>↓</span>
@@ -509,7 +697,7 @@
                         </div>
                     </div>
 
-                    <div class="exp-item" onclick="toggleAccordion(this)">
+                    <div class="exp-item" onclick="activateExpertise('tax', this)">
                         <div class="exp-title">
                             <span>Tax Compliance & Optimization</span>
                             <span>↓</span>
@@ -519,7 +707,7 @@
                         </div>
                     </div>
 
-                    <div class="exp-item" onclick="toggleAccordion(this)">
+                    <div class="exp-item" onclick="activateExpertise('reg', this)">
                         <div class="exp-title">
                             <span>Regulatory Strategy</span>
                             <span>↓</span>
@@ -532,21 +720,44 @@
             </div>
         </section>
 
-        <!-- Whitepaper Download Section -->
-        <section class="container" id="insights">
-            <div class="whitepaper-section">
-                <h3>Download Executive Briefing</h3>
-                <p>Get our free 2026 Whitepaper: <em>"Restructuring Tax Exemptions in Middle Market Mergers"</em> directly to your inbox.</p>
-                
-                <div id="form-wrapper">
-                    <form class="lead-form" onsubmit="submitLead(event)">
-                        <input type="email" id="l-email" placeholder="executive@company.com" required>
-                        <button type="submit">Download Brief</button>
-                    </form>
+        <!-- Whitepaper Library Section -->
+        <section class="library-section" id="insights">
+            <div class="container">
+                <div class="section-hdr">
+                    <h2>Insights & Briefings Center</h2>
+                    <p style="color: var(--text-muted);">Acquire current strategy guidelines compiled by our senior partners.</p>
                 </div>
+                
+                <div class="briefs-grid">
+                    <!-- Brief 1 -->
+                    <div class="brief-card">
+                        <div>
+                            <span class="brief-meta">M&A Strategy • PDF</span>
+                            <h3>Exemptions in Middle-Market Mergers</h3>
+                            <p>An executive analysis of current federal restructuring tax shield updates and exemptions (4.2MB).</p>
+                        </div>
+                        <button class="brief-action-btn" onclick="openModal('Tax Exemptions in Mergers', event)">Download PDF</button>
+                    </div>
 
-                <div class="success-box" id="success-box">
-                    <span>✓ PDF download link has been simulated and sent to your email. Thank you!</span>
+                    <!-- Brief 2 -->
+                    <div class="brief-card">
+                        <div>
+                            <span class="brief-meta">Compliance • PDF</span>
+                            <h3>Fiduciary Governance & Board Audits</h3>
+                            <p>Mapping audit requirements and legal disclosure standards for private equity buyouts (2.8MB).</p>
+                        </div>
+                        <button class="brief-action-btn" onclick="openModal('Fiduciary Board Audits Brief', event)">Download PDF</button>
+                    </div>
+
+                    <!-- Brief 3 -->
+                    <div class="brief-card">
+                        <div>
+                            <span class="brief-meta">Asset Protection • PDF</span>
+                            <h3>SEC Regulatory Guidelines 2026</h3>
+                            <p>Key revisions to asset reporting rules and compliance guidelines for middle market enterprises (3.5MB).</p>
+                        </div>
+                        <button class="brief-action-btn" onclick="openModal('SEC Regulations Guidelines 2026', event)">Download PDF</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -561,22 +772,47 @@
     </footer>
 
     <script>
-        function toggleAccordion(element) {
-            const isActive = element.classList.contains('active');
-            
+        const insights = {
+            mna: "Capital allocation strategies must prioritize tax shield structures during multi-entity merges.",
+            tax: "Mitigating tax exposure requires a clear review of asset step-up strategies and corporate debt holding rules.",
+            reg: "Compliance alignment during cross-border operations prevents unexpected regulatory friction from antitrust entities."
+        };
+
+        function activateExpertise(key, element) {
+            // Update active state in accordion
             document.querySelectorAll('.exp-item').forEach(item => {
                 item.classList.remove('active');
             });
+            element.classList.add('active');
 
-            if (!isActive) {
-                element.classList.add('active');
+            // Update quote content
+            document.getElementById('insight-quote-text').innerText = `"${insights[key]}"`;
+        }
+
+        function openModal(title, event) {
+            if(event) event.preventDefault();
+            document.getElementById('lead-modal-overlay').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('lead-modal-overlay').style.display = 'none';
+            document.getElementById('modal-form').style.display = 'flex';
+            document.getElementById('modal-success').style.display = 'none';
+        }
+
+        function closeModalOutside(event) {
+            if (event.target === document.getElementById('lead-modal-overlay')) {
+                closeModal();
             }
         }
 
-        function submitLead(e) {
-            e.preventDefault();
-            document.getElementById('form-wrapper').style.display = 'none';
-            document.getElementById('success-box').style.display = 'block';
+        function submitModal(event) {
+            event.preventDefault();
+            document.getElementById('modal-form').style.display = 'none';
+            document.getElementById('modal-success').style.display = 'block';
+            setTimeout(() => {
+                closeModal();
+            }, 2500);
         }
     </script>
 </body>

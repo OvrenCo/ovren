@@ -72,7 +72,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
         /* Portfolio Warning Banner */
@@ -307,7 +307,7 @@
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
-            background: linear-gradient(to right, #f8fafc, #cbd5e1, #818cf8);
+            background: linear-gradient(to right, #ffffff, #cbd5e1, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -586,10 +586,12 @@
             text-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
         }
 
-        /* Features Section */
+        /* Interactive Features Section: Split Layout with Active Console Showcase */
         .features-section {
-            padding: 120px 0;
+            padding: 140px 0;
             position: relative;
+            background: rgba(10, 13, 22, 0.3);
+            border-bottom: 1px solid var(--border);
         }
 
         .features-layout {
@@ -602,7 +604,7 @@
         .feature-accordion {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 18px;
         }
 
         .acc-item {
@@ -635,12 +637,12 @@
             font-size: 1.05rem;
         }
 
-        .acc-hdr span:nth-child(1) {
+        .acc-hdr span:text-title {
             color: #ffffff;
             transition: var(--transition);
         }
 
-        .acc-item.active .acc-hdr span:nth-child(1) {
+        .acc-item.active .acc-hdr span {
             color: #818cf8;
         }
 
@@ -680,9 +682,69 @@
             padding-bottom: 24px;
         }
 
+        /* Interactive Showcase Console */
+        .feature-interactive-showcase {
+            background: #0b0f19;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 32px;
+            font-family: 'Courier New', Courier, monospace;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .showcase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dots span:nth-child(1) { background: #ef4444; }
+        .dots span:nth-child(2) { background: #eab308; }
+        .dots span:nth-child(3) { background: #22c55e; }
+
+        .showcase-code {
+            font-size: 0.9rem;
+            color: #a5b4fc;
+            white-space: pre-wrap;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .showcase-footer {
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 12px;
+            margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+
         /* FAQ Section */
         .faq-section {
-            padding: 100px 0;
+            padding: 120px 0;
             border-top: 1px solid var(--border);
         }
 
@@ -904,6 +966,67 @@
             font-size: 0.7rem;
         }
 
+        /* Sandbox Inquiry Form Container */
+        .sandbox-inquiry-section {
+            padding: 120px 0;
+            border-top: 1px solid var(--border);
+            background: radial-gradient(circle at bottom, rgba(99, 102, 241, 0.08) 0%, transparent 60%);
+        }
+
+        .inquiry-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--bg-card-border);
+            border-radius: 20px;
+            padding: 48px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        .inquiry-form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .inquiry-form input {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid var(--border);
+            color: #ffffff;
+            padding: 14px 18px;
+            border-radius: 8px;
+            outline: none;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .inquiry-form input:focus {
+            border-color: rgba(99,102,241,0.5);
+            background: rgba(0,0,0,0.4);
+            box-shadow: 0 0 12px rgba(99, 102, 241, 0.15);
+        }
+
+        .inquiry-form button {
+            background: var(--primary-grad);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.25);
+        }
+
+        .inquiry-form button:hover {
+            opacity: 0.95;
+            transform: translateY(-1px);
+        }
+
         /* Footer */
         footer {
             border-top: 1px solid var(--border);
@@ -930,6 +1053,7 @@
             .dash-sidebar { display: none; }
             .dash-stats { grid-template-columns: 1fr; }
             .faq-grid { grid-template-columns: 1fr; gap: 24px; }
+            .inquiry-card { padding: 32px 24px; }
             nav { display: none; }
         }
     </style>
@@ -960,6 +1084,7 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-glow"></div>
             <div class="container">
@@ -1065,46 +1190,71 @@
             </div>
         </section>
 
-        <!-- Features Accordion -->
+        <!-- Features Accordion & Showcase Grid -->
         <section class="features-section" id="features">
             <div class="container">
                 <div class="features-layout">
                     <div>
                         <span class="badge">Advanced Engine</span>
                         <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 24px; background: linear-gradient(to right, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Built for the Future of Operations</h2>
-                        <p style="color: var(--text-gray); margin-bottom: 32px; font-size: 1.05rem; line-height: 1.7;">Discover why dev ops and growth teams choose Apex. Click each feature to inspect the details.</p>
-                        <a href="#pricing" class="btn-cta">Explore Sandbox Integration</a>
+                        <p style="color: var(--text-gray); margin-bottom: 32px; font-size: 1.05rem; line-height: 1.7;">Discover why dev ops and growth teams choose Apex. Click each feature to inspect the live sandbox integration console.</p>
+                        
+                        <div class="feature-accordion">
+                            <div class="acc-item active" onclick="activateFeature('db', this)">
+                                <div class="acc-hdr">
+                                    <span>Dynamic Database Integration</span>
+                                    <span class="acc-icon">↓</span>
+                                </div>
+                                <div class="acc-body">
+                                    <p>Connect securely to Postgres, MySQL, MongoDB, and Snowflake in just three clicks. Full SSL encryption and OAuth support built-in.</p>
+                                </div>
+                            </div>
+
+                            <div class="acc-item" onclick="activateFeature('ai', this)">
+                                <div class="acc-hdr">
+                                    <span>AI Data Cleaning Models</span>
+                                    <span class="acc-icon">↓</span>
+                                </div>
+                                <div class="acc-body">
+                                    <p>Our autonomous pipelines scan incoming data records, detect standard duplicates, sanitize text strings, and log discrepancies.</p>
+                                </div>
+                            </div>
+
+                            <div class="acc-item" onclick="activateFeature('webhook', this)">
+                                <div class="acc-hdr">
+                                    <span>Instant Webhook Notifications</span>
+                                    <span class="acc-icon">↓</span>
+                                </div>
+                                <div class="acc-body">
+                                    <p>Ping Slack, Microsoft Teams, Discord, or run a custom HTTPS POST webhook whenever pipeline states trigger anomalies.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     
-                    <div class="feature-accordion">
-                        <div class="acc-item active" onclick="toggleAcc(this)">
-                            <div class="acc-hdr">
-                                <span>Dynamic Database Integration</span>
-                                <span class="acc-icon">↓</span>
+                    <!-- Showcase Interactive Console -->
+                    <div class="feature-interactive-showcase">
+                        <div class="showcase-header">
+                            <div class="dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
                             </div>
-                            <div class="acc-body">
-                                <p>Connect securely to Postgres, MySQL, MongoDB, and Snowflake in just three clicks. Full SSL encryption and OAuth support built-in.</p>
-                            </div>
+                            <span id="showcase-title">connection_pool.js</span>
                         </div>
+                        <div class="showcase-code" id="showcase-code-block">
+// Initialize Postgres pool
+const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
+});
 
-                        <div class="acc-item" onclick="toggleAcc(this)">
-                            <div class="acc-hdr">
-                                <span>AI Data Cleaning Models</span>
-                                <span class="acc-icon">↓</span>
-                            </div>
-                            <div class="acc-body">
-                                <p>Our autonomous pipelines scan incoming data records, detect standard duplicates, sanitize text strings, and log discrepancies.</p>
-                            </div>
+await pool.query('SELECT NOW()');
+console.log('✓ Database Connection Active');
                         </div>
-
-                        <div class="acc-item" onclick="toggleAcc(this)">
-                            <div class="acc-hdr">
-                                <span>Instant Webhook Notifications</span>
-                                <span class="acc-icon">↓</span>
-                            </div>
-                            <div class="acc-body">
-                                <p>Ping Slack, Microsoft Teams, Discord, or run a custom HTTPS POST webhook whenever pipeline states trigger anomalies.</p>
-                            </div>
+                        <div class="showcase-footer">
+                            <span>Apex Terminal v2.1</span>
+                            <span id="showcase-status">STATUS: ONLINE</span>
                         </div>
                     </div>
                 </div>
@@ -1154,7 +1304,7 @@
                                 <li>Community Slack Support</li>
                             </ul>
                         </div>
-                        <a href="#" class="btn-secondary-glow" style="text-align: center; margin-top: 20px;">Start Starter Plan</a>
+                        <a href="#sandbox" class="btn-secondary-glow" style="text-align: center; margin-top: 20px;">Start Starter Plan</a>
                     </div>
 
                     <!-- Growth -->
@@ -1169,7 +1319,7 @@
                                 <li>AI Schema Cleaning</li>
                             </ul>
                         </div>
-                        <a href="#" class="btn-cta" style="text-align: center; margin-top: 20px;">Start Growth Plan</a>
+                        <a href="#sandbox" class="btn-cta" style="text-align: center; margin-top: 20px;">Start Growth Plan</a>
                     </div>
 
                     <!-- Enterprise -->
@@ -1184,7 +1334,26 @@
                                 <li>Private Sandbox Node</li>
                             </ul>
                         </div>
-                        <a href="#" class="btn-secondary-glow" style="text-align: center; margin-top: 20px;">Start Pro Plan</a>
+                        <a href="#sandbox" class="btn-secondary-glow" style="text-align: center; margin-top: 20px;">Start Pro Plan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sandbox inquiry section -->
+        <section class="sandbox-inquiry-section" id="sandbox">
+            <div class="container">
+                <div class="inquiry-card">
+                    <span class="badge">API Sandbox</span>
+                    <h2 style="font-size: 2.2rem; font-weight: 800; background: linear-gradient(to right, #fff, #cbd5e1); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Request Sandbox Access</h2>
+                    <p style="color: var(--text-gray); margin-top: 8px;">Submit your developer credentials to launch a local simulated Docker cluster running Apex.</p>
+                    <form class="inquiry-form" onsubmit="submitInquiry(event)">
+                        <input type="text" placeholder="Developer Name" required>
+                        <input type="email" placeholder="Work Email" required>
+                        <button type="submit">Launch Free Sandbox</button>
+                    </form>
+                    <div id="inquiry-success" style="display:none; color: var(--accent-cyan); font-weight:700; margin-top: 24px; font-family: monospace;">
+                        $ docker run -d -p 8080:8080 apex/sandbox:active --auth-key=mock_key
                     </div>
                 </div>
             </div>
@@ -1212,16 +1381,55 @@
             });
         });
 
-        function toggleAcc(element) {
-            const isActive = element.classList.contains('active');
-            
+        const featureDetails = {
+            db: {
+                title: "connection_pool.js",
+                code: `// Initialize Postgres pool
+const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
+});
+
+await pool.query('SELECT NOW()');
+console.log('✓ Database Connection Active');`,
+                status: "STATUS: SYNCED"
+            },
+            ai: {
+                title: "clean_records.py",
+                code: `import apex_ai
+
+# Load database schema
+dirty_rows = apex_ai.load_unstructured()
+
+# Run clean operations
+clean_batch = apex_ai.models.de_duplicate(dirty_rows)
+print(f"✓ AI Scan Completed. Removed {len(clean_batch)} dirty records.")`,
+                status: "STATUS: DE-DUP COMPLETED"
+            },
+            webhook: {
+                title: "slack_alert.json",
+                code: `{
+  "event": "pipeline_anomaly",
+  "severity": "high",
+  "details": "Pipeline PG-Prod triggered database overload",
+  "action": "Sending payload request to https://hooks.slack.com/services/..."
+}`,
+                status: "STATUS: ALERT DISPATCHED"
+            }
+        };
+
+        function activateFeature(key, accItem) {
+            // Update accordion active state
             document.querySelectorAll('.acc-item').forEach(item => {
                 item.classList.remove('active');
             });
+            accItem.classList.add('active');
 
-            if (!isActive) {
-                element.classList.add('active');
-            }
+            // Update showcase terminal content
+            const detail = featureDetails[key];
+            document.getElementById('showcase-title').innerText = detail.title;
+            document.getElementById('showcase-code-block').innerText = detail.code;
+            document.getElementById('showcase-status').innerText = detail.status;
         }
 
         function setBilling(period) {
@@ -1246,6 +1454,12 @@
                 pGrowth.innerHTML = '$63<span>/mo</span>';
                 pPro.innerHTML = '$159<span>/mo</span>';
             }
+        }
+
+        function submitInquiry(e) {
+            e.preventDefault();
+            e.target.style.display = 'none';
+            document.getElementById('inquiry-success').style.display = 'block';
         }
     </script>
 </body>

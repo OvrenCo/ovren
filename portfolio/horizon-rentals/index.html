@@ -37,9 +37,9 @@
         }
 
         .container {
-            max-width: 1150px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
         /* Portfolio Warning Banner */
@@ -171,7 +171,7 @@
 
         /* Hero */
         .hero {
-            background: linear-gradient(180deg, rgba(15, 23, 42, 0.05) 0%, rgba(248, 250, 252, 0) 100%);
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.04) 0%, rgba(248, 250, 252, 0) 100%);
             padding: 120px 0 100px;
             text-align: center;
             position: relative;
@@ -196,9 +196,9 @@
             font-size: 1.15rem;
         }
 
-        /* Sleek Horizontal Floating Search Controller */
+        /* Search Filter Overlapping Bar */
         .search-filter-bar {
-            max-width: 900px;
+            max-width: 960px;
             margin: 0 auto;
             background: #ffffff;
             border: 1px solid var(--border);
@@ -245,7 +245,7 @@
         }
 
         .search-btn {
-            background: var(--accent-gold);
+            background: var(--primary-navy);
             color: #ffffff;
             border: none;
             padding: 14px 36px;
@@ -255,13 +255,13 @@
             border-radius: var(--radius-md);
             transition: var(--transition);
             align-self: flex-end;
-            box-shadow: 0 4px 12px rgba(197, 168, 128, 0.3);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
         }
 
         .search-btn:hover {
-            background: var(--accent-gold-hover);
+            background: var(--text-dark);
             transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(197, 168, 128, 0.45);
+            box-shadow: 0 6px 18px rgba(15, 23, 42, 0.3);
         }
 
         /* Listings Showcase */
@@ -303,6 +303,37 @@
             font-size: 3rem;
             position: relative;
             color: var(--accent-gold);
+            overflow: hidden;
+        }
+
+        .prop-img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .property-card:hover .prop-img-overlay {
+            opacity: 1;
+        }
+
+        .tour-btn {
+            background: var(--accent-gold);
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: var(--radius-md);
         }
 
         .prop-badge {
@@ -318,6 +349,7 @@
             padding: 6px 12px;
             border-radius: 9999px;
             border: 1px solid var(--accent-gold);
+            z-index: 2;
         }
 
         .prop-body {
@@ -422,7 +454,7 @@
             line-height: 1.6;
         }
 
-        /* Contact Section */
+        /* Contact Section with Side Agent Profile */
         .inquiry-section {
             padding: 120px 0;
             background: #ffffff;
@@ -431,9 +463,70 @@
 
         .inquiry-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 0.95fr 1.05fr;
             gap: 80px;
             align-items: center;
+        }
+
+        .agent-profile-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.01);
+        }
+
+        .agent-avatar {
+            width: 90px;
+            height: 90px;
+            background: var(--primary-navy);
+            color: var(--accent-gold);
+            font-size: 2.2rem;
+            font-weight: 800;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 0 0 6px rgba(197, 168, 128, 0.1);
+        }
+
+        .agent-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-navy);
+            margin-bottom: 4px;
+        }
+
+        .agent-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-gold-hover);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .agent-rating {
+            font-size: 0.9rem;
+            color: #eab308;
+            margin-bottom: 24px;
+        }
+
+        .agent-contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+            border-top: 1px solid var(--border);
+            padding-top: 24px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .agent-contact-info span strong {
+            color: var(--primary-navy);
         }
 
         .inquiry-form-card {
@@ -552,6 +645,7 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section class="hero">
             <div class="container">
                 <h1>Find Your Next Premium Residence</h1>
@@ -596,7 +690,13 @@
                 <div class="listings-grid" id="listings-grid">
                     <!-- Prop 1 -->
                     <div class="property-card" data-location="peachtree" data-type="apartment" data-price-level="low">
-                        <div class="prop-img-mock">🏙️<span class="prop-badge">Apartment</span></div>
+                        <div class="prop-img-mock">
+                            <span>🏙️</span>
+                            <span class="prop-badge">Apartment</span>
+                            <div class="prop-img-overlay">
+                                <button class="tour-btn">Request Tour</button>
+                            </div>
+                        </div>
                         <div class="prop-body">
                             <div>
                                 <div class="prop-price">$2,450 /mo</div>
@@ -613,7 +713,13 @@
 
                     <!-- Prop 2 -->
                     <div class="property-card" data-location="fayetteville" data-type="house" data-price-level="high">
-                        <div class="prop-img-mock">🏡<span class="prop-badge">Family House</span></div>
+                        <div class="prop-img-mock">
+                            <span>🏡</span>
+                            <span class="prop-badge">Family House</span>
+                            <div class="prop-img-overlay">
+                                <button class="tour-btn">Request Tour</button>
+                            </div>
+                        </div>
                         <div class="prop-body">
                             <div>
                                 <div class="prop-price">$4,100 /mo</div>
@@ -630,7 +736,13 @@
 
                     <!-- Prop 3 -->
                     <div class="property-card" data-location="peachtree" data-type="townhouse" data-price-level="mid">
-                        <div class="prop-img-mock">🏠<span class="prop-badge">Townhouse</span></div>
+                        <div class="prop-img-mock">
+                            <span>🏠</span>
+                            <span class="prop-badge">Townhouse</span>
+                            <div class="prop-img-overlay">
+                                <button class="tour-btn">Request Tour</button>
+                            </div>
+                        </div>
                         <div class="prop-body">
                             <div>
                                 <div class="prop-price">$3,200 /mo</div>
@@ -672,12 +784,20 @@
             </div>
         </section>
 
-        <!-- Contact / Inquiry -->
+        <!-- Contact / Inquiry with Agent profile -->
         <section class="inquiry-section" id="contact">
             <div class="container inquiry-layout">
-                <div>
-                    <h2 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2;">Schedule a Private Showing</h2>
-                    <p style="color: var(--text-muted); margin-bottom: 24px;">Need additional details on a specific property, or want to schedule a walkthrough? Submit your request, and our resident real estate agents will coordinate immediately.</p>
+                <div class="agent-profile-card">
+                    <div class="agent-avatar">SJ</div>
+                    <h3 class="agent-name">Sarah Jenkins</h3>
+                    <p class="agent-title">Horizon Senior Agent</p>
+                    <div class="agent-rating">★★★★★ <span style="color: var(--text-muted); font-size: 0.8rem;">(48 reviews)</span></div>
+                    
+                    <div class="agent-contact-info">
+                        <span><strong>Region:</strong> Fayetteville & Peachtree City</span>
+                        <span><strong>Licenses:</strong> GA Real Estate Advisory Board</span>
+                        <span><strong>Email:</strong> sarah@horizonrentals.co</span>
+                    </div>
                 </div>
                 
                 <div class="inquiry-form-card">
@@ -693,7 +813,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="i-message">Message Details</label>
-                                <textarea id="i-message" rows="4" placeholder="I am interested in scheduling a viewing for Oakwood Estates..." required></textarea>
+                                <textarea id="i-message" rows="4" placeholder="I am interested in scheduling a viewing..." required></textarea>
                             </div>
                             <button type="submit" class="submit-btn">Send Inquiry</button>
                         </form>

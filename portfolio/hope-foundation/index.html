@@ -9,15 +9,15 @@
         :root {
             --primary-teal: #0f766e;
             --primary-green: #10b981;
-            --primary-glow: rgba(15, 118, 110, 0.15);
+            --primary-glow: rgba(15, 118, 110, 0.08);
             --text-dark: #0f172a;
             --text-secondary: #475569;
             --bg-light: #f8fafc;
             --bg-card: #ffffff;
             --border: #e2e8f0;
-            --radius-lg: 20px;
-            --radius-md: 10px;
-            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            --radius-lg: 24px;
+            --radius-md: 14px;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -35,9 +35,9 @@
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 32px;
         }
 
         /* Portfolio Warning Banner */
@@ -174,11 +174,21 @@
             box-shadow: 0 8px 20px rgba(15, 118, 110, 0.35);
         }
 
-        /* Hero */
+        /* Hero: Asymmetrical Left-Aligned with Floating Dashboard Card */
         .hero {
-            padding: 100px 0;
-            text-align: center;
+            padding: 100px 0 80px;
             background: radial-gradient(circle at top, rgba(16, 185, 129, 0.04) 0%, transparent 60%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        .hero-content {
+            text-align: left;
         }
 
         .hero h1 {
@@ -188,23 +198,17 @@
             letter-spacing: -0.02em;
             margin-bottom: 24px;
             color: var(--text-dark);
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .hero p {
-            max-width: 600px;
-            margin: 0 auto 40px;
             color: var(--text-secondary);
             font-size: 1.15rem;
             line-height: 1.7;
+            margin-bottom: 40px;
         }
 
-        /* Campaign Thermometer Widget */
-        .thermometer-section {
-            max-width: 650px;
-            margin: 0 auto;
+        /* Floating Impact Tracker Card */
+        .hero-dashboard {
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
@@ -237,7 +241,7 @@
             background: var(--bg-light);
             border-radius: 9999px;
             overflow: hidden;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
             border: 1px solid rgba(0,0,0,0.02);
         }
 
@@ -247,7 +251,6 @@
             width: 0%;
             border-radius: 9999px;
             transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
         }
 
         .thermometer-meta {
@@ -256,6 +259,9 @@
             font-size: 0.88rem;
             font-weight: 600;
             color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+            margin-bottom: 20px;
         }
 
         .thermometer-meta span {
@@ -269,7 +275,31 @@
             color: var(--primary-green);
         }
 
+        .impact-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        .highlight-icon {
+            color: var(--primary-green);
+            font-weight: 800;
+        }
+
         /* Stats strip */
+        .stats-section {
+            margin-bottom: 100px;
+        }
+
         .stats-strip {
             background: #ffffff;
             border: 1px solid var(--border);
@@ -300,19 +330,19 @@
             letter-spacing: 0.5px;
         }
 
-        /* Impact Section */
+        /* Impact Section: Asymmetrical Overlapping Layout */
         .impact-section {
-            padding: 100px 0;
+            padding: 120px 0;
             background: #ffffff;
         }
 
         .section-hdr {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         .section-hdr h2 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: var(--text-dark);
             margin-bottom: 12px;
@@ -322,6 +352,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 32px;
+            padding-bottom: 40px;
         }
 
         .impact-card {
@@ -330,10 +361,16 @@
             border-radius: var(--radius-lg);
             padding: 44px 32px;
             transition: var(--transition);
+            position: relative;
+        }
+
+        /* Create Asymmetrical Layout offsets */
+        .impact-grid .impact-card:nth-child(2) {
+            transform: translateY(24px);
         }
 
         .impact-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-4px) !important;
             box-shadow: 0 20px 40px rgba(15, 118, 110, 0.05);
             border-color: rgba(15, 118, 110, 0.3);
             background: #ffffff;
@@ -367,7 +404,7 @@
 
         /* News Section */
         .news-section {
-            padding: 100px 0;
+            padding: 120px 0;
             background: var(--bg-light);
             border-top: 1px solid var(--border);
         }
@@ -416,10 +453,72 @@
             line-height: 1.6;
         }
 
-        /* Donation Widget Section */
+        /* Donation Section: Side-by-Side Detail and Interactive Widget */
+        .donation-section-wrapper {
+            padding: 120px 0;
+            background: #ffffff;
+            border-top: 1px solid var(--border);
+        }
+
+        .donation-split-grid {
+            display: grid;
+            grid-template-columns: 1.12fr 0.88fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .donation-info h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+        }
+
+        .donation-info p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .outcome-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .outcome-badge {
+            font-size: 2.2rem;
+            background: #ffffff;
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .outcome-text h4 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--primary-teal);
+            margin-bottom: 4px;
+        }
+
+        .outcome-text p {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            margin-bottom: 0;
+            line-height: 1.4;
+        }
+
         .donation-widget {
-            max-width: 550px;
-            margin: 0 auto;
             background: #ffffff;
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
@@ -428,9 +527,10 @@
         }
 
         .widget-hdr h3 {
-            font-size: 1.7rem;
+            font-size: 1.5rem;
             font-weight: 800;
             text-align: center;
+            margin-bottom: 8px;
         }
 
         .donation-amounts {
@@ -537,9 +637,10 @@
 
         /* Volunteer Section */
         .volunteer-section {
-            padding: 100px 0;
+            padding: 120px 0;
             border-top: 1px solid var(--border);
             text-align: center;
+            background: var(--bg-light);
         }
 
         .volunteer-card {
@@ -616,7 +717,10 @@
 
         /* Responsive */
         @media (max-width: 992px) {
-            .impact-grid { grid-template-columns: 1fr; gap: 24px; }
+            .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+            .donation-split-grid { grid-template-columns: 1fr; gap: 48px; }
+            .impact-grid { grid-template-columns: 1fr; gap: 48px; }
+            .impact-grid .impact-card:nth-child(2) { transform: none; }
             .stats-grid { grid-template-columns: 1fr; gap: 32px; }
             .news-grid { grid-template-columns: 1fr; }
         }
@@ -652,13 +756,15 @@
     </header>
 
     <main>
+        <!-- Hero Section: Premium Split Layout -->
         <section class="hero" id="about">
-            <div class="container">
-                <h1>Bringing Hope, Clean Water,<br>and Bright Futures</h1>
-                <p>We work on the ground in rural communities worldwide to deploy sustainable clean water wells and build modern educational classrooms for local children.</p>
-                
-                <!-- Campaign Thermometer -->
-                <div class="thermometer-section">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>Bringing Hope, Clean Water, and Bright Futures</h1>
+                    <p>We work on the ground in rural communities worldwide to deploy sustainable clean water wells and build modern educational classrooms for local children.</p>
+                    <a href="#donate" class="btn-donate">Support Our Mission</a>
+                </div>
+                <div class="hero-dashboard">
                     <div class="thermometer-hdr">
                         <div>
                             <span class="raised">$72,450</span>
@@ -674,12 +780,26 @@
                         <span>1,245 Donors</span>
                         <span>18 Days Left</span>
                     </div>
+                    <div class="impact-highlights">
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>24 Clean Water Wells Deployed</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>12,400+ People Actively Served</span>
+                        </div>
+                        <div class="highlight-item">
+                            <span class="highlight-icon">✓</span>
+                            <span>8 Modern School Classrooms Built</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stats strip -->
-        <section class="container" style="margin-bottom: 80px;">
+        <!-- Stats Section -->
+        <section class="container stats-section">
             <div class="stats-strip">
                 <div class="stats-grid">
                     <div class="stat-block">
@@ -698,7 +818,7 @@
             </div>
         </section>
 
-        <!-- Impact Grid -->
+        <!-- Impact Grid: Overlapping/Asymmetrical layout -->
         <section class="impact-section">
             <div class="container">
                 <div class="section-hdr">
@@ -753,13 +873,27 @@
             </div>
         </section>
 
-        <!-- Donation Widget Section -->
-        <section style="padding: 100px 0;" id="donate">
-            <div class="container">
+        <!-- Donation split grid section -->
+        <section class="donation-section-wrapper" id="donate">
+            <div class="container donation-split-grid">
+                <div class="donation-info">
+                    <h2>Every Dollar Creates Sustainable Change</h2>
+                    <p>Your contribution fuels on-the-ground infrastructure. We guarantee 100% of public donations directly fund water engineering projects and student materials.</p>
+                    
+                    <!-- Dynamic Outcome Card -->
+                    <div class="outcome-card">
+                        <div class="outcome-badge" id="outcome-emoji">🥛</div>
+                        <div class="outcome-text">
+                            <h4 id="outcome-title">Fresh Water Supporter</h4>
+                            <p id="outcome-desc">A $50 donation provides a child with a full year of safe drinking water and hygiene materials.</p>
+                        </div>
+                    </div>
+                </div>
+                
                 <div class="donation-widget">
                     <div class="donation-form-wrapper" id="donation-form-wrapper">
                         <div class="widget-hdr">
-                            <h3>Choose Donation Amount</h3>
+                            <h3>Select Gift Amount</h3>
                         </div>
                         
                         <div class="donation-amounts">
@@ -820,21 +954,58 @@
             setTimeout(() => {
                 document.getElementById('therm-fill').style.width = '72.4%';
             }, 200);
+            updateOutcomeDisplay(50);
         });
 
         let currentAmount = 50;
+
+        const outcomes = {
+            15: {
+                emoji: "📚",
+                title: "Student Supply Pack",
+                desc: "A $15 donation supplies a local student with a high-quality backpack, notebooks, writing materials, and class books."
+            },
+            50: {
+                emoji: "🥛",
+                title: "Fresh Water Supporter",
+                desc: "A $50 donation provides a child with a full year of safe drinking water and hygiene materials."
+            },
+            100: {
+                emoji: "🩹",
+                title: "Community Medicine Kit",
+                desc: "A $100 donation supplies essential primary healthcare kits and bandages to a local village medical outpost."
+            },
+            250: {
+                emoji: "🛠️",
+                title: "Well Maintenance Share",
+                desc: "A $250 donation funds the technical tooling and repair parts to keep a village water well active and running."
+            }
+        };
+
+        function updateOutcomeDisplay(amount) {
+            const outcome = outcomes[amount] || {
+                emoji: "🌿",
+                title: "Custom Mission Support",
+                desc: `A $${amount} donation helps fund logistics, community field staff, and resources for clean water and educational missions.`
+            };
+            document.getElementById('outcome-emoji').innerText = outcome.emoji;
+            document.getElementById('outcome-title').innerText = outcome.title;
+            document.getElementById('outcome-desc').innerText = outcome.desc;
+        }
 
         function selectAmount(amount, button) {
             document.querySelectorAll('.amt-btn').forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
             currentAmount = amount;
             document.getElementById('custom-amount').value = amount;
+            updateOutcomeDisplay(amount);
         }
 
         function clearAmountActive() {
             document.querySelectorAll('.amt-btn').forEach(btn => btn.classList.remove('active'));
             const customVal = document.getElementById('custom-amount').value;
             currentAmount = customVal ? parseFloat(customVal) : 0;
+            updateOutcomeDisplay(currentAmount || 0);
         }
 
         function submitDonation() {
@@ -851,6 +1022,7 @@
             document.getElementById('donation-form-wrapper').style.display = 'block';
             document.getElementById('custom-amount').value = 50;
             currentAmount = 50;
+            updateOutcomeDisplay(50);
             
             document.querySelectorAll('.amt-btn').forEach(btn => {
                 if (btn.innerText === '$50') {

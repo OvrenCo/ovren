@@ -174,7 +174,7 @@
             transform: translateY(-2px);
         }
 
-        /* Hero */
+        /* Hero: Zen Centered Layout with Frame */
         .hero {
             padding: 120px 0 100px;
             text-align: center;
@@ -207,9 +207,9 @@
             margin: 0 auto 32px;
         }
 
-        /* Treatments Showcase */
+        /* Services Section: Hover-expanding Accordion Table */
         .services-section {
-            padding: 100px 0;
+            padding: 120px 0;
             background: #ffffff;
             position: relative;
         }
@@ -220,7 +220,7 @@
         }
 
         .section-hdr h2 {
-            font-size: 2.8rem;
+            font-size: 3rem;
             color: var(--text-dark);
             position: relative;
             display: inline-block;
@@ -238,54 +238,75 @@
             background: var(--accent-gold);
         }
 
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+        .services-list-container {
+            max-width: 850px;
+            margin: 0 auto;
+            border-top: 1px solid var(--border);
         }
 
-        .service-card {
-            background: var(--bg-cream);
-            border: 1px solid rgba(197, 168, 128, 0.15);
-            padding: 44px 32px;
+        .service-row {
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+            cursor: pointer;
             transition: var(--transition);
-            text-align: center;
+            overflow: hidden;
+        }
+
+        .service-row-hdr {
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
+            align-items: center;
         }
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(90, 115, 101, 0.05);
-            border-color: var(--accent-gold);
+        .service-row-hdr h3 {
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            transition: var(--transition);
         }
 
-        .service-card-icon {
+        .service-row.active .service-row-hdr h3, .service-row:hover .service-row-hdr h3 {
+            color: var(--accent-sage);
+        }
+
+        .service-row-right {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .service-row-price {
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-size: 1.5rem;
             color: var(--accent-gold-dark);
-            margin-bottom: 24px;
+            font-weight: 600;
         }
 
-        .service-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 16px;
-            color: var(--text-dark);
+        .service-toggle-btn {
+            font-size: 1.25rem;
+            color: var(--accent-gold);
+            transition: var(--transition);
         }
 
-        .service-card p {
+        .service-row.active .service-toggle-btn {
+            transform: rotate(45deg);
+        }
+
+        .service-row-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+            padding-right: 48px;
+        }
+
+        .service-row.active .service-row-body {
+            max-height: 140px;
+            margin-top: 16px;
+        }
+
+        .service-row-body p {
             color: var(--text-muted);
             font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 24px;
-            flex-grow: 1;
-        }
-
-        .service-card .srv-price {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-size: 1.8rem;
-            color: var(--accent-sage);
-            font-weight: 600;
+            line-height: 1.7;
         }
 
         /* Rituals & Policies */
@@ -325,9 +346,9 @@
             line-height: 1.7;
         }
 
-        /* Reviews Section */
+        /* Reviews Section with Javascript Fading quotes */
         .reviews-section {
-            padding: 100px 0;
+            padding: 120px 0;
             background: #ffffff;
             text-align: center;
         }
@@ -352,7 +373,10 @@
             color: var(--text-dark);
             line-height: 1.5;
             margin-bottom: 28px;
-            transition: opacity 0.3s ease;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .review-author {
@@ -360,7 +384,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--text-muted);
-            transition: opacity 0.3s ease;
         }
 
         .slider-controls {
@@ -386,7 +409,7 @@
             transform: scale(1.2);
         }
 
-        /* Floating Scheduler Widget */
+        /* Booking Section */
         .booking-section {
             padding: 120px 0;
             background: var(--bg-cream);
@@ -490,6 +513,7 @@
             color: #ffffff;
             font-size: 1.5rem;
             margin-bottom: 16px;
+            display: inline-block;
         }
 
         footer p {
@@ -499,13 +523,12 @@
 
         /* Responsive */
         @media (max-width: 992px) {
-            .service-grid { grid-template-columns: 1fr; gap: 24px; }
-            .rituals-grid { grid-template-columns: 1fr; gap: 24px; }
+            .rituals-grid { grid-template-columns: 1fr; gap: 32px; }
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .booking-widget { padding: 36px 24px; }
+            .hero h1 { font-size: 3.2rem; }
+            .booking-widget { padding: 40px 24px; }
             nav { display: none; }
         }
     </style>
@@ -514,7 +537,7 @@
 
     <!-- Warning Banner -->
     <div class="portfolio-banner">
-        <span>✨ <strong>Portfolio Mockup Concept</strong> by <a href="/#portfolio">ovren.co/home</a> — This is a design demo. None of the content, registration, or spa bookings are real.</span>
+        <span>✨ <strong>Portfolio Mockup Concept</strong> by <a href="/#portfolio">ovren.co/home</a> — This is a design demo. None of the content or reservation functions are real.</span>
         <a href="/#portfolio" class="banner-back-btn">Back to Agency</a>
     </div>
 
@@ -523,10 +546,11 @@
             <a href="#" class="logo">AURORA</a>
             <nav>
                 <a href="#services">Treatments</a>
-                <a href="#rituals">Rituals</a>
-                <a href="#booking">Booking</a>
+                <a href="#philosophy">Rituals</a>
+                <a href="#reviews">Testimonials</a>
+                <a href="#booking">Reservations</a>
             </nav>
-            <a href="#booking" class="btn-reserve">Book Session</a>
+            <a href="#booking" class="btn-reserve">Reserve</a>
         </div>
     </header>
 
@@ -534,125 +558,136 @@
         <!-- Hero Section -->
         <section class="hero">
             <div class="container">
+                <span style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 3px; color: var(--accent-sage); font-weight: 600; display: block; margin-bottom: 20px;">A Haven of Tranquility</span>
+                <h1>Nourish Your Body.<br>Restore Your Soul.</h1>
                 <div class="hero-divider"></div>
-                <h1>Serene Massages &<br>Facial Wellness</h1>
-                <p>Reconnect with your natural energy. Aurora Spa provides calming organic facial procedures, deep tissue stone massages, and private holistic aromatherapy sessions.</p>
+                <p>Welcome to Aurora Spa. Discover our curated collection of botanical massage rituals and customized organic facial therapies designed to melt away everyday stressors.</p>
                 <a href="#services" class="btn-reserve">Explore Treatments</a>
             </div>
         </section>
 
-        <!-- Treatments Showcase -->
+        <!-- Services Section: Expanding Accordion List -->
         <section class="services-section" id="services">
             <div class="container">
                 <div class="section-hdr">
                     <h2>Signature Treatments</h2>
                 </div>
 
-                <div class="service-grid">
-                    <!-- Srv 1 -->
-                    <div class="service-card">
-                        <div>
-                            <div class="service-card-icon">✦</div>
-                            <h3>Hot Stone Deep Massage</h3>
-                            <p>Relaxation of tight muscles utilizing heated basalt river stones and organic lavender oils. (60 min)</p>
+                <div class="services-list-container">
+                    <!-- Service 1 -->
+                    <div class="service-row active" onclick="toggleService(this)">
+                        <div class="service-row-hdr">
+                            <h3>Himalayan Hot Stone Massage</h3>
+                            <div class="service-row-right">
+                                <span class="service-row-price">$145</span>
+                                <span class="service-toggle-btn">+</span>
+                            </div>
                         </div>
-                        <span class="srv-price">$120</span>
+                        <div class="service-row-body">
+                            <p>Warm mineral-rich salt stones from the Himalayas are glided across the muscles to soothe tightness, flush out cellular waste, and promote deep organic healing throughout the central nervous system.</p>
+                        </div>
                     </div>
 
-                    <!-- Srv 2 -->
-                    <div class="service-card">
-                        <div>
-                            <div class="service-card-icon">✦</div>
-                            <h3>Hydrating Facial Glow</h3>
-                            <p>Custom cleansing, exfoliation, and advanced hyaluronic moisture mask to restore radiant skin. (45 min)</p>
+                    <!-- Service 2 -->
+                    <div class="service-row" onclick="toggleService(this)">
+                        <div class="service-row-hdr">
+                            <h3>Botanical Radiance Facial</h3>
+                            <div class="service-row-right">
+                                <span class="service-row-price">$120</span>
+                                <span class="service-toggle-btn">+</span>
+                            </div>
                         </div>
-                        <span class="srv-price">$95</span>
+                        <div class="service-row-body">
+                            <p>A clarifying skin treatment incorporating nutrient-rich sea kelp formulas, fresh chamomile compresses, and custom fruit enzyme exfoliation to restore hydration and natural glow.</p>
+                        </div>
                     </div>
 
-                    <!-- Srv 3 -->
-                    <div class="service-card">
-                        <div>
-                            <div class="service-card-icon">✦</div>
-                            <h3>Organic Aromatherapy</h3>
-                            <p>Light pressure relaxation massage incorporating pure eucalyptus, lavender, and peppermint extracts. (75 min)</p>
+                    <!-- Service 3 -->
+                    <div class="service-row" onclick="toggleService(this)">
+                        <div class="service-row-hdr">
+                            <h3>Deep Tissue Muscle Release</h3>
+                            <div class="service-row-right">
+                                <span class="service-row-price">$160</span>
+                                <span class="service-toggle-btn">+</span>
+                            </div>
                         </div>
-                        <span class="srv-price">$145</span>
+                        <div class="service-row-body">
+                            <p>Targeted therapeutic pressure designed to isolate tight muscle groups, release lactic acid buildup, and improve range of motion. Perfect for post-workout recovery.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Rituals & Policies -->
-        <section class="rituals-section" id="rituals">
+        <section class="rituals-section" id="philosophy">
             <div class="container">
                 <div class="section-hdr">
-                    <h2>Rituals & Care Guidelines</h2>
+                    <h2>Our Spa Rituals</h2>
                 </div>
                 <div class="rituals-grid">
                     <div class="ritual-card">
-                        <h3>01. Arrival Custom</h3>
-                        <p>We request clients arrive 15 minutes before their scheduled time to transition into our quiet robes and enjoy organic chamomile tea.</p>
+                        <h3>01. Arrival</h3>
+                        <p>We invite you to arrive 15 minutes before your treatment to enjoy our organic lavender tea blend and transition into full relaxation mode.</p>
                     </div>
                     <div class="ritual-card">
-                        <h3>02. Silent Sanctuary</h3>
-                        <p>To preserve our peaceful atmosphere, we enforce a strict zero-mobile phone policy across all massage chambers and lounges.</p>
+                        <h3>02. Botanical Oils</h3>
+                        <p>All our treatments are performed using cold-pressed, wildcrafted botanical oils. Zero parabens, mineral oils, or artificial fragrances are utilized.</p>
                     </div>
                     <div class="ritual-card">
-                        <h3>03. Tailored Pressure</h3>
-                        <p>Our licensed therapists consult with you before every session, customizing massage depth, essential oils, and hot stone applications.</p>
+                        <h3>03. Silence</h3>
+                        <p>To preserve our soothing auditory sanctuary, we request that all guests place mobile devices on silent mode upon entry.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Reviews Carousel Slider -->
-        <section class="reviews-section">
+        <!-- Testimonial Section: Fading Slider -->
+        <section class="reviews-section" id="reviews">
             <div class="container">
                 <div class="review-box">
                     <div class="review-quote-mark">“</div>
-                    <div class="review-text" id="review-text">"The Hot Stone Deep Massage at Aurora is absolute heaven. The peaceful atmosphere instantly washes away all weekly work stress."</div>
-                    <div class="review-author" id="review-author">— SARAH JENKINS, PEACHTREE CITY</div>
-                </div>
-                <div class="slider-controls">
-                    <button class="slide-dot active" onclick="setSlide(0, this)"></button>
-                    <button class="slide-dot" onclick="setSlide(1, this)"></button>
-                    <button class="slide-dot" onclick="setSlide(2, this)"></button>
+                    <div class="review-text" id="review-text-block">"The Hot Stone Massage was the most deeply relaxing spa session I've ever experienced. A true Fayetteville gem."</div>
+                    <div class="review-author" id="review-author-block">— Sophia Reynolds</div>
+                    
+                    <div class="slider-controls">
+                        <span class="slide-dot active" onclick="jumpToReview(0)"></span>
+                        <span class="slide-dot" onclick="jumpToReview(1)"></span>
+                        <span class="slide-dot" onclick="jumpToReview(2)"></span>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Floating Scheduler -->
+        <!-- Booking Section -->
         <section class="booking-section" id="booking">
             <div class="container">
                 <div class="booking-widget">
-                    <div class="form-wrapper" id="form-wrapper">
-                        <div class="widget-hdr">
-                            <h3>Schedule Appointment</h3>
-                        </div>
-                        <form onsubmit="submitForm(event)">
-                            <div class="form-group">
-                                <label for="a-name">Full Name</label>
-                                <input type="text" id="a-name" placeholder="Sarah Jenkins" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="a-treatment">Select Treatment</label>
-                                <select id="a-treatment" required>
-                                    <option value="Stone Massage">Hot Stone Deep Massage - $120</option>
-                                    <option value="Facial Glow">Hydrating Facial Glow - $95</option>
-                                    <option value="Aromatherapy">Organic Aromatherapy - $145</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="a-date">Requested Date</label>
-                                <input type="date" id="a-date" required>
-                            </div>
-                            <button type="submit" class="booking-submit-btn">Schedule Session</button>
-                        </form>
+                    <div class="widget-hdr">
+                        <h3>Schedule Treatment</h3>
                     </div>
-
-                    <div class="success-box" id="success-box">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Appointment Requested!</h3>
-                        <p style="color: var(--text-muted); font-size: 0.92rem;">Thank you for scheduling with Aurora. We have sent a simulated booking invitation to your email. We look forward to hosting you!</p>
+                    <form id="booking-form" onsubmit="submitBooking(event)">
+                        <div class="form-group">
+                            <label for="b-service">Select Ritual</label>
+                            <select id="b-service" required>
+                                <option value="stones">Himalayan Hot Stone ($145)</option>
+                                <option value="facial">Botanical Radiance Facial ($120)</option>
+                                <option value="deeptissue">Deep Tissue Muscle Release ($160)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="b-date">Preferred Date</label>
+                            <input type="date" id="b-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="b-name">Your Full Name</label>
+                            <input type="text" id="b-name" placeholder="John Doe" required>
+                        </div>
+                        <button type="submit" class="booking-submit-btn">Request Reservation</button>
+                    </form>
+                    <div class="success-box" id="booking-success">
+                        <h3>Reservation Sent!</h3>
+                        <p style="color: var(--text-muted); font-size: 0.95rem;">We have logged your request. Our staff will contact you shortly to confirm your booking time. Thank you!</p>
                     </div>
                 </div>
             </div>
@@ -661,50 +696,76 @@
 
     <footer>
         <div class="container">
-            <div class="logo">AURORA</div>
-            <p>140 Serenity Way, Peachtree City, GA 30269</p>
-            <p>Aurora Spa. Peachtree City, Georgia. Hand-Coded by ovren.co.</p>
+            <span class="logo">AURORA SPA</span>
+            <p>202 Serenity Way, Peachtree City, GA 30269</p>
+            <p>Aurora Spa. Hand-Coded by ovren.co.</p>
         </div>
     </footer>
 
     <script>
+        function toggleService(element) {
+            const isActive = element.classList.contains('active');
+            document.querySelectorAll('.service-row').forEach(row => {
+                row.classList.remove('active');
+            });
+            if (!isActive) {
+                element.classList.add('active');
+            }
+        }
+
         const reviews = [
             {
-                text: `"The Hot Stone Deep Massage at Aurora is absolute heaven. The peaceful atmosphere instantly washes away all weekly work stress."`,
-                author: "— SARAH JENKINS, PEACHTREE CITY"
+                text: `"The Hot Stone Massage was the most deeply relaxing spa session I've ever experienced. A true Fayetteville gem."`,
+                author: "— Sophia Reynolds"
             },
             {
-                text: `"The hydrating facial glow left my skin feeling completely refreshed and radiant. Outstanding attention to detail by the therapists."`,
-                author: "— AMY FLORES, FAYETTEVILLE"
+                text: `"An absolute sanctuary. From the botanical tea arrival to the facial, every detail was carefully designed for zen."`,
+                author: "— Liam Henderson"
             },
             {
-                text: `"Quiet, beautiful, and extremely professional. The eucalyptus aromatherapy is highly recommended after travel."`,
-                author: "— MARCUS REED, ATLANTA"
+                text: `"Perfect skin glow results after the Radiance Facial. They really know their organic skincare. Highly recommend!"`,
+                author: "— Harper Sterling"
             }
         ];
 
-        function setSlide(index, button) {
-            document.querySelectorAll('.slide-dot').forEach(b => b.classList.remove('active'));
-            button.classList.add('active');
+        let currentReviewIndex = 0;
 
-            const textEl = document.getElementById('review-text');
-            const authEl = document.getElementById('review-author');
-            
-            textEl.style.opacity = '0';
-            authEl.style.opacity = '0';
+        function jumpToReview(index) {
+            currentReviewIndex = index;
+            const textBlock = document.getElementById('review-text-block');
+            const authorBlock = document.getElementById('review-author-block');
+            const dots = document.querySelectorAll('.slide-dot');
 
+            // Apply active dot
+            dots.forEach((dot, idx) => {
+                if (idx === index) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            // Fade transition text
+            textBlock.style.opacity = '0';
+            authorBlock.style.opacity = '0';
             setTimeout(() => {
-                textEl.innerText = reviews[index].text;
-                authEl.innerText = reviews[index].author;
-                textEl.style.opacity = '1';
-                authEl.style.opacity = '1';
-            }, 150);
+                textBlock.innerText = reviews[index].text;
+                authorBlock.innerText = reviews[index].author;
+                textBlock.style.opacity = '1';
+                authorBlock.style.opacity = '1';
+            }, 300);
         }
 
-        function submitForm(e) {
+        // Auto slide review
+        setInterval(() => {
+            currentReviewIndex = (currentReviewIndex + 1) % reviews.length;
+            jumpToReview(currentReviewIndex);
+        }, 8000);
+
+        function submitBooking(e) {
             e.preventDefault();
-            document.getElementById('form-wrapper').style.display = 'none';
-            document.getElementById('success-box').style.display = 'block';
+            document.getElementById('booking-form').style.display = 'none';
+            document.getElementById('booking-success').style.display = 'block';
         }
     </script>
 </body>
