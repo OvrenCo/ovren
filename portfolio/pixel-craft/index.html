@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixel Craft | Bold Creative Design Agency</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-yellow: #facc15;
-            --bg-orange: #f97316;
-            --bg-blue: #3b82f6;
+            --bg-yellow: #ffe600;
+            --bg-magenta: #ff007f;
+            --bg-cyan: #00f0ff;
+            --bg-orange: #ff6b00;
             --text-dark: #000000;
             --bg-light: #ffffff;
-            --brutal-border: 3px solid #000000;
-            --brutal-shadow: 6px 6px 0px #000000;
-            --brutal-shadow-hover: 2px 2px 0px #000000;
-            --transition: all 0.15s steps(4);
+            --brutal-border: 4px solid #000000;
+            --brutal-shadow: 8px 8px 0px #000000;
+            --brutal-shadow-hover: 12px 12px 0px #000000;
+            --transition: all 0.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
         }
 
         * {
@@ -25,12 +26,19 @@
         }
 
         body {
-            background-color: #fafaf9;
+            background-color: #f0ebe1;
             color: var(--text-dark);
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             line-height: 1.4;
             padding-bottom: 80px;
             padding-top: 48px;
+            background-image: radial-gradient(#000000 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+        }
+
+        .mono {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
         }
 
         .container {
@@ -49,7 +57,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Space Mono', monospace;
             position: fixed;
             top: 0;
             left: 0;
@@ -68,19 +76,19 @@
         .portfolio-banner .banner-back-btn {
             background: var(--bg-yellow);
             color: #000000;
-            border: 2px solid #000000;
+            border: 3px solid #000000;
             text-decoration: none;
             padding: 4px 12px;
             font-size: 0.72rem;
             font-weight: 800;
             text-transform: uppercase;
-            box-shadow: 2px 2px 0 #000000;
+            box-shadow: 3px 3px 0 #000000;
             transition: var(--transition);
         }
 
         .portfolio-banner .banner-back-btn:hover {
             transform: translate(2px, 2px);
-            box-shadow: none;
+            box-shadow: 1px 1px 0 #000000;
         }
 
         @media (max-width: 768px) {
@@ -104,7 +112,7 @@
         header {
             background: var(--bg-light);
             border-bottom: var(--brutal-border);
-            padding: 20px 0;
+            padding: 18px 0;
             position: sticky;
             top: 48px;
             z-index: 100;
@@ -117,25 +125,27 @@
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--text-dark);
             text-decoration: none;
             background: var(--bg-yellow);
-            padding: 6px 12px;
+            padding: 6px 16px;
             border: var(--brutal-border);
-            box-shadow: 3px 3px 0px #000000;
+            box-shadow: 5px 5px 0px #000000;
             text-transform: uppercase;
+            letter-spacing: -1px;
+            transition: var(--transition);
         }
 
         .logo:hover {
-            box-shadow: 1px 1px 0px #000000;
-            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000000;
+            transform: translate(3px, 3px);
         }
 
         nav {
             display: flex;
-            gap: 24px;
+            gap: 28px;
             align-items: center;
         }
 
@@ -145,113 +155,146 @@
             font-weight: 800;
             font-size: 0.95rem;
             text-transform: uppercase;
-            border-bottom: 2px solid transparent;
-            padding-bottom: 4px;
+            border-bottom: 3px solid transparent;
+            padding-bottom: 2px;
+            transition: var(--transition);
         }
 
         nav a:hover {
-            border-bottom: 3px solid var(--text-dark);
+            border-color: var(--bg-magenta);
+            background: var(--bg-cyan);
+            padding: 2px 6px;
+            transform: rotate(-2deg);
         }
 
         .btn-brutal {
-            background: var(--bg-orange);
+            background: var(--bg-magenta);
             color: #ffffff;
-            border: var(--brutal-border);
-            padding: 10px 20px;
-            font-weight: 800;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: var(--brutal-shadow);
-            transition: var(--transition);
             text-decoration: none;
+            padding: 12px 24px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            border: var(--brutal-border);
+            box-shadow: var(--brutal-shadow);
+            cursor: pointer;
+            transition: var(--transition);
             display: inline-block;
         }
 
         .btn-brutal:hover {
-            transform: translate(4px, 4px);
+            transform: translate(-4px, -4px);
             box-shadow: var(--brutal-shadow-hover);
+            background: var(--bg-orange);
+            color: #000000;
         }
 
         /* Hero */
         .hero {
             padding: 100px 0 60px;
-            text-align: center;
         }
 
         .hero-card {
-            background: var(--bg-yellow);
+            background: #ffffff;
             border: var(--brutal-border);
-            padding: 60px 40px;
+            padding: 60px 48px;
             box-shadow: var(--brutal-shadow);
-            margin-bottom: 60px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Brutalist Sticker Badges */
+        .sticker-badge {
+            position: absolute;
+            background: var(--bg-cyan);
+            border: var(--brutal-border);
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            transform: rotate(12deg);
+            right: 40px;
+            top: 40px;
+            box-shadow: 4px 4px 0px #000000;
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.2rem;
             font-weight: 800;
             line-height: 1;
-            letter-spacing: -0.02em;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            margin-bottom: 28px;
+            max-width: 800px;
+            letter-spacing: -0.03em;
         }
 
         .hero p {
-            max-width: 650px;
-            margin: 0 auto 36px;
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #3f3f46;
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.6;
         }
 
-        /* Core Philosophy */
+        /* Philosophy Section */
         .core-section {
-            padding: 60px 0;
-            background: #ffffff;
-            border-top: var(--brutal-border);
-            border-bottom: var(--brutal-border);
-            margin-bottom: 60px;
+            padding: 80px 0;
+        }
+
+        .section-title {
+            display: inline-block;
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            background: var(--bg-yellow);
+            border: var(--brutal-border);
+            padding: 8px 24px;
+            box-shadow: 6px 6px 0px #000000;
+            margin-bottom: 48px;
+            transform: rotate(-1.5deg);
         }
 
         .core-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
+            gap: 32px;
         }
 
         .core-card {
+            background: #ffffff;
             border: var(--brutal-border);
-            padding: 24px;
+            padding: 40px 32px;
             box-shadow: var(--brutal-shadow);
-            background: #fafaf9;
+            transition: var(--transition);
+        }
+
+        .core-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: var(--brutal-shadow-hover);
+            background: var(--bg-cyan);
         }
 
         .core-card h3 {
-            font-size: 1.5rem;
-            font-weight: 800;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            color: var(--text-dark);
+            border-bottom: var(--brutal-border);
+            padding-bottom: 8px;
+            display: inline-block;
         }
 
         .core-card p {
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.95rem;
+            color: #27272a;
+            line-height: 1.6;
         }
 
         /* Works Grid */
         .works-section {
-            padding: 40px 0;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-            display: inline-block;
-            background: var(--bg-blue);
-            color: #ffffff;
-            padding: 8px 16px;
-            border: var(--brutal-border);
-            box-shadow: 4px 4px 0px #000000;
+            padding: 80px 0;
         }
 
         .works-grid {
@@ -261,110 +304,99 @@
         }
 
         .work-card {
-            background: var(--bg-light);
+            background: #ffffff;
             border: var(--brutal-border);
-            box-shadow: var(--brutal-shadow);
             overflow: hidden;
+            box-shadow: var(--brutal-shadow);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
-            transition: var(--transition);
         }
 
         .work-card:hover {
-            transform: translate(4px, 4px);
+            transform: translate(-4px, -4px);
             box-shadow: var(--brutal-shadow-hover);
         }
 
         .work-img-mock {
-            height: 180px;
+            height: 200px;
             border-bottom: var(--brutal-border);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 4rem;
             font-weight: 800;
         }
 
         .img-yellow { background: var(--bg-yellow); }
         .img-orange { background: var(--bg-orange); }
-        .img-blue { background: var(--bg-blue); }
+        .img-blue { background: var(--bg-cyan); }
 
         .work-body {
-            padding: 24px;
+            padding: 28px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .work-tag {
+            border: 2px solid #000000;
+            padding: 4px 10px;
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 2px 2px 0px #000000;
+            display: inline-block;
+            margin-bottom: 16px;
         }
 
         .work-body h3 {
             font-size: 1.4rem;
             font-weight: 800;
+            margin-bottom: 12px;
             text-transform: uppercase;
-            margin-bottom: 10px;
         }
 
         .work-body p {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: rgba(0,0,0,0.7);
-            margin-bottom: 20px;
-            flex-grow: 1;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9rem;
+            color: #3f3f46;
+            line-height: 1.6;
         }
 
-        .work-tag {
-            align-self: flex-start;
-            background: #e2e8f0;
-            border: 1.5px solid #000000;
-            padding: 2px 8px;
-            font-size: 0.72rem;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        /* Sidebar Contacts Drawer */
+        /* Slide Contact Drawer */
         .drawer-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 200;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 9999;
             display: none;
-            align-items: center;
             justify-content: flex-end;
+            backdrop-filter: blur(4px);
         }
 
         .drawer {
-            width: 450px;
-            height: 100%;
-            background: var(--bg-light);
+            width: 480px;
+            background: #ffffff;
             border-left: var(--brutal-border);
             padding: 48px;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 32px;
+            height: 100%;
             transform: translateX(100%);
             transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .drawer-overlay.open {
-            display: flex;
-        }
-
-        .drawer-overlay.open .drawer {
-            transform: translateX(0);
+            overflow-y: auto;
         }
 
         .drawer h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             text-transform: uppercase;
-            background: var(--bg-yellow);
-            border: var(--brutal-border);
-            padding: 10px;
-            box-shadow: 4px 4px 0px #000000;
-            margin-bottom: 20px;
-            text-align: center;
         }
 
         .form-group {
@@ -374,63 +406,93 @@
         }
 
         .form-group label {
+            font-size: 0.8rem;
             font-weight: 800;
             text-transform: uppercase;
-            font-size: 0.85rem;
+            letter-spacing: 1px;
         }
 
         .form-group input, .form-group textarea {
-            padding: 12px;
+            padding: 14px;
             border: var(--brutal-border);
             outline: none;
-            font-family: inherit;
-            font-weight: 600;
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            background: #fcfcfc;
+            transition: var(--transition);
         }
 
         .form-group input:focus, .form-group textarea:focus {
-            background: #faf5ff;
+            background: var(--bg-yellow);
+            box-shadow: 4px 4px 0px #000000;
         }
 
         .close-drawer {
             align-self: flex-start;
-            background: #ef4444;
+            background: #ff4747;
             color: white;
             border: var(--brutal-border);
-            padding: 6px 12px;
+            padding: 8px 16px;
             font-weight: 800;
             text-transform: uppercase;
             cursor: pointer;
-            box-shadow: 3px 3px 0px #000000;
+            box-shadow: 4px 4px 0px #000000;
+            transition: var(--transition);
         }
 
         .close-drawer:hover {
             transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0px #000000;
+            box-shadow: 2px 2px 0px #000000;
         }
 
         /* Footer */
         footer {
             border-top: var(--brutal-border);
-            padding: 60px 0;
-            background: var(--bg-light);
+            padding: 80px 0;
+            background: #ffffff;
             text-align: center;
             font-weight: 800;
         }
 
         /* Responsive */
+        @media (max-width: 992px) {
+            .core-grid { grid-template-columns: 1fr; gap: 24px; }
+            .works-grid { grid-template-columns: 1fr; gap: 24px; max-width: 450px; margin: 0 auto; }
+        }
+
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .core-grid { grid-template-columns: 1fr; gap: 20px; }
-            .works-grid { grid-template-columns: 1fr; gap: 20px; }
-            .drawer { width: 100%; padding: 24px; }
+            .hero h1 { font-size: 2.8rem; }
+            .drawer { width: 100%; padding: 32px 20px; }
             nav { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Slide Contact Drawer Overlay -->
+    <div class="drawer-overlay" id="drawer-overlay-box" onclick="closeDrawerOutside(event)">
+        <div class="drawer" id="drawer">
+            <button type="button" class="close-drawer" onclick="closeDrawer()">✕ Close</button>
+            <h2>Start a Project</h2>
+            <form onsubmit="submitForm(event)">
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label for="p-name">Agency Name / Name</label>
+                    <input type="text" id="p-name" placeholder="Vortex Inc" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 16px;">
+                    <label for="p-email">Email Address</label>
+                    <input type="email" id="p-email" placeholder="hello@vortex.co" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 24px;">
+                    <label for="p-details">Brief Project Details</label>
+                    <textarea id="p-details" rows="5" placeholder="Let's build a flagship..." required></textarea>
+                </div>
+                <button type="submit" class="btn-brutal" style="width: 100%; text-align: center;">Send Request</button>
+            </form>
+        </div>
+    </div>
+
     <!-- Warning Banner -->
-    <div class="drawer-overlay" id="drawer-overlay" style="display:none;"></div>
     <div class="portfolio-banner">
         <span>⚡ <strong>Portfolio Mockup Concept</strong> by <a href="/#portfolio">ovren.co/home</a> — This is a design demo. None of the project inquiries are real.</span>
         <a href="/#portfolio" class="banner-back-btn">Back to Agency</a>
@@ -452,9 +514,10 @@
         <section class="hero">
             <div class="container">
                 <div class="hero-card">
+                    <span class="sticker-badge">LOUD DESIGN</span>
                     <h1>We Design Sites That Command Attention.</h1>
                     <p>No clean corporate boring shapes. We make loud, high-converting digital products for brands that aren't afraid of standing out.</p>
-                    <a href="#work" class="btn-brutal" style="background: var(--bg-blue);">See Our Projects</a>
+                    <a href="#work" class="btn-brutal" style="background: var(--bg-cyan); color: #000;">See Our Projects</a>
                 </div>
             </div>
         </section>
@@ -462,7 +525,7 @@
         <!-- Philosophy Section -->
         <section class="core-section" id="about">
             <div class="container">
-                <h2 class="section-title" style="background: var(--bg-orange); margin-bottom: 40px;">Studio Ideology</h2>
+                <h2 class="section-title">Studio Ideology</h2>
                 <div class="core-grid">
                     <div class="core-card">
                         <h3>01. Raw Code</h3>
@@ -482,7 +545,7 @@
 
         <section class="works-section" id="work">
             <div class="container">
-                <h2 class="section-title">Recent Crafts</h2>
+                <h2 class="section-title" style="background: var(--bg-magenta); color: #ffffff;">Recent Crafts</h2>
                 
                 <div class="works-grid">
                     <!-- Project 1 -->
@@ -490,7 +553,7 @@
                         <div class="work-img-mock img-yellow">⚡</div>
                         <div class="work-body">
                             <span class="work-tag" style="background: var(--bg-yellow);">Branding</span>
-                            <h3 style="margin-top: 10px;">Vortex Clothing</h3>
+                            <h3>Vortex Clothing</h3>
                             <p>Bespoke Shopify theme custom-engineered with high-intensity visual layouts and card structures.</p>
                         </div>
                     </div>
@@ -500,7 +563,7 @@
                         <div class="work-img-mock img-orange">🛹</div>
                         <div class="work-body">
                             <span class="work-tag" style="background: var(--bg-orange); color: white;">Interface</span>
-                            <h3 style="margin-top: 10px;">Urban Riders</h3>
+                            <h3>Urban Riders</h3>
                             <p>A full responsive community landing page with brutalist structures and interactive grids.</p>
                         </div>
                     </div>
@@ -509,8 +572,8 @@
                     <div class="work-card">
                         <div class="work-img-mock img-blue">👾</div>
                         <div class="work-body">
-                            <span class="work-tag" style="background: var(--bg-blue); color: white;">Identity</span>
-                            <h3 style="margin-top: 10px;">NFT Portal</h3>
+                            <span class="work-tag" style="background: var(--bg-cyan);">Identity</span>
+                            <h3>NFT Portal</h3>
                             <p>Futuristic card collection marketplace mockup build using flat styling elements and heavy borders.</p>
                         </div>
                     </div>
@@ -518,29 +581,6 @@
             </div>
         </section>
     </main>
-
-    <!-- Slide Contact Drawer -->
-    <div class="drawer-overlay" id="drawer-overlay-box" onclick="closeDrawerOutside(event)">
-        <div class="drawer" id="drawer">
-            <button type="button" class="close-drawer" onclick="closeDrawer()">✕ Close</button>
-            <h2>Start a Project</h2>
-            <form onsubmit="submitForm(event)">
-                <div class="form-group" style="margin-bottom: 16px;">
-                    <label for="p-name">Agency Name / Name</label>
-                    <input type="text" id="p-name" placeholder="Vortex Inc" required>
-                </div>
-                <div class="form-group" style="margin-bottom: 16px;">
-                    <label for="p-email">Email Address</label>
-                    <input type="email" id="p-email" placeholder="hello@vortex.co" required>
-                </div>
-                <div class="form-group" style="margin-bottom: 24px;">
-                    <label for="p-details">Brief Project Details</label>
-                    <textarea id="p-details" rows="5" placeholder="Let's build a flagship..." required></textarea>
-                </div>
-                <button type="submit" class="btn-brutal" style="width: 100%; text-align: center;">Send Craft Request</button>
-            </form>
-        </div>
-    </div>
 
     <footer>
         <div class="container">

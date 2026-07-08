@@ -7,16 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-teal: #0d9488;
+            --primary-teal: #0f766e;
             --primary-green: #10b981;
+            --primary-glow: rgba(15, 118, 110, 0.15);
             --text-dark: #0f172a;
             --text-secondary: #475569;
             --bg-light: #f8fafc;
             --bg-card: #ffffff;
             --border: #e2e8f0;
-            --radius-lg: 16px;
-            --radius-md: 8px;
-            --transition: all 0.25s ease;
+            --radius-lg: 20px;
+            --radius-md: 10px;
+            --transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -79,7 +80,7 @@
         }
 
         .portfolio-banner .banner-back-btn:hover {
-            background: #0f766e;
+            opacity: 0.95;
             transform: translateY(-1px);
         }
 
@@ -124,6 +125,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            letter-spacing: 0.5px;
         }
 
         .logo-dot {
@@ -131,11 +133,12 @@
             height: 10px;
             background: var(--primary-green);
             border-radius: 50%;
+            box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
         }
 
         nav {
             display: flex;
-            gap: 28px;
+            gap: 32px;
             align-items: center;
         }
 
@@ -144,6 +147,7 @@
             text-decoration: none;
             font-weight: 500;
             transition: var(--transition);
+            font-size: 0.95rem;
         }
 
         nav a:hover {
@@ -154,23 +158,27 @@
             background: var(--primary-teal);
             color: #ffffff;
             border: none;
-            padding: 10px 24px;
-            border-radius: var(--radius-full);
-            font-weight: 600;
+            padding: 11px 26px;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: var(--transition);
             text-decoration: none;
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.2);
         }
 
         .btn-donate:hover {
-            background: #0f766e;
+            background: #0d5f58;
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(15, 118, 110, 0.35);
         }
 
         /* Hero */
         .hero {
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
+            background: radial-gradient(circle at top, rgba(16, 185, 129, 0.04) 0%, transparent 60%);
         }
 
         .hero h1 {
@@ -178,141 +186,96 @@
             font-weight: 800;
             line-height: 1.15;
             letter-spacing: -0.02em;
-            margin-bottom: 20px;
-            color: #0f172a;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero p {
-            max-width: 700px;
-            margin: 0 auto 36px;
+            max-width: 600px;
+            margin: 0 auto 40px;
             color: var(--text-secondary);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             line-height: 1.7;
         }
 
-        /* Thermometer Section */
+        /* Campaign Thermometer Widget */
         .thermometer-section {
+            max-width: 650px;
+            margin: 0 auto;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
-            margin-bottom: 60px;
+            padding: 36px;
+            box-shadow: 0 20px 40px rgba(15, 118, 110, 0.05);
+            text-align: left;
         }
 
         .thermometer-hdr {
             display: flex;
             justify-content: space-between;
-            align-items: flex-end;
+            align-items: baseline;
             margin-bottom: 16px;
-            font-weight: 700;
         }
 
-        .thermometer-hdr .raised {
-            font-size: 2.4rem;
+        .raised {
+            font-size: 2.2rem;
+            font-weight: 800;
             color: var(--primary-teal);
         }
 
-        .thermometer-hdr .goal {
-            font-size: 1.25rem;
+        .goal {
+            font-size: 1.05rem;
+            font-weight: 600;
             color: var(--text-secondary);
         }
 
         .thermometer-track {
-            height: 18px;
-            background: #f1f5f9;
-            border-radius: var(--radius-full);
+            height: 14px;
+            background: var(--bg-light);
+            border-radius: 9999px;
             overflow: hidden;
             margin-bottom: 16px;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(0,0,0,0.02);
         }
 
         .thermometer-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary-teal), var(--primary-green));
+            background: linear-gradient(90deg, var(--primary-teal) 0%, var(--primary-green) 100%);
             width: 0%;
-            border-radius: var(--radius-full);
-            transition: width 1s ease-out;
+            border-radius: 9999px;
+            transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
 
         .thermometer-meta {
             display: flex;
             justify-content: space-between;
+            font-size: 0.88rem;
+            font-weight: 600;
             color: var(--text-secondary);
-            font-size: 0.95rem;
-            font-weight: 500;
         }
 
-        /* Impact Section */
-        .impact-section {
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .section-hdr {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-hdr h2 {
-            font-size: 2.4rem;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
-
-        .impact-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-            margin-bottom: 40px;
-        }
-
-        .impact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 36px 32px;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .impact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(13, 148, 136, 0.06);
-            border-color: rgba(13, 148, 136, 0.3);
-        }
-
-        .impact-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: rgba(13, 148, 136, 0.1);
-            color: var(--primary-teal);
+        .thermometer-meta span {
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 1.5rem;
+            gap: 6px;
         }
 
-        .impact-card h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 12px;
+        .thermometer-meta span::before {
+            content: '●';
+            color: var(--primary-green);
         }
 
-        .impact-card p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        /* Stats Grid */
+        /* Stats strip */
         .stats-strip {
-            background: var(--primary-teal);
-            color: white;
-            padding: 60px 0;
+            background: #ffffff;
+            border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            margin-bottom: 80px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.01);
         }
 
         .stats-grid {
@@ -323,19 +286,89 @@
         }
 
         .stat-block h3 {
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            margin-bottom: 6px;
+            color: var(--primary-teal);
+            margin-bottom: 4px;
         }
 
         .stat-block p {
+            color: var(--text-secondary);
             font-size: 0.95rem;
-            opacity: 0.9;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* News / Blog Section */
+        /* Impact Section */
+        .impact-section {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .section-hdr {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-hdr h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .impact-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 44px 32px;
+            transition: var(--transition);
+        }
+
+        .impact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(15, 118, 110, 0.05);
+            border-color: rgba(15, 118, 110, 0.3);
+            background: #ffffff;
+        }
+
+        .impact-icon {
+            font-size: 2rem;
+            margin-bottom: 24px;
+            display: inline-block;
+            width: 56px;
+            height: 56px;
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            text-align: center;
+            line-height: 56px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .impact-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: var(--text-dark);
+        }
+
+        .impact-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* News Section */
         .news-section {
-            padding: 80px 0;
+            padding: 100px 0;
+            background: var(--bg-light);
             border-top: 1px solid var(--border);
         }
 
@@ -346,79 +379,89 @@
         }
 
         .news-item {
-            background: var(--bg-card);
+            background: #ffffff;
             border: 1px solid var(--border);
+            padding: 36px;
             border-radius: var(--radius-lg);
-            padding: 32px;
             transition: var(--transition);
         }
 
         .news-item:hover {
-            border-color: var(--primary-teal);
+            transform: translateY(-2px);
+            border-color: rgba(15, 118, 110, 0.2);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
         }
 
         .news-date {
             font-size: 0.8rem;
-            color: var(--primary-teal);
             font-weight: 700;
+            color: var(--primary-teal);
             text-transform: uppercase;
-            margin-bottom: 8px;
+            letter-spacing: 0.5px;
             display: block;
+            margin-bottom: 12px;
         }
 
         .news-item h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            color: var(--text-dark);
+            line-height: 1.4;
         }
 
         .news-item p {
             color: var(--text-secondary);
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        /* Donation Widget */
+        /* Donation Widget Section */
         .donation-widget {
-            background: var(--bg-card);
+            max-width: 550px;
+            margin: 0 auto;
+            background: #ffffff;
             border: 1px solid var(--border);
             border-radius: var(--radius-lg);
-            padding: 48px;
-            max-width: 650px;
-            margin: 0 auto 80px;
-            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
-        }
-
-        .widget-hdr {
-            text-align: center;
-            margin-bottom: 32px;
+            padding: 44px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.04);
         }
 
         .widget-hdr h3 {
             font-size: 1.7rem;
             font-weight: 800;
+            text-align: center;
         }
 
         .donation-amounts {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 12px;
-            margin-bottom: 24px;
+            margin: 32px 0 20px;
         }
 
         .amt-btn {
             background: var(--bg-light);
             border: 1.5px solid var(--border);
             border-radius: var(--radius-md);
-            padding: 14px;
-            font-size: 1.1rem;
+            padding: 14px 10px;
+            font-size: 1.05rem;
             font-weight: 700;
+            color: var(--text-secondary);
             cursor: pointer;
             transition: var(--transition);
         }
 
-        .amt-btn:hover, .amt-btn.active {
+        .amt-btn:hover {
+            border-color: var(--primary-teal);
+            color: var(--primary-teal);
+        }
+
+        .amt-btn.active {
             background: var(--primary-teal);
             color: #ffffff;
             border-color: var(--primary-teal);
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.2);
         }
 
         .custom-input-box {
@@ -428,23 +471,32 @@
 
         .custom-input-box input {
             width: 100%;
-            padding: 14px 14px 14px 32px;
+            padding: 14px 16px 14px 36px;
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             font-size: 1.1rem;
             outline: none;
-            font-weight: 600;
+            font-weight: 700;
+            background: var(--bg-light);
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .custom-input-box input:focus {
+            border-color: var(--primary-teal);
+            background: #ffffff;
+            box-shadow: 0 0 10px var(--primary-glow);
         }
 
         .custom-input-box::before {
             content: '$';
             position: absolute;
-            left: 14px;
+            left: 16px;
             top: 50%;
             transform: translateY(-50%);
             font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-secondary);
+            font-weight: 700;
+            color: var(--text-dark);
         }
 
         .submit-donation {
@@ -458,10 +510,13 @@
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(15, 118, 110, 0.25);
         }
 
         .submit-donation:hover {
-            background: #0f766e;
+            background: #0d5f58;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
         }
 
         .donation-success {
@@ -470,14 +525,19 @@
         }
 
         .success-heart {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--primary-green);
             margin-bottom: 16px;
+            animation: beat 1s infinite alternate;
+        }
+
+        @keyframes beat {
+            to { transform: scale(1.1); }
         }
 
         /* Volunteer Section */
         .volunteer-section {
-            padding: 80px 0;
+            padding: 100px 0;
             border-top: 1px solid var(--border);
             text-align: center;
         }
@@ -485,44 +545,69 @@
         .volunteer-card {
             max-width: 600px;
             margin: 0 auto;
-            background: var(--bg-card);
+            background: #ffffff;
             border: 1px solid var(--border);
-            padding: 40px;
+            padding: 48px;
             border-radius: var(--radius-lg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.01);
         }
 
         .volunteer-form {
             display: flex;
             flex-direction: column;
             gap: 16px;
-            margin-top: 24px;
+            margin-top: 32px;
         }
 
         .volunteer-form input {
-            padding: 12px;
+            padding: 14px 18px;
             border: 1px solid var(--border);
             border-radius: var(--radius-md);
             outline: none;
+            font-size: 0.95rem;
+            background: var(--bg-light);
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .volunteer-form input:focus {
+            border-color: var(--primary-teal);
+            background: #ffffff;
+            box-shadow: 0 0 10px var(--primary-glow);
         }
 
         .volunteer-form button {
             background: var(--primary-green);
             color: white;
             border: none;
-            padding: 12px;
+            padding: 15px;
             border-radius: var(--radius-md);
             font-weight: 700;
+            font-size: 0.95rem;
             cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        .volunteer-form button:hover {
+            background: #0e9f6e;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(16, 185, 129, 0.3);
         }
 
         /* Footer */
         footer {
             border-top: 1px solid var(--border);
-            padding: 60px 0;
+            padding: 80px 0;
             background: #ffffff;
             text-align: center;
             color: var(--text-secondary);
             font-size: 0.95rem;
+        }
+
+        footer .logo {
+            justify-content: center;
+            margin-bottom: 16px;
         }
 
         footer p {
@@ -530,14 +615,17 @@
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .impact-grid { grid-template-columns: 1fr; gap: 20px; }
-            .stats-grid { grid-template-columns: 1fr; gap: 30px; }
+        @media (max-width: 992px) {
+            .impact-grid { grid-template-columns: 1fr; gap: 24px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 32px; }
             .news-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.8rem; }
             .donation-amounts { grid-template-columns: repeat(2, 1fr); }
-            .donation-widget { padding: 24px; }
-            .volunteer-card { padding: 24px; }
+            .donation-widget { padding: 32px 20px; }
+            .volunteer-card { padding: 32px 20px; }
             nav { display: none; }
         }
     </style>
@@ -566,7 +654,7 @@
     <main>
         <section class="hero" id="about">
             <div class="container">
-                <h1>Bringing Hope, Clean Water, and Bright Futures</h1>
+                <h1>Bringing Hope, Clean Water,<br>and Bright Futures</h1>
                 <p>We work on the ground in rural communities worldwide to deploy sustainable clean water wells and build modern educational classrooms for local children.</p>
                 
                 <!-- Campaign Thermometer -->
@@ -591,7 +679,7 @@
         </section>
 
         <!-- Stats strip -->
-        <section class="container" style="margin-bottom: 60px;">
+        <section class="container" style="margin-bottom: 80px;">
             <div class="stats-strip">
                 <div class="stats-grid">
                     <div class="stat-block">
@@ -619,18 +707,21 @@
                 </div>
 
                 <div class="impact-grid">
+                    <!-- Initiative 1 -->
                     <div class="impact-card">
                         <div class="impact-icon">💧</div>
                         <h3>Clean Water Wells</h3>
                         <p>Providing safe, disease-free drinking water systems directly to schools and medical outposts in water-scarce communities.</p>
                     </div>
 
+                    <!-- Initiative 2 -->
                     <div class="impact-card">
                         <div class="impact-icon">📚</div>
                         <h3>Rural Education</h3>
                         <p>Constructing school facilities, equipping student labs, and funding teacher training to secure quality primary education.</p>
                     </div>
 
+                    <!-- Initiative 3 -->
                     <div class="impact-card">
                         <div class="impact-icon">🌱</div>
                         <h3>Sustainable Farms</h3>
@@ -663,13 +754,12 @@
         </section>
 
         <!-- Donation Widget Section -->
-        <section style="padding: 60px 0;" id="donate">
+        <section style="padding: 100px 0;" id="donate">
             <div class="container">
                 <div class="donation-widget">
                     <div class="donation-form-wrapper" id="donation-form-wrapper">
                         <div class="widget-hdr">
                             <h3>Choose Donation Amount</h3>
-                            <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 6px;">Every dollar directly translates into local development actions.</p>
                         </div>
                         
                         <div class="donation-amounts">
@@ -690,7 +780,7 @@
                         <div class="success-heart">❤️</div>
                         <h3 style="font-size: 1.8rem; margin-bottom: 8px;">Thank You for Your Generosity!</h3>
                         <p style="color: var(--text-secondary); max-width: 450px; margin: 0 auto 24px;">Your donation has been simulated successfully. We've sent a mock confirmation and impact brief to your email.</p>
-                        <button type="button" class="btn-donate" onclick="resetWidget()">Make Another Donation</button>
+                        <button type="button" class="submit-donation" onclick="resetWidget()">Make Another Donation</button>
                     </div>
                 </div>
             </div>
@@ -719,7 +809,7 @@
 
     <footer id="contact">
         <div class="container">
-            <a href="#" class="logo" style="justify-content: center; margin-bottom: 12px;"><span class="logo-dot"></span>HOPE FOUNDATION</a>
+            <a href="#" class="logo"><span class="logo-dot"></span>HOPE FOUNDATION</a>
             <p>120 Giving Avenue, Fayetteville, GA 30214</p>
             <p>Hope Foundation. Fayetteville, Georgia. Hand-Coded by ovren.co.</p>
         </div>
