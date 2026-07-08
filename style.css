@@ -1231,198 +1231,483 @@ body.theme-dark .c-val { color:#34d399; }
 /* -----------------------------------------
    10. Portfolio Showcase
    ----------------------------------------- */
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 32px;
+/* Redesigned Showcase Container */
+.portfolio-case-studies {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
 }
-.portfolio-card {
+
+/* Base Case Study Module */
+.cs-module {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: var(--radius-lg);
-    padding: 24px;
+    padding: 40px;
     box-shadow: var(--card-shadow);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.cs-module:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--card-shadow-hover);
+}
+
+/* Staggered layouts for larger viewports */
+@media (min-width: 992px) {
+    .cs-module.layout-split {
+        grid-template-columns: 1.1fr 0.9fr;
+        align-items: center;
+        gap: 60px;
+    }
+    .cs-module.layout-split-reverse {
+        grid-template-columns: 0.9fr 1.1fr;
+        align-items: center;
+        gap: 60px;
+    }
+    .cs-module.layout-split-reverse .cs-content {
+        order: 2;
+    }
+    .cs-module.layout-full {
+        grid-template-columns: 1fr;
+        text-align: center;
+        max-width: 950px;
+        margin: 0 auto;
+    }
+}
+
+.cs-content {
     display: flex;
     flex-direction: column;
-    gap: 22px;
-    transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+    align-items: flex-start;
+    text-align: left;
 }
-.portfolio-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--card-shadow-hover);
-    border-color: rgba(247, 148, 29, 0.25);
+.cs-module.layout-full .cs-content {
+    align-items: center;
+    text-align: center;
 }
-.project-browser {
+
+.cs-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 14px;
+    border-radius: 9999px;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.cs-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+.cs-description {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.cs-stats-row {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 28px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 0;
     width: 100%;
-    border-radius: var(--radius-md);
+}
+.cs-module.layout-full .cs-stats-row {
+    justify-content: center;
+}
+
+.cs-stat-item {
+    display: flex;
+    flex-direction: column;
+}
+.cs-stat-num {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent-primary);
+}
+.cs-stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+}
+
+.cs-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 28px;
+}
+
+.cs-tag {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-secondary);
+}
+
+.cs-btn-wrapper {
+    margin-top: auto;
+}
+
+/* Common Mockup Screen Wrapper */
+.cs-visual {
+    width: 100%;
+    position: relative;
+}
+
+/* 1. Savory Bistro Style */
+.cs-bistro {
+    background: #0d0b0a;
+    border-color: rgba(197, 168, 128, 0.2);
+}
+.cs-bistro .cs-title {
+    font-family: 'Italiana', serif;
+    color: #c5a880;
+}
+.cs-bistro .cs-badge {
+    background: rgba(197, 168, 128, 0.1);
+    color: #c5a880;
+    border: 1px solid rgba(197, 168, 128, 0.2);
+}
+.cs-bistro-menu {
+    border: 1px solid rgba(197, 168, 128, 0.15);
+    background: #141211;
+    padding: 24px;
+    color: #f4f1ea;
+    position: relative;
+    border-radius: 4px;
+}
+.cs-bistro-menu::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 6px; right: 6px; bottom: 6px;
+    border: 1px double rgba(197, 168, 128, 0.15);
+}
+.cs-bistro-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+.cs-bistro-dots {
+    flex-grow: 1;
+    border-bottom: 1px dotted rgba(197, 168, 128, 0.3);
+    margin: 0 8px;
+}
+.cs-bistro-price {
+    color: #c5a880;
+    font-weight: 700;
+}
+
+/* 2. Hope Foundation Style */
+.cs-hope {
+    background: linear-gradient(135deg, rgba(8, 20, 18, 0.95) 0%, rgba(5, 10, 8, 0.98) 100%);
+    border-color: rgba(45, 212, 191, 0.2);
+}
+.cs-hope .cs-title {
+    color: #2dd4bf;
+}
+.cs-hope .cs-badge {
+    background: rgba(45, 212, 191, 0.1);
+    color: #2dd4bf;
+}
+.cs-hope-widget {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 24px;
+    border-radius: 8px;
+    color: #ffffff;
+}
+.cs-hope-therm {
+    height: 10px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 9999px;
+    overflow: hidden;
+    margin: 12px 0;
+}
+.cs-hope-fill {
+    height: 100%;
+    width: 72%;
+    background: linear-gradient(90deg, #0d9488 0%, #2dd4bf 100%);
+    box-shadow: 0 0 10px rgba(45, 212, 191, 0.3);
+}
+
+/* 3. Apex SaaS Style */
+.cs-apex {
+    background: #05030b;
+    border-color: rgba(139, 92, 246, 0.2);
+}
+.cs-apex .cs-title {
+    background: linear-gradient(90deg, #c084fc, #6366f1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.cs-apex .cs-badge {
+    background: rgba(168, 85, 247, 0.1);
+    color: #a855f7;
+}
+.cs-apex-chart {
+    background: #0b071a;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 8px;
+    padding: 24px;
+    color: #ffffff;
+}
+.cs-apex-bar-grid {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    height: 100px;
+    margin-top: 14px;
+}
+.cs-apex-bar {
+    flex: 1;
+    background: linear-gradient(180deg, #8b5cf6 0%, rgba(139, 92, 246, 0.2) 100%);
+    border-radius: 4px 4px 0 0;
+    min-height: 10px;
+}
+
+/* 4. Pixel Craft Style */
+.cs-pixel {
+    background: #fafaf9;
+    color: #000000;
+    border: 4px solid #000000;
+    box-shadow: 8px 8px 0px #000000;
+}
+body.theme-dark .cs-pixel {
+    background: #171717;
+    color: #ffffff;
+    border: 4px solid #000000;
+    box-shadow: 8px 8px 0px #000000;
+}
+.cs-pixel .cs-title {
+    font-family: 'Space Grotesk', sans-serif;
+    color: #000000;
+}
+body.theme-dark .cs-pixel .cs-title {
+    color: #ffffff;
+}
+.cs-pixel .cs-badge {
+    background: #ffe600;
+    color: #000000;
+    border: 2px solid #000000;
+    box-shadow: 2px 2px 0px #000000;
+}
+.cs-pixel-preview {
+    background: #ffffff;
+    border: 4px solid #000000;
+    padding: 24px;
+    box-shadow: 4px 4px 0px #000000;
+}
+body.theme-dark .cs-pixel-preview {
+    background: #262626;
+    border-color: #000000;
+}
+.cs-pixel-item {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.8rem;
+    border: 2px solid #000000;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    background: #ffe600;
+    color: #000000;
+    font-weight: 700;
+}
+
+/* 5. Nova Fitness Style */
+.cs-fitness {
+    background: #080808;
+    border-color: rgba(163, 230, 53, 0.2);
+}
+.cs-fitness .cs-title {
+    font-family: 'Archivo Black', sans-serif;
+    color: #ffffff;
+}
+.cs-fitness .cs-title span {
+    color: #a3e635;
+}
+.cs-fitness .cs-badge {
+    background: rgba(163, 230, 53, 0.1);
+    color: #a3e635;
+}
+.cs-fitness-grid {
+    background: #111111;
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 24px;
+    color: #ffffff;
+}
+.cs-fitness-slot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    padding: 8px 0;
+}
+
+/* 6. Aurora Spa Style */
+.cs-spa {
+    background: #f8f7f4;
+    border-color: rgba(75, 107, 88, 0.15);
+}
+body.theme-dark .cs-spa {
+    background: #0d0e0d;
+}
+.cs-spa .cs-title {
+    font-family: Georgia, serif;
+    color: #4b6b58;
+}
+body.theme-dark .cs-spa .cs-title {
+    color: #c5a880;
+}
+.cs-spa .cs-badge {
+    background: rgba(75, 107, 88, 0.1);
+    color: #4b6b58;
+}
+body.theme-dark .cs-spa .cs-badge {
+    background: rgba(197, 168, 128, 0.1);
+    color: #c5a880;
+}
+.cs-spa-card {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.03);
+    padding: 24px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+}
+body.theme-dark .cs-spa-card {
+    background: #141514;
+    border-color: rgba(255,255,255,0.02);
+}
+.cs-spa-treatment {
+    font-family: Georgia, serif;
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+    color: #4b6b58;
+}
+body.theme-dark .cs-spa-treatment {
+    color: #c5a880;
+}
+
+/* 7. Horizon Rentals Style */
+.cs-rentals {
+    background: #0a0f1d;
+    border-color: rgba(197, 168, 128, 0.2);
+}
+.cs-rentals .cs-title {
+    color: #ffffff;
+}
+.cs-rentals .cs-badge {
+    background: rgba(197, 168, 128, 0.1);
+    color: #c5a880;
+}
+.cs-rentals-bar {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 20px;
+    color: #0f172a;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.75rem;
+}
+.cs-rentals-bar select {
+    padding: 8px;
+    border: 1px solid #e2e8f0;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    background: #f8fafc;
+    outline: none;
+}
+
+/* 8. Vertex Consulting Style */
+.cs-vertex {
+    background: #080b12;
+    border-color: rgba(6, 182, 212, 0.2);
+}
+.cs-vertex .cs-title {
+    color: #ffffff;
+}
+.cs-vertex .cs-badge {
+    background: rgba(6, 182, 212, 0.1);
+    color: #06b6d4;
+}
+.cs-vertex-matrix {
+    background: #0f141f;
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 24px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    color: #cbd5e1;
+}
+.cs-vertex-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Custom Mockup Browser Header Inside Modules */
+.cs-browser-frame {
+    border-radius: 8px;
     border: 1px solid var(--border-color);
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
-.project-browser-header {
+.cs-browser-header {
     display: flex;
     align-items: center;
     padding: 10px 16px;
-    background: rgba(15, 23, 42, 0.02);
+    background: rgba(15, 23, 42, 0.03);
     border-bottom: 1px solid var(--border-color);
-    position: relative;
 }
-body.theme-dark .project-browser-header {
-    background: rgba(255, 255, 255, 0.01);
+body.theme-dark .cs-browser-header {
+    background: rgba(255, 255, 255, 0.02);
 }
-.proj-dot {
+.cs-browser-dots {
+    display: flex;
+    gap: 6px;
+}
+.cs-browser-dot {
     width: 8px;
     height: 8px;
-    border-radius: var(--radius-full);
-    margin-right: 4px;
+    border-radius: 50%;
 }
-.proj-dot.dot-red { background: #ef4444; }
-.proj-dot.dot-yellow { background: #eab308; }
-.proj-dot.dot-green { background: #22c55e; }
-.proj-browser-url {
+.cs-browser-dot.red { background: #ef4444; }
+.cs-browser-dot.yellow { background: #eab308; }
+.cs-browser-dot.green { background: #22c55e; }
+.cs-browser-url {
     margin-left: auto;
     margin-right: auto;
     font-size: 0.72rem;
     color: var(--text-secondary);
     font-weight: 500;
 }
-.project-browser-body {
-    height: 180px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.cs-browser-body {
     padding: 24px;
-    text-align: left;
 }
-
-/* Cafe Theme Mockup */
-.project-browser-body.theme-cafe {
-    background: #18120e;
-    color: #f5efe6;
-    align-items: center;
-    text-align: center;
-    font-family: serif;
-}
-.theme-cafe .cafe-logo {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #dfb28e;
-    letter-spacing: 0.1em;
-    margin-bottom: 8px;
-}
-.theme-cafe .cafe-hero-text {
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 6px;
-    line-height: 1.25;
-}
-.theme-cafe .cafe-p {
-    font-size: 0.7rem;
-    color: #bfae9f;
-    margin-bottom: 12px;
-}
-.theme-cafe .cafe-button {
-    font-size: 0.65rem;
-    font-weight: 700;
-    background: #dfb28e;
-    color: #18120e;
-    padding: 6px 14px;
-    border-radius: 2px;
-}
-
-/* Real Estate Theme Mockup */
-.project-browser-body.theme-realestate {
-    background: #fafaf9;
-    color: #1c1917;
-    align-items: flex-start;
-    padding: 20px 24px;
-}
-body.theme-dark .project-browser-body.theme-realestate {
-    background: #18181b;
-    color: #f4f4f5;
-}
-.theme-realestate .re-header {
-    margin-bottom: 12px;
-}
-.theme-realestate .re-logo {
-    font-size: 0.7rem;
-    font-weight: 800;
-    letter-spacing: 0.08em;
-    color: #78716c;
-}
-.theme-realestate .re-hero-text {
-    font-size: 1.25rem;
-    font-weight: 300;
-    margin-bottom: 8px;
-}
-.theme-realestate .re-grid {
-    display: flex;
-    gap: 6px;
-}
-.theme-realestate .re-chip {
-    font-size: 0.58rem;
-    padding: 3px 8px;
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-full);
-    color: var(--text-secondary);
-}
-.theme-realestate .re-bar {
-    width: 36px;
-    height: 2px;
-    background: #78716c;
-    margin-top: 14px;
-}
-
-/* Fintech Theme Mockup */
-.project-browser-body.theme-fintech {
-    background: #090d16;
-    color: #ffffff;
-    align-items: flex-start;
-}
-.theme-fintech .fin-logo {
-    font-size: 0.75rem;
-    font-weight: 800;
-    color: #38bdf8;
-    letter-spacing: 0.08em;
-    margin-bottom: 12px;
-}
-.theme-fintech .fin-chart-box {
-    display: flex;
-    align-items: flex-end;
-    gap: 8px;
-    height: 50px;
-    width: 100%;
-    max-width: 140px;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
-    padding-bottom: 4px;
-    margin-bottom: 10px;
-}
-.theme-fintech .fin-chart-bar {
-    flex: 1;
-    background: linear-gradient(180deg, #38bdf8 0%, rgba(56,189,248,0.2) 100%);
-    border-radius: 2px 2px 0 0;
-}
-.theme-fintech .fin-meta {
-    font-size: 0.65rem;
-    color: #94a3b8;
-    font-weight: 600;
-}
-
-.project-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-.project-category {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--accent-primary);
-    letter-spacing: 0.08em;
-}
-.project-name { font-size: 1.25rem; font-weight: 800; color: var(--text-primary); }
-.project-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
 
 /* -----------------------------------------
    11. FAQ
