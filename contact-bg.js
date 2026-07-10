@@ -1,29 +1,27 @@
 /* ----------------------------------------------------
-   OVREN.CO — UPGRADED 3D HERO BACKGROUND
-   Features: Massive rotating wireframe icosahedron,
-   glowing core particles, mouse parallax
+   OVREN.CO — CONTACT SECTION 3D BACKGROUND
+   Features: Interactive particle vortex
    ---------------------------------------------------- */
 (function () {
     'use strict';
 
     let container, scene, camera, renderer;
-    let mainGeometry, mainMesh, innerMesh, particleSystem;
+    let particleSystem;
     
     let mouseX = 0, mouseY = 0;
     let targetCamX = 0, targetCamY = 0;
-    let wHalf = window.innerWidth / 2;
-    let hHalf = window.innerHeight / 2;
+    let wHalf, hHalf;
 
     const BRAND = {
         orange: 0xF7941D,
-        charcoal: 0x2D3E50
+        orangeGlow: 0xFF782B
     };
 
     init();
     animate();
 
     function init() {
-        container = document.getElementById('hero-canvas-container');
+        container = document.getElementById('contact-canvas');
         if (!container) return;
 
         wHalf = container.clientWidth / 2;
@@ -31,8 +29,10 @@
 
         scene = new THREE.Scene();
 
-        camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 1, 2000);
-        camera.position.z = 400;
+        camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 1, 2000);
+        camera.position.z = 300;
+        camera.position.y = 100;
+        camera.lookAt(0, 0, 0);
 
         renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -40,55 +40,40 @@
         renderer.setClearColor(0x000000, 0);
         container.appendChild(renderer.domElement);
 
-        buildComplexGeometry();
-        buildParticles();
+        buildVortex();
 
         window.addEventListener('resize', onWindowResize, false);
         container.addEventListener('mousemove', onDocumentMouseMove, false);
     }
 
-    function buildComplexGeometry() {
-        // Outer Wireframe
-        const geometry = new THREE.IcosahedronGeometry(120, 1);
-        const material = new THREE.MeshBasicMaterial({
-            color: BRAND.orange,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.15
-        });
-        mainMesh = new THREE.Mesh(geometry, material);
-        scene.add(mainMesh);
-
-        // Inner solid core (Dark Charcoal)
-        const innerGeo = new THREE.IcosahedronGeometry(90, 2);
-        const innerMat = new THREE.MeshBasicMaterial({
-            color: BRAND.charcoal,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.3
-        });
-        innerMesh = new THREE.Mesh(innerGeo, innerMat);
-        scene.add(innerMesh);
-    }
-
-    function buildParticles() {
-        const particleCount = 200;
+    function buildVortex() {
+        const particleCount = 600;
         const geometry = new THREE.BufferGeometry();
         const positions = new Float32Array(particleCount * 3);
+        const sizes = new Float32Array(particleCount);
 
         for (let i = 0; i < particleCount; i++) {
-            positions[i * 3] = (Math.random() - 0.5) * 600;
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 600;
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 400;
+            // Cylindrical / vortex distribution
+            const theta = Math.random() * Math.PI * 2;
+            const y = (Math.random() - 0.5) * 400;
+            const r = 50 + Math.random() * 150 + (y * 0.2); // wider at top
+
+            positions[i * 3] = r * Math.cos(theta);
+            positions[i * 3 + 1] = y;
+            positions[i * 3 + 2] = r * Math.sin(theta);
+
+            sizes[i] = Math.random() * 4 + 1;
         }
 
         geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
 
+        // Custom shader material for glowing points
         const material = new THREE.PointsMaterial({
             size: 3,
             color: BRAND.orange,
             transparent: true,
-            opacity: 0.6,
+            opacity: 0.8,
             blending: THREE.AdditiveBlending
         });
 
@@ -106,8 +91,9 @@
     }
 
     function onDocumentMouseMove(event) {
-        mouseX = (event.clientX - wHalf) * 0.5;
-        mouseY = (event.clientY - hHalf) * 0.5;
+        const rect = container.getBoundingClientRect();
+        mouseX = (event.clientX - rect.left - wHalf) * 0.5;
+        mouseY = (event.clientY - rect.top - hHalf) * 0.5;
     }
 
     function animate() {
@@ -120,16 +106,21 @@
         targetCamY = mouseY * 0.5;
 
         camera.position.x += (targetCamX - camera.position.x) * 0.05;
-        camera.position.y += (-targetCamY - camera.position.y) * 0.05;
+        // Keep camera looking at center
         camera.lookAt(scene.position);
 
-        mainMesh.rotation.x += 0.001;
-        mainMesh.rotation.y += 0.002;
-        
-        innerMesh.rotation.x -= 0.002;
-        innerMesh.rotation.y -= 0.001;
+        // Rotate vortex
+        particleSystem.rotation.y += 0.005;
 
-        particleSystem.rotation.y += 0.0005;
+        // Make particles gently drift up
+        const positions = particleSystem.geometry.attributes.position.array;
+        for (let i = 0; i < positions.length / 3; i++) {
+            positions[i * 3 + 1] += 0.5; // Drift up
+            if (positions[i * 3 + 1] > 200) {
+                positions[i * 3 + 1] = -200; // Reset to bottom
+            }
+        }
+        particleSystem.geometry.attributes.position.needsUpdate = true;
 
         renderer.render(scene, camera);
     }
