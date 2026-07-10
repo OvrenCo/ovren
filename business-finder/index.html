@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+(async function() {
+    if (sessionStorage.getItem('dev_authorized') === 'true') {
+        return;
+    }
+    document.documentElement.style.display = 'none';
+    try {
+        const res = await fetch('https://api.ipify.org?format=json');
+        const data = await res.json();
+        if (data.ip === '73.137.134.215') {
+            sessionStorage.setItem('dev_authorized', 'true');
+            document.documentElement.style.display = '';
+        } else {
+            window.location.href = '../index.html';
+        }
+    } catch (err) {
+        window.location.href = '../index.html';
+    }
+})();
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>WebGap Finder — Discover Businesses Without Websites</title>
+<meta name="description" content="Find local businesses in any US area code that don't have a website yet — perfect for web design prospecting."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#0C0E14;--bg2:#13161F;--bg3:#1C202D;--bg4:#252A3A;
+--border:#2A2F42;--border2:#363D54;
+--accent:#6C63FF;--accent2:#8F88FF;--accent-dim:#3D3880;
+--green:#22C55E;--red:#EF4444;--amber:#F59E0B;--sky:#38BDF8;
+--white:#F8FAFC;--mid:#94A3B8;--muted:#4B5563;
+--font:'Inter',system-ui,sans-serif;--font-head:'Syne',system-ui,sans-serif;
+--sh:0 4px 24px rgba(0,0,0,.4);--sh-accent:0 4px 32px rgba(108,99,255,.25);
+--r:10px;--r2:16px;--r3:24px;
+--tr:.3s cubic-bezier(.25,.46,.45,.94)
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:var(--font);font-size:15px;line-height:1.6;min-height:100vh;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
+.orb1{width:600px;height:600px;background:radial-gradient(circle,rgba(108,99,255,.18) 0%,transparent 70%);top:-200px;left:-150px}
+.orb2{width:500px;height:500px;background:radial-gradient(circle,rgba(56,189,248,.10) 0%,transparent 70%);bottom:-150px;right:-100px}
+.wrap{position:relative;z-index:1;max-width:960px;margin:0 auto;padding:0 24px 80px}
+.header{padding:52px 0 0;text-align:center;margin-bottom:52px}
+.logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:36px}
+.logo-icon{width:40px;height:40px;background:linear-gradient(135deg,var(--accent),var(--sky));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.logo-text{font-family:var(--font-head);font-size:1.3rem;font-weight:800;color:var(--white);letter-spacing:-.02em}
+.logo-text span{color:var(--accent2)}
+.header-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(108,99,255,.12);border:1px solid rgba(108,99,255,.25);color:var(--accent2);font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:60px;margin-bottom:20px}
+.header-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent2);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+h1{font-family:var(--font-head);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:800;color:var(--white);line-height:1.06;letter-spacing:-.04em;margin-bottom:18px}
+h1 span{background:linear-gradient(135deg,var(--accent2),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.header-sub{font-size:1.05rem;color:var(--mid);max-width:560px;margin:0 auto;line-height:1.75}
+.search-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r3);padding:36px 36px 32px;margin-bottom:32px;position:relative;overflow:hidden}
+.search-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(108,99,255,.4),rgba(56,189,248,.3),transparent)}
+.sc-top{display:grid;grid-template-columns:1fr 1fr auto;gap:14px;align-items:end;margin-bottom:18px}
+.fg{display:flex;flex-direction:column;gap:7px}
+.fg label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mid)}
+.fg input,.fg select{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:13px 16px;font-family:var(--font);font-size:.95rem;color:var(--white);outline:none;transition:border-color .25s,box-shadow .25s;-webkit-appearance:none}
+.fg input::placeholder{color:var(--muted)}
+.fg select option{background:var(--bg3);color:var(--white)}
+.fg input:focus,.fg select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(108,99,255,.15)}
+.btn-search{background:linear-gradient(135deg,var(--accent),#8B5CF6);color:#fff;border:none;border-radius:var(--r);padding:13px 30px;font-family:var(--font);font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:var(--tr);white-space:nowrap;align-self:flex-end;box-shadow:var(--sh-accent)}
+.btn-search:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 36px rgba(108,99,255,.4)}
+.btn-search:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.sc-hint{display:flex;gap:18px;flex-wrap:wrap;margin-top:6px}
+.hint-chip{display:inline-flex;align-items:center;gap:7px;font-size:.74rem;color:var(--muted);cursor:pointer;transition:color .2s}
+.hint-chip:hover{color:var(--accent2)}
+.hint-chip strong{color:var(--mid)}
+.range-wrap{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.range-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mid);margin-bottom:8px}
+.range-wrap input[type=range]{flex:1;-webkit-appearance:none;height:4px;background:var(--border2);border-radius:99px;outline:none;cursor:pointer}
+.range-wrap input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;border:2px solid var(--bg)}
+.range-val{font-size:.8rem;font-weight:600;color:var(--accent2);min-width:52px;text-align:right}
+.status-bar{display:none;align-items:center;gap:14px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:14px 20px;margin-bottom:20px;font-size:.88rem}
+.status-bar.show{display:flex}
+.spin{width:18px;height:18px;border:2.5px solid var(--border2);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.status-msg{color:var(--mid);flex:1}
+.status-count{font-weight:700;color:var(--accent2)}
+.results-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap;gap:12px}
+.results-title{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mid)}
+.results-actions{display:flex;gap:10px}
+.btn-sm{display:inline-flex;align-items:center;gap:7px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:8px 16px;font-family:var(--font);font-size:.74rem;font-weight:600;color:var(--mid);cursor:pointer;transition:var(--tr)}
+.btn-sm:hover{border-color:var(--accent);color:var(--accent2);transform:translateY(-1px)}
+.result-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:22px 24px;margin-bottom:12px;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:start;transition:var(--tr);position:relative;overflow:hidden}
+.result-card:hover{border-color:var(--accent-dim);box-shadow:0 4px 32px rgba(108,99,255,.12);transform:translateY(-2px)}
+.result-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--accent),var(--sky));opacity:0;transition:opacity .3s}
+.result-card:hover::before{opacity:1}
+.rc-num{width:38px;height:38px;border-radius:10px;background:var(--bg4);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:var(--mid);flex-shrink:0;font-family:var(--font-head)}
+.rc-body{min-width:0}
+.rc-name{font-size:1.02rem;font-weight:700;color:var(--white);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rc-type{display:inline-flex;align-items:center;gap:5px;font-size:.69rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--sky);background:rgba(56,189,248,.1);border:1px solid rgba(56,189,248,.2);padding:3px 10px;border-radius:60px;margin-bottom:10px}
+.rc-meta{display:flex;flex-direction:column;gap:5px}
+.rc-meta-row{display:flex;align-items:flex-start;gap:8px;font-size:.84rem;color:var(--mid)}
+.rc-right{display:flex;flex-direction:column;gap:8px;align-items:flex-end;flex-shrink:0}
+.no-web-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#FCA5A5;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:60px;white-space:nowrap}
+.no-web-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#EF4444;animation:pulse 1.8s ease-in-out infinite}
+.prospect-btn{background:rgba(108,99,255,.15);border:1px solid rgba(108,99,255,.3);color:var(--accent2);font-family:var(--font);font-size:.72rem;font-weight:700;padding:8px 16px;border-radius:var(--r);cursor:pointer;transition:var(--tr);white-space:nowrap}
+.prospect-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:translateY(-1px);box-shadow:var(--sh-accent)}
+.rc-maps{display:inline-flex;align-items:center;gap:5px;font-size:.74rem;color:var(--muted);margin-top:6px;transition:color .2s;cursor:pointer}
+.rc-maps:hover{color:var(--sky)}
+.empty{text-align:center;padding:64px 24px;color:var(--mid)}
+.empty-icon{font-size:3rem;margin-bottom:18px;opacity:.4}
+.empty h3{font-family:var(--font-head);font-size:1.4rem;color:var(--white);margin-bottom:10px}
+.empty p{font-size:.9rem;line-height:1.75;max-width:440px;margin:0 auto}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px}
+.stat{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r2);padding:20px;text-align:center}
+.stat-num{font-family:var(--font-head);font-size:1.9rem;font-weight:800;color:var(--accent2);line-height:1;margin-bottom:4px}
+.stat-label{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tip-card{background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:var(--r2);padding:20px 22px;margin-bottom:28px;display:flex;gap:14px;align-items:flex-start;font-size:.87rem;color:rgba(255,255,255,.7);line-height:1.7}
+.tip-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+.toast{position:fixed;bottom:28px;right:28px;z-index:9999;background:var(--bg3);border:1px solid var(--green);border-radius:var(--r);padding:14px 22px;font-size:.88rem;font-weight:600;color:var(--green);box-shadow:var(--sh);display:flex;align-items:center;gap:10px;transform:translateY(80px);opacity:0;transition:transform .4s,opacity .4s}
+.toast.show{transform:translateY(0);opacity:1}
+.site-footer{text-align:center;padding-top:40px;border-top:1px solid var(--border);font-size:.78rem;color:var(--muted);margin-top:60px}
+.site-footer a{color:var(--accent2)}
+@media(max-width:640px){
+  .sc-top{grid-template-columns:1fr 1fr}
+  .btn-search{grid-column:span 2}
+  .result-card{grid-template-columns:auto 1fr}
+  .rc-right{flex-direction:row;flex-wrap:wrap;grid-column:span 2;padding-left:56px}
+  .stats-row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="wrap">
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">🌐</div>
+      <div class="logo-text">Web<span>Gap</span> Finder</div>
+    </div>
+    <div class="header-badge">Lead Generation Tool</div>
+    <h1>Find Businesses<br><span>Without Websites</span></h1>
+    <p class="header-sub">Enter a US area code to discover local businesses that have no website yet &mdash; your next clients are waiting.</p>
+  </header>
+
+  <div class="search-card">
+    <div class="sc-top">
+      <div class="fg">
+        <label for="area-code">Area Code</label>
+        <input type="text" id="area-code" maxlength="3" placeholder="e.g. 404" inputmode="numeric" autocomplete="off"/>
+      </div>
+      <div class="fg">
+        <label for="category">Business Type</label>
+        <select id="category">
+          <option value="all">All Businesses</option>
+          <option value="restaurant">Restaurants &amp; Food</option>
+          <option value="shop">Retail Shops</option>
+          <option value="beauty">Beauty &amp; Salon</option>
+          <option value="auto">Auto Services</option>
+          <option value="health">Health &amp; Medical</option>
+          <option value="contractor">Contractors</option>
+          <option value="fitness">Fitness &amp; Sports</option>
+          <option value="pet">Pet Services</option>
+        </select>
+      </div>
+      <button class="btn-search" id="search-btn" onclick="runSearch()">Search</button>
+    </div>
+    <div style="margin-bottom:18px">
+      <div class="range-label">Search Radius: <span id="radius-label">10 km</span></div>
+      <div class="range-wrap">
+        <input type="range" id="radius" min="3" max="30" value="10" step="1" oninput="document.getElementById('radius-label').textContent=this.value+' km'"/>
+        <span class="range-val" id="radius-show">10 km</span>
+      </div>
+    </div>
+    <div class="sc-hint">
+      <span style="font-size:.72rem;color:var(--muted);font-weight:600;letter-spacing:.1em;text-transform:uppercase">Quick fill:</span>
+      <span class="hint-chip" onclick="fillArea('404')"><strong>404</strong> Atlanta</span>
+      <span class="hint-chip" onclick="fillArea('212')"><strong>212</strong> New York</span>
+      <span class="hint-chip" onclick="fillArea('713')"><strong>713</strong> Houston</span>
+      <span class="hint-chip" onclick="fillArea('305')"><strong>305</strong> Miami</span>
+      <span class="hint-chip" onclick="fillArea('312')"><strong>312</strong> Chicago</span>
+      <span class="hint-chip" onclick="fillArea('323')"><strong>323</strong> Los Angeles</span>
+      <span class="hint-chip" onclick="fillArea('214')"><strong>214</strong> Dallas</span>
+      <span class="hint-chip" onclick="fillArea('602')"><strong>602</strong> Phoenix</span>
+    </div>
+  </div>
+
+  <div class="status-bar" id="status-bar">
+    <div class="spin"></div>
+    <div class="status-msg" id="status-msg">Searching...</div>
+    <div class="status-count" id="status-count"></div>
+  </div>
+
+  <div id="results-area"></div>
+
+  <footer class="site-footer">
+    <p>Data sourced from <a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> via the <a href="https://overpass-api.de" target="_blank">Overpass API</a> &mdash; free &amp; no API key needed.</p>
+    <p style="margin-top:6px">Results show businesses in OSM without a listed website. Coverage varies by region. <strong style="color:var(--amber)">Always verify before outreach.</strong></p>
+  </footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const AREA_CODES={
+  '201':'40.7282,-74.0776','202':'38.9072,-77.0369','203':'41.3083,-72.9279',
+  '205':'33.5186,-86.8104','206':'47.6062,-122.3321','207':'44.3106,-69.7795',
+  '208':'43.6150,-116.2023','209':'37.9577,-120.9610','210':'29.4241,-98.4936',
+  '212':'40.7128,-74.0060','213':'34.0522,-118.2437','214':'32.7767,-96.7970',
+  '215':'39.9526,-75.1652','216':'41.4993,-81.6944','217':'39.7983,-89.6544',
+  '219':'41.5868,-87.3382','225':'30.4515,-91.1871','228':'30.4067,-88.9420',
+  '229':'31.5785,-84.1557','231':'43.7434,-85.6236','239':'26.5620,-81.9495',
+  '240':'39.0840,-77.1528','248':'42.6064,-83.1498','251':'30.6954,-88.0399',
+  '252':'35.5801,-77.3777','253':'47.2529,-122.4443','256':'34.7304,-86.5861',
+  '260':'41.0793,-85.1394','262':'42.7261,-87.7828','267':'40.0024,-75.1174',
+  '269':'42.3291,-85.1872','270':'36.9903,-86.4436','281':'29.6911,-95.2198',
+  '301':'39.0840,-77.1528','302':'39.7391,-75.5398','303':'39.7392,-104.9903',
+  '304':'38.3498,-81.6326','305':'25.7617,-80.1918','307':'41.1400,-104.8202',
+  '308':'40.9264,-98.3420','309':'40.6936,-89.5890','310':'34.0195,-118.4912',
+  '312':'41.8781,-87.6298','313':'42.3314,-83.0458','314':'38.6270,-90.1994',
+  '315':'43.0481,-76.1474','316':'37.6872,-97.3301','317':'39.7684,-86.1581',
+  '318':'32.5252,-93.7502','319':'41.6611,-91.5302','320':'45.5579,-94.1632',
+  '321':'28.5383,-81.3792','323':'34.0522,-118.2437','325':'32.4487,-99.7331',
+  '330':'41.1003,-81.5224','334':'32.3792,-86.3077','336':'36.0999,-79.8273',
+  '337':'30.2241,-92.0198','347':'40.7128,-73.9442','352':'29.1872,-82.1401',
+  '360':'47.0379,-122.9007','361':'27.8006,-97.3964','386':'29.2108,-81.3274',
+  '401':'41.8240,-71.4128','402':'41.2565,-95.9345','404':'33.7490,-84.3880',
+  '405':'35.4676,-97.5164','406':'46.8797,-110.3626','407':'28.5383,-81.3792',
+  '408':'37.3382,-121.8863','409':'30.0802,-94.1266','410':'39.2904,-76.6122',
+  '412':'40.4406,-79.9959','413':'42.1015,-72.5898','414':'43.0389,-87.9065',
+  '415':'37.7749,-122.4194','417':'37.2153,-93.2982','419':'41.6828,-83.5554',
+  '423':'35.0456,-85.3097','424':'33.9425,-118.4081','425':'47.6101,-122.2015',
+  '432':'31.8457,-102.3676','434':'37.4138,-79.1422','435':'39.3210,-111.0937',
+  '440':'41.3995,-82.0118','443':'39.2904,-76.6122','469':'32.7767,-96.7970',
+  '470':'33.7490,-84.3880','478':'32.8407,-83.6324','479':'36.0726,-94.2088',
+  '480':'33.4255,-111.9400','484':'40.2677,-75.7532','501':'34.7465,-92.2896',
+  '502':'38.2527,-85.7585','503':'45.5231,-122.6765','504':'29.9511,-90.0715',
+  '505':'35.0844,-106.6504','507':'44.0121,-92.4802','508':'42.0001,-71.5243',
+  '509':'47.6588,-117.4260','510':'37.8044,-122.2712','512':'30.2672,-97.7431',
+  '513':'39.1031,-84.5120','515':'41.5868,-93.6250','516':'40.7282,-73.5939',
+  '517':'42.7325,-84.5555','518':'42.6526,-73.7562','520':'32.2226,-110.9747',
+  '530':'38.5816,-121.4944','540':'37.2710,-79.9414','541':'44.9429,-123.0351',
+  '559':'36.7378,-119.7871','561':'26.7153,-80.0534','562':'33.7701,-118.1937',
+  '563':'41.5236,-90.5776','567':'41.6639,-83.5552','571':'38.8816,-77.1071',
+  '573':'38.9517,-92.3341','574':'41.6764,-86.2520','575':'32.3199,-106.7637',
+  '580':'35.3867,-99.4030','585':'43.1566,-77.6088','586':'42.5503,-82.9188',
+  '601':'32.2988,-90.1848','602':'33.4484,-112.0740','603':'43.2081,-71.5376',
+  '605':'44.2998,-99.4388','606':'38.1873,-83.4321','607':'42.1229,-75.9180',
+  '608':'43.0731,-89.4012','609':'40.2171,-74.7429','610':'40.0024,-75.3177',
+  '612':'44.9778,-93.2650','614':'39.9612,-82.9988','615':'36.1627,-86.7816',
+  '616':'42.9634,-85.6681','617':'42.3601,-71.0589','618':'38.5201,-89.9800',
+  '619':'32.7157,-117.1611','620':'37.7054,-100.0219','623':'33.5387,-112.2621',
+  '626':'34.1478,-117.8281','630':'41.8500,-88.0737','631':'40.9176,-73.1282',
+  '636':'38.4406,-90.5677','641':'41.9231,-93.6001','646':'40.7128,-74.0060',
+  '650':'37.4419,-122.1430','651':'44.9537,-93.0900','657':'33.7879,-117.8531',
+  '660':'38.9106,-93.3677','661':'35.3733,-119.0187','662':'34.2576,-88.7034',
+  '678':'33.7490,-84.3880','681':'38.3498,-81.6326','682':'32.7555,-97.3308',
+  '701':'46.8772,-96.7898','702':'36.1699,-115.1398','703':'38.8816,-77.1071',
+  '704':'35.2271,-80.8431','706':'33.9519,-83.3576','707':'38.2402,-122.6367',
+  '708':'41.7003,-87.7767','712':'42.0308,-96.3003','713':'29.7604,-95.3698',
+  '714':'33.8675,-117.9143','715':'45.1632,-89.0455','716':'42.8864,-78.8784',
+  '717':'40.2732,-76.8839','718':'40.6501,-73.9496','719':'38.8339,-104.8214',
+  '720':'39.7392,-104.9903','724':'40.6059,-80.2366','727':'27.7676,-82.6403',
+  '731':'35.6151,-88.8139','732':'40.4774,-74.2591','734':'42.2808,-83.7430',
+  '737':'30.2672,-97.7431','740':'39.6062,-82.9988','747':'34.1478,-118.2608',
+  '754':'26.1224,-80.1373','757':'36.8529,-76.2859','760':'33.6953,-116.2325',
+  '762':'33.9519,-83.3576','763':'45.0522,-93.4564','765':'40.4173,-86.9237',
+  '770':'33.9526,-84.5499','772':'27.2252,-80.2518','773':'41.8781,-87.6298',
+  '775':'39.5296,-119.8138','781':'42.4201,-71.0615','785':'39.0473,-95.6752',
+  '786':'25.7617,-80.1918','801':'40.7608,-111.8910','802':'44.2601,-72.5754',
+  '803':'34.0007,-81.0348','804':'37.5407,-77.4360','805':'34.4208,-119.6982',
+  '806':'33.5779,-101.8552','808':'21.3069,-157.8583','810':'43.1009,-83.6277',
+  '812':'38.6770,-87.5282','813':'27.9506,-82.4572','814':'40.9101,-77.0825',
+  '815':'42.2711,-89.0937','816':'39.0997,-94.5786','817':'32.7555,-97.3308',
+  '818':'34.1478,-118.2608','828':'35.5951,-82.5515','830':'29.3547,-99.1654',
+  '831':'36.6002,-121.8947','832':'29.7604,-95.3698','843':'32.7765,-79.9311',
+  '845':'41.4015,-74.0152','847':'42.2493,-87.8584','848':'40.2677,-74.7432',
+  '850':'30.4213,-87.2169','856':'39.8329,-75.0435','857':'42.3601,-71.0589',
+  '858':'32.8328,-117.2712','859':'38.0406,-84.5037','860':'41.7637,-72.6851',
+  '862':'40.7357,-74.1724','863':'27.9506,-81.9498','864':'34.8526,-82.3940',
+  '865':'35.9606,-83.9207','870':'35.2010,-91.8318','872':'41.8781,-87.6298',
+  '878':'40.4406,-79.9959','901':'35.1495,-90.0490','903':'33.2148,-95.9036',
+  '904':'30.3322,-81.6557','907':'61.2181,-149.9003','908':'40.5795,-74.5714',
+  '909':'34.1083,-117.2898','910':'34.2257,-77.9447','912':'31.9824,-81.0998',
+  '913':'39.1155,-94.6268','914':'41.0534,-73.7629','915':'31.7619,-106.4850',
+  '916':'38.5816,-121.4944','917':'40.7128,-74.0060','918':'36.1540,-95.9928',
+  '919':'35.7796,-78.6382','920':'44.5133,-88.0133','925':'37.9161,-121.9807',
+  '928':'34.5400,-112.4685','929':'40.6501,-73.9496','931':'36.2994,-87.3595',
+  '936':'30.7435,-95.3691','937':'39.7589,-84.1916','940':'33.9137,-98.4934',
+  '941':'27.3364,-82.5307','947':'42.6064,-83.1498','949':'33.6846,-117.8265',
+  '951':'33.9533,-117.3961','952':'44.8850,-93.5002','954':'26.1224,-80.1373',
+  '956':'27.5006,-99.5075','970':'39.5501,-105.7821','971':'45.5231,-122.6765',
+  '972':'32.7767,-96.7970','973':'40.7357,-74.1724','978':'42.6334,-71.3162',
+  '979':'30.6280,-96.3344','980':'35.2271,-80.8431','984':'35.7796,-78.6382',
+  '985':'29.9511,-90.0715','989':'43.5978,-84.7675'
+};
+
+const CITY_NAMES={
+  '201':'Jersey City, NJ','202':'Washington, DC','203':'New Haven, CT',
+  '205':'Birmingham, AL','206':'Seattle, WA','207':'Augusta, ME',
+  '208':'Boise, ID','209':'Stockton, CA','210':'San Antonio, TX',
+  '212':'New York, NY','213':'Los Angeles, CA','214':'Dallas, TX',
+  '215':'Philadelphia, PA','216':'Cleveland, OH','217':'Springfield, IL',
+  '219':'Hammond, IN','225':'Baton Rouge, LA','228':'Biloxi, MS',
+  '229':'Albany, GA','239':'Fort Myers, FL','240':'Montgomery Co., MD',
+  '248':'Pontiac, MI','251':'Mobile, AL','252':'Greenville, NC',
+  '253':'Tacoma, WA','256':'Huntsville, AL','260':'Fort Wayne, IN',
+  '262':'Waukesha, WI','267':'Philadelphia, PA','269':'Kalamazoo, MI',
+  '270':'Bowling Green, KY','281':'Houston, TX','301':'Rockville, MD',
+  '302':'Wilmington, DE','303':'Denver, CO','304':'Charleston, WV',
+  '305':'Miami, FL','307':'Cheyenne, WY','308':'Grand Island, NE',
+  '309':'Peoria, IL','310':'Santa Monica, CA','312':'Chicago, IL',
+  '313':'Detroit, MI','314':'St. Louis, MO','315':'Syracuse, NY',
+  '316':'Wichita, KS','317':'Indianapolis, IN','318':'Shreveport, LA',
+  '319':'Cedar Rapids, IA','320':'St. Cloud, MN','321':'Orlando, FL',
+  '323':'Los Angeles, CA','325':'Abilene, TX','330':'Akron, OH',
+  '334':'Montgomery, AL','336':'Greensboro, NC','337':'Lafayette, LA',
+  '347':'Bronx, NY','352':'Gainesville, FL','360':'Olympia, WA',
+  '361':'Corpus Christi, TX','386':'Daytona Beach, FL','401':'Providence, RI',
+  '402':'Omaha, NE','404':'Atlanta, GA','405':'Oklahoma City, OK',
+  '406':'Helena, MT','407':'Orlando, FL','408':'San Jose, CA',
+  '409':'Beaumont, TX','410':'Baltimore, MD','412':'Pittsburgh, PA',
+  '413':'Springfield, MA','414':'Milwaukee, WI','415':'San Francisco, CA',
+  '417':'Springfield, MO','419':'Toledo, OH','423':'Chattanooga, TN',
+  '424':'Los Angeles, CA','425':'Bellevue, WA','432':'Midland, TX',
+  '434':'Lynchburg, VA','435':'Salt Lake City, UT','440':'Lorain, OH',
+  '443':'Baltimore, MD','469':'Dallas, TX','470':'Atlanta, GA',
+  '478':'Macon, GA','479':'Fayetteville, AR','480':'Mesa, AZ',
+  '484':'Allentown, PA','501':'Little Rock, AR','502':'Louisville, KY',
+  '503':'Portland, OR','504':'New Orleans, LA','505':'Albuquerque, NM',
+  '507':'Rochester, MN','508':'Worcester, MA','509':'Spokane, WA',
+  '510':'Oakland, CA','512':'Austin, TX','513':'Cincinnati, OH',
+  '515':'Des Moines, IA','516':'Hempstead, NY','517':'Lansing, MI',
+  '518':'Albany, NY','520':'Tucson, AZ','530':'Sacramento, CA',
+  '540':'Roanoke, VA','541':'Salem, OR','559':'Fresno, CA',
+  '561':'West Palm Beach, FL','562':'Long Beach, CA','563':'Davenport, IA',
+  '567':'Toledo, OH','571':'Arlington, VA','573':'Columbia, MO',
+  '574':'South Bend, IN','575':'Las Cruces, NM','580':'Lawton, OK',
+  '585':'Rochester, NY','586':'Warren, MI','601':'Jackson, MS',
+  '602':'Phoenix, AZ','603':'Concord, NH','605':'Pierre, SD',
+  '606':'Ashland, KY','607':'Binghamton, NY','608':'Madison, WI',
+  '609':'Trenton, NJ','610':'West Chester, PA','612':'Minneapolis, MN',
+  '614':'Columbus, OH','615':'Nashville, TN','616':'Grand Rapids, MI',
+  '617':'Boston, MA','618':'East St. Louis, IL','619':'San Diego, CA',
+  '620':'Dodge City, KS','623':'Glendale, AZ','626':'Pasadena, CA',
+  '630':'Aurora, IL','631':'Suffolk Co., NY','636':'St. Charles, MO',
+  '641':'Mason City, IA','646':'New York, NY','650':'Palo Alto, CA',
+  '651':'St. Paul, MN','657':'Anaheim, CA','660':'Sedalia, MO',
+  '661':'Bakersfield, CA','662':'Tupelo, MS','678':'Atlanta, GA',
+  '681':'Charleston, WV','682':'Fort Worth, TX','701':'Fargo, ND',
+  '702':'Las Vegas, NV','703':'Arlington, VA','704':'Charlotte, NC',
+  '706':'Athens, GA','707':'Santa Rosa, CA','708':'Cicero, IL',
+  '712':'Council Bluffs, IA','713':'Houston, TX','714':'Anaheim, CA',
+  '715':'Wausau, WI','716':'Buffalo, NY','717':'Lancaster, PA',
+  '718':'Brooklyn, NY','719':'Colorado Springs, CO','720':'Denver, CO',
+  '724':'Pittsburgh, PA','727':'St. Petersburg, FL','731':'Jackson, TN',
+  '732':'New Brunswick, NJ','734':'Ann Arbor, MI','737':'Austin, TX',
+  '740':'Zanesville, OH','747':'Van Nuys, CA','754':'Fort Lauderdale, FL',
+  '757':'Norfolk, VA','760':'Palm Springs, CA','762':'Augusta, GA',
+  '763':'Plymouth, MN','765':'Lafayette, IN','770':'Marietta, GA',
+  '772':'Port St. Lucie, FL','773':'Chicago, IL','775':'Reno, NV',
+  '781':'Newton, MA','785':'Topeka, KS','786':'Miami, FL',
+  '801':'Salt Lake City, UT','802':'Burlington, VT','803':'Columbia, SC',
+  '804':'Richmond, VA','805':'Santa Barbara, CA','806':'Lubbock, TX',
+  '808':'Honolulu, HI','810':'Flint, MI','812':'Evansville, IN',
+  '813':'Tampa, FL','814':'State College, PA','815':'Rockford, IL',
+  '816':'Kansas City, MO','817':'Fort Worth, TX','818':'Burbank, CA',
+  '828':'Asheville, NC','830':'Kerrville, TX','831':'Salinas, CA',
+  '832':'Houston, TX','843':'Charleston, SC','845':'Poughkeepsie, NY',
+  '847':'Evanston, IL','848':'Toms River, NJ','850':'Pensacola, FL',
+  '856':'Camden, NJ','857':'Boston, MA','858':'San Diego, CA',
+  '859':'Lexington, KY','860':'Hartford, CT','862':'Newark, NJ',
+  '863':'Lakeland, FL','864':'Greenville, SC','865':'Knoxville, TN',
+  '870':'Jonesboro, AR','872':'Chicago, IL','878':'Pittsburgh, PA',
+  '901':'Memphis, TN','903':'Tyler, TX','904':'Jacksonville, FL',
+  '907':'Anchorage, AK','908':'Elizabeth, NJ','909':'San Bernardino, CA',
+  '910':'Wilmington, NC','912':'Savannah, GA','913':'Overland Park, KS',
+  '914':'Yonkers, NY','915':'El Paso, TX','916':'Sacramento, CA',
+  '917':'New York, NY','918':'Tulsa, OK','919':'Raleigh, NC',
+  '920':'Green Bay, WI','925':'Walnut Creek, CA','928':'Flagstaff, AZ',
+  '929':'Queens, NY','931':'Clarksville, TN','936':'Lufkin, TX',
+  '937':'Dayton, OH','940':'Wichita Falls, TX','941':'Sarasota, FL',
+  '947':'Troy, MI','949':'Irvine, CA','951':'Riverside, CA',
+  '952':'Eden Prairie, MN','954':'Fort Lauderdale, FL','956':'Laredo, TX',
+  '970':'Grand Junction, CO','971':'Portland, OR','972':'Dallas, TX',
+  '973':'Newark, NJ','978':'Lowell, MA','979':'Bryan, TX',
+  '980':'Charlotte, NC','984':'Raleigh, NC','985':'Houma, LA','989':'Bay City, MI'
+};
+
+function buildQuery(lat, lon, radiusKm, category) {
+  const r = radiusKm * 1000;
+  const ar = `(around:${r},${lat},${lon})`;
+  let f = [];
+  if (category === 'all') {
+    f = [`node["shop"]${ar}`,`node["amenity"~"restaurant|cafe|fast_food|bar|salon|dentist|doctors|gym|pharmacy|clinic|hotel|bakery|pub|bank"]${ar}`,`node["craft"]${ar}`,`way["shop"]${ar}`,`way["amenity"~"restaurant|cafe|fast_food|bar|salon|dentist|gym|pharmacy"]${ar}`];
+  } else if (category === 'restaurant') {
+    f = [`node["amenity"~"restaurant|cafe|fast_food|bar|food_court|bakery|pub"]${ar}`,`way["amenity"~"restaurant|cafe|fast_food|bar|bakery"]${ar}`];
+  } else if (category === 'shop') {
+    f = [`node["shop"~"clothes|electronics|furniture|hardware|books|florist|gift|jewellery|music|toys|convenience"]${ar}`,`way["shop"~"clothes|electronics|furniture|hardware|books|florist|gift"]${ar}`];
+  } else if (category === 'beauty') {
+    f = [`node["shop"~"hairdresser|beauty|cosmetics|tattoo|massage|nail_salon|barber"]${ar}`,`way["shop"~"hairdresser|beauty|cosmetics|tattoo"]${ar}`];
+  } else if (category === 'auto') {
+    f = [`node["shop"~"car_repair|tyres|car|fuel|car_parts|motorcycle"]${ar}`,`node["amenity"~"car_wash|car_rental|fuel"]${ar}`,`way["shop"~"car_repair|tyres|car"]${ar}`];
+  } else if (category === 'health') {
+    f = [`node["amenity"~"dentist|doctors|pharmacy|clinic|veterinary|hospital|optician"]${ar}`,`node["healthcare"]${ar}`,`way["amenity"~"dentist|doctors|pharmacy|clinic|veterinary"]${ar}`];
+  } else if (category === 'contractor') {
+    f = [`node["craft"~"plumber|electrician|carpenter|painter|roofer|hvac|locksmith|mason|welder"]${ar}`,`way["craft"]${ar}`];
+  } else if (category === 'fitness') {
+    f = [`node["leisure"~"fitness_centre|sports_centre"]${ar}`,`node["amenity"~"gym"]${ar}`,`way["leisure"~"fitness_centre|sports_centre"]${ar}`];
+  } else if (category === 'pet') {
+    f = [`node["shop"~"pet|pet_grooming|pet_supply|veterinary"]${ar}`,`node["amenity"~"veterinary"]${ar}`];
+  }
+  return `[out:json][timeout:45];\n(\n  ${f.join('\n  ')}\n);\nout body;`;
+}
+
+function typeLabel(tags) {
+  const fmt = v => v.replace(/_/g,' ').split(' ').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ');
+  if (tags.shop) return fmt(tags.shop);
+  if (tags.amenity) return fmt(tags.amenity);
+  if (tags.craft) return fmt(tags.craft)+' (Craft)';
+  if (tags.leisure) return fmt(tags.leisure);
+  if (tags.healthcare) return 'Healthcare';
+  return 'Business';
+}
+
+function fillArea(c){document.getElementById('area-code').value=c;}
+
+let lastResults=[];
+
+async function runSearch(){
+  const code=document.getElementById('area-code').value.trim();
+  const codeEl=document.getElementById('area-code');
+  if(!/^\d{3}$/.test(code)){codeEl.style.borderColor='var(--red)';codeEl.focus();setTimeout(()=>codeEl.style.borderColor='',1800);showToast('Please enter a valid 3-digit area code');return;}
+  if(!AREA_CODES[code]){showToast('Area code '+code+' not recognized. Try another.');return;}
+  const [lat,lon]=AREA_CODES[code].split(',').map(Number);
+  const city=CITY_NAMES[code]||'Unknown';
+  const radius=parseInt(document.getElementById('radius').value);
+  const category=document.getElementById('category').value;
+  const btn=document.getElementById('search-btn');
+  btn.disabled=true;btn.textContent='Searching...';
+  const sb=document.getElementById('status-bar');
+  sb.classList.add('show');
+  document.getElementById('status-msg').textContent='Searching '+city+' for businesses without websites...';
+  document.getElementById('status-count').textContent='';
+  document.getElementById('results-area').innerHTML='';
+  lastResults=[];
+  try{
+    const q=buildQuery(lat,lon,radius,category);
+    const resp=await fetch('https://overpass-api.de/api/interpreter',{method:'POST',body:'data='+encodeURIComponent(q),headers:{'Content-Type':'application/x-www-form-urlencoded'}});
+    if(!resp.ok)throw new Error('Overpass API error: '+resp.status);
+    const data=await resp.json();
+    document.getElementById('status-msg').textContent='Filtering results...';
+    const noWeb=data.elements.filter(el=>{
+      const t=el.tags||{};
+      return t.name&&!t.website&&!t['contact:website']&&!t.url&&t.name.length>1;
+    });
+    const seen=new Set();
+    const deduped=noWeb.filter(el=>{
+      const k=(el.tags.name||'').toLowerCase().trim();
+      if(seen.has(k))return false;seen.add(k);return true;
+    });
+    const picks=deduped.sort(()=>Math.random()-.5).slice(0,10);
+    lastResults=picks;
+    sb.classList.remove('show');btn.disabled=false;btn.textContent='Search';
+    renderResults(picks,city,code,deduped.length,data.elements.length);
+  }catch(err){
+    sb.classList.remove('show');btn.disabled=false;btn.textContent='Search';
+    document.getElementById('results-area').innerHTML=`<div class="empty"><div class="empty-icon">⚠️</div><h3>Connection Error</h3><p>Could not reach the Overpass API. Please wait 30 seconds and try again.<br><small style="color:var(--muted)">${err.message}</small></p></div>`;
+    showToast('API error — try again in 30s');
+  }
+}
+
+function escH(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+function renderResults(items,city,code,noWebCount,total){
+  const ra=document.getElementById('results-area');
+  if(!items.length){
+    ra.innerHTML=`<div class="empty"><div class="empty-icon">🔍</div><h3>No Results Found</h3><p>OpenStreetMap doesn't have enough data for this area/category. Try:<br>• "All Businesses" category<br>• Increasing the search radius<br>• A nearby area code<br><br>Metro areas have better OSM coverage than rural areas.</p></div>`;
+    return;
+  }
+  let h=`<div class="stats-row">
+    <div class="stat"><div class="stat-num">${noWebCount}</div><div class="stat-label">Without Website</div></div>
+    <div class="stat"><div class="stat-num">${total}</div><div class="stat-label">Total in OSM</div></div>
+    <div class="stat"><div class="stat-num">${items.length}</div><div class="stat-label">Shown Below</div></div>
+  </div>
+  <div class="tip-card"><span class="tip-icon">💡</span><div>Found in <strong>${city} (${code})</strong> — no website listed in OpenStreetMap. Always verify each lead before outreach. OSM data may not be fully current.</div></div>
+  <div class="results-hdr">
+    <span class="results-title">📋 ${items.length} Leads — ${city}</span>
+    <div class="results-actions">
+      <button class="btn-sm" onclick="copyAll()">📋 Copy All</button>
+      <button class="btn-sm" onclick="exportCSV()">⬇️ Export CSV</button>
+    </div>
+  </div>`;
+  items.forEach((item,i)=>{
+    const t=item.tags||{};
+    const name=t.name||'Unknown';
+    const type=typeLabel(t);
+    const phone=t.phone||t['contact:phone']||t['phone:mobile']||null;
+    const email=t.email||t['contact:email']||null;
+    const street=[t['addr:housenumber'],t['addr:street']].filter(Boolean).join(' ');
+    const addrParts=[street,t['addr:city'],t['addr:state']].filter(Boolean);
+    const addr=addrParts.join(', ')||null;
+    const hours=t.opening_hours||null;
+    const lat2=item.lat||(item.center&&item.center.lat);
+    const lon2=item.lon||(item.center&&item.center.lon);
+    const mapsUrl=lat2?`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name)}&center=${lat2},${lon2}`:`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name+' '+city)}`;
+    const fbUrl=`https://www.facebook.com/search/pages/?q=${encodeURIComponent(name+' '+(t['addr:city']||city))}`;
+    h+=`<div class="result-card" id="rc-${i}">
+      <div class="rc-num">${String(i+1).padStart(2,'0')}</div>
+      <div class="rc-body">
+        <div class="rc-name">${escH(name)}</div>
+        <div class="rc-type">${escH(type)}</div>
+        <div class="rc-meta">
+          ${addr?`<div class="rc-meta-row">📍 ${escH(addr)}</div>`:`<div class="rc-meta-row" style="color:var(--muted);font-style:italic">📍 Address not listed</div>`}
+          ${phone?`<div class="rc-meta-row">📞 <a href="tel:${escH(phone)}" style="color:var(--sky)">${escH(phone)}</a></div>`:`<div class="rc-meta-row" style="color:var(--muted);font-style:italic">📞 Phone not listed</div>`}
+          ${email?`<div class="rc-meta-row">✉️ <a href="mailto:${escH(email)}" style="color:var(--sky)">${escH(email)}</a></div>`:''}
+          ${hours?`<div class="rc-meta-row">🕐 ${escH(hours)}</div>`:''}
+          <div class="rc-meta-row" style="gap:14px;margin-top:6px">
+            <a href="${mapsUrl}" target="_blank" rel="noopener" class="rc-maps">🗺 View on Maps</a>
+            <a href="${fbUrl}" target="_blank" rel="noopener" class="rc-maps" style="color:var(--muted)">🔵 Search on Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div class="rc-right">
+        <div class="no-web-badge">No Website</div>
+        <button class="prospect-btn" onclick="copyCard(${i})">📋 Copy Lead</button>
+      </div>
+    </div>`;
+  });
+  ra.innerHTML=h;
+}
+
+function copyCard(i){
+  const item=lastResults[i];if(!item)return;
+  const t=item.tags||{};
+  const addr=[t['addr:housenumber'],t['addr:street'],t['addr:city'],t['addr:state']].filter(Boolean).join(', ')||'N/A';
+  const text=`Business: ${t.name||''}\nType: ${typeLabel(t)}\nAddress: ${addr}\nPhone: ${t.phone||t['contact:phone']||'N/A'}\nEmail: ${t.email||t['contact:email']||'N/A'}\nWebsite: NONE\n---`;
+  navigator.clipboard.writeText(text).then(()=>showToast('Lead copied to clipboard!'));
+}
+
+function copyAll(){
+  if(!lastResults.length){showToast('No results to copy');return;}
+  const lines=lastResults.map((item,i)=>{
+    const t=item.tags||{};
+    const addr=[t['addr:housenumber'],t['addr:street'],t['addr:city'],t['addr:state']].filter(Boolean).join(', ')||'N/A';
+    return `${i+1}. ${t.name||''} | ${typeLabel(t)} | ${addr} | ${t.phone||t['contact:phone']||'N/A'} | No Website`;
+  });
+  navigator.clipboard.writeText(lines.join('\n')).then(()=>showToast('All leads copied!'));
+}
+
+function exportCSV(){
+  if(!lastResults.length){showToast('No results to export');return;}
+  const rows=[['#','Name','Type','Address','Phone','Email','Hours','No Website']];
+  lastResults.forEach((item,i)=>{
+    const t=item.tags||{};
+    const addr=[t['addr:housenumber'],t['addr:street'],t['addr:city'],t['addr:state']].filter(Boolean).join(', ');
+    rows.push([i+1,t.name||'',typeLabel(t),addr,t.phone||t['contact:phone']||'',t.email||t['contact:email']||'',t.opening_hours||'','TRUE']);
+  });
+  const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\n');
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download='webgap_leads_'+(document.getElementById('area-code').value||'000')+'.csv';
+  a.click();
+  showToast('CSV downloaded!');
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3200);
+}
+
+document.getElementById('area-code').addEventListener('keydown',e=>{if(e.key==='Enter')runSearch();});
+document.getElementById('radius').addEventListener('input',function(){
+  document.getElementById('radius-label').textContent=this.value+' km';
+  document.getElementById('radius-show').textContent=this.value+' km';
+});
+</script>
+</body>
+</html>
