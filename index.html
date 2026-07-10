@@ -511,15 +511,34 @@
                 const targetSection = document.querySelector(targetId);
                 if (targetSection) {
                     e.preventDefault();
-                    
-                    // Smoothly scroll to the section
                     targetSection.scrollIntoView({ behavior: 'smooth' });
                     
-                    // Update the URL to look clean (e.g., /services instead of /#services)
-                    const cleanPath = targetId === '#home' ? '/' : '/' + targetId.substring(1);
+                    // Update the URL to look clean (/home, /services, etc.)
+                    const cleanPath = targetId === '#home' ? '/home' : '/' + targetId.substring(1);
                     history.pushState(null, null, cleanPath);
                 }
             });
+        });
+
+        // Handle page load URL cleanup (for 404 redirects like ?p=/services)
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const redirectPath = urlParams.get('p');
+            
+            if (redirectPath) {
+                // Clean the URL bar
+                history.replaceState(null, null, redirectPath);
+                
+                // Scroll to the corresponding section if it exists
+                const targetId = '#' + redirectPath.replace('/', '');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    setTimeout(() => targetSection.scrollIntoView({ behavior: 'smooth' }), 100);
+                }
+            } else if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
+                // If just loading the root domain, default the URL to /home
+                history.replaceState(null, null, '/home');
+            }
         });
     </script>
 </body>
