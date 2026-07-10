@@ -485,18 +485,42 @@
 
     <!-- Theme Toggle Logic & Plan Selection Logic -->
     <script>
+        // Theme Toggle Logic
         const btn = document.getElementById('theme-toggle');
-        btn.addEventListener('click', () => {
-            document.body.classList.toggle('theme-dark');
-            document.body.classList.toggle('theme-light');
-        });
+        if(btn) {
+            btn.addEventListener('click', () => {
+                document.body.classList.toggle('theme-dark');
+                document.body.classList.toggle('theme-light');
+            });
+        }
 
+        // Plan Selection Logic
         function selectPlan(planName) {
             const selectElement = document.getElementById('plan-select');
             if (selectElement) {
                 selectElement.value = planName;
             }
         }
+
+        // Smooth Scroll & Clean URL Logic (Removes the #hashtag)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return; // Ignore empty hashes
+
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    e.preventDefault();
+                    
+                    // Smoothly scroll to the section
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Update the URL to look clean (e.g., /services instead of /#services)
+                    const cleanPath = targetId === '#home' ? '/' : '/' + targetId.substring(1);
+                    history.pushState(null, null, cleanPath);
+                }
+            });
+        });
     </script>
 </body>
 </html>
