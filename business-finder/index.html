@@ -392,7 +392,7 @@ const CITY_NAMES={
 
 function buildQuery(lat, lon, radiusKm, category) {
   const r = radiusKm * 1000;
-  const ar = `(around:${r},${lat},${lon})`;
+  const ar = `(around:${r},${lat},${lon});`;
   let f = [];
   if (category === 'all') {
     f = [`node["shop"]${ar}`,`node["amenity"~"restaurant|cafe|fast_food|bar|salon|dentist|doctors|gym|pharmacy|clinic|hotel|bakery|pub|bank"]${ar}`,`node["craft"]${ar}`,`way["shop"]${ar}`,`way["amenity"~"restaurant|cafe|fast_food|bar|salon|dentist|gym|pharmacy"]${ar}`];
