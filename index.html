@@ -1235,7 +1235,7 @@
             <div class="footer-divider"></div>
             
             <div class="footer-bottom" style="justify-content: space-between; align-items: center; display: flex;">
-                <div class="footer-version" id="dev-trigger" style="font-size: 0.8rem; color: var(--text-muted); opacity: 0.8; cursor: pointer; user-select: none;">v1.3.6</div>
+                <div class="footer-version" style="font-size: 0.8rem; color: var(--text-muted); opacity: 0.8;">v1.3.6</div>
                 <div class="footer-legal">
                     <a href="#">Privacy Policy</a>
                     <a href="#">Terms of Service</a>
@@ -1243,95 +1243,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- Secret Developer Login Modal -->
-    <div id="dev-modal" style="display: none; position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); justify-content: center; align-items: center;">
-        <div style="background: #111; border: 1px solid #333; padding: 40px; border-radius: 12px; width: 100%; max-width: 400px; text-align: center; color: #fff; font-family: sans-serif; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
-            <div style="font-size: 2rem; margin-bottom: 20px;">🛡️</div>
-            <h3 style="font-family: inherit; font-size: 1.25rem; font-weight: 600; margin-bottom: 10px; color: #fff;">Developer Authentication</h3>
-            <p style="font-size: 0.85rem; color: #888; margin-bottom: 24px;">Enter password to access WebGap Finder tools.</p>
-            <div style="margin-bottom: 20px; text-align: left;">
-                <label for="dev-pass" style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #666; display: block; margin-bottom: 8px;">Password</label>
-                <input type="password" id="dev-pass" style="width: 100%; background: #222; border: 1px solid #444; border-radius: 6px; padding: 12px; color: #fff; outline: none; font-size: 1rem;" placeholder="••••••••" />
-            </div>
-            <div id="dev-error" style="color: #ff4a4a; font-size: 0.85rem; margin-bottom: 20px; display: none;"></div>
-            <div style="display: flex; gap: 10px;">
-                <button id="dev-cancel" style="flex: 1; background: transparent; border: 1px solid #444; color: #aaa; padding: 12px; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">Cancel</button>
-                <button id="dev-submit" style="flex: 1; background: #6c63ff; border: none; color: #fff; padding: 12px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem;">Sign In</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Dev trigger script -->
-    <script>
-    (function(){
-        const trig = document.getElementById('dev-trigger');
-        const modal = document.getElementById('dev-modal');
-        const cancel = document.getElementById('dev-cancel');
-        const submit = document.getElementById('dev-submit');
-        const passInput = document.getElementById('dev-pass');
-        const errorDiv = document.getElementById('dev-error');
-        
-        let clicks = 0;
-        trig.addEventListener('click', () => {
-            clicks++;
-            if (clicks >= 5) {
-                clicks = 0;
-                modal.style.display = 'flex';
-                passInput.focus();
-            }
-            setTimeout(() => { if(clicks > 0) clicks = 0; }, 2000);
-        });
-
-        const closeModal = () => {
-            modal.style.display = 'none';
-            passInput.value = '';
-            errorDiv.style.display = 'none';
-        };
-
-        cancel.addEventListener('click', closeModal);
-
-        const handleAuth = async () => {
-            const val = passInput.value;
-            errorDiv.style.display = 'none';
-            
-            if (val !== 'OvrenCo11#') {
-                errorDiv.textContent = '❌ Incorrect password';
-                errorDiv.style.display = 'block';
-                return;
-            }
-
-            submit.disabled = true;
-            submit.textContent = 'Verifying IP...';
-
-            try {
-                const res = await fetch('https://api.ipify.org?format=json');
-                const data = await res.json();
-                const userIp = data.ip;
-
-                if (userIp === '73.137.134.215') {
-                    sessionStorage.setItem('dev_authorized', 'true');
-                    window.location.href = 'business-finder/index.html';
-                } else {
-                    errorDiv.textContent = '❌ Access Denied: Unauthorized Developer IP';
-                    errorDiv.style.display = 'block';
-                    submit.disabled = false;
-                    submit.textContent = 'Sign In';
-                }
-            } catch (err) {
-                errorDiv.textContent = '❌ IP Verification Failed. Please try again.';
-                errorDiv.style.display = 'block';
-                submit.disabled = false;
-                submit.textContent = 'Sign In';
-            }
-        };
-
-        submit.addEventListener('click', handleAuth);
-        passInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') handleAuth();
-        });
-    })();
-    </script>
 
     <!-- Three.js CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
