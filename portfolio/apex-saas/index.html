@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,6 +31,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
+            max-width: 100%;
             padding-top: 45px;
             position: relative;
         }
@@ -287,7 +288,7 @@
         }
 
         .badge::before {
-            content: '●';
+            content: 'â—';
             color: var(--accent-cyan);
             animation: pulse 2s infinite;
         }
@@ -953,7 +954,7 @@
         }
 
         .plan-features li::before {
-            content: '✓';
+            content: 'âœ“';
             color: var(--accent-cyan);
             font-weight: 800;
             display: inline-flex;
@@ -1062,8 +1063,8 @@
 
     <!-- Warning Banner -->
     <div class="portfolio-banner">
-        <span>✨ <strong>Portfolio Mockup Concept</strong> by <a href="/#portfolio">ovren.co/home</a> — This is a design demo. None of the content, registration, or SaaS metrics are real.</span>
-        <a href="/#portfolio" class="banner-back-btn">Back to Agency</a>
+        <span>âœ¨ <strong>Portfolio Mockup Concept</strong> by <a href="https://ovren.co/#portfolio">ovren.co/home</a> â€” This is a design demo. None of the content, registration, or SaaS metrics are real.</span>
+        <a href="https://ovren.co/#portfolio" class="banner-back-btn">Back to Agency</a>
     </div>
 
     <!-- Ambient background glows -->
@@ -1203,7 +1204,7 @@
                             <div class="acc-item active" onclick="activateFeature('db', this)">
                                 <div class="acc-hdr">
                                     <span>Dynamic Database Integration</span>
-                                    <span class="acc-icon">↓</span>
+                                    <span class="acc-icon">â†“</span>
                                 </div>
                                 <div class="acc-body">
                                     <p>Connect securely to Postgres, MySQL, MongoDB, and Snowflake in just three clicks. Full SSL encryption and OAuth support built-in.</p>
@@ -1213,7 +1214,7 @@
                             <div class="acc-item" onclick="activateFeature('ai', this)">
                                 <div class="acc-hdr">
                                     <span>AI Data Cleaning Models</span>
-                                    <span class="acc-icon">↓</span>
+                                    <span class="acc-icon">â†“</span>
                                 </div>
                                 <div class="acc-body">
                                     <p>Our autonomous pipelines scan incoming data records, detect standard duplicates, sanitize text strings, and log discrepancies.</p>
@@ -1223,7 +1224,7 @@
                             <div class="acc-item" onclick="activateFeature('webhook', this)">
                                 <div class="acc-hdr">
                                     <span>Instant Webhook Notifications</span>
-                                    <span class="acc-icon">↓</span>
+                                    <span class="acc-icon">â†“</span>
                                 </div>
                                 <div class="acc-body">
                                     <p>Ping Slack, Microsoft Teams, Discord, or run a custom HTTPS POST webhook whenever pipeline states trigger anomalies.</p>
@@ -1250,7 +1251,7 @@ const pool = new pg.Pool({
 });
 
 await pool.query('SELECT NOW()');
-console.log('✓ Database Connection Active');
+console.log('âœ“ Database Connection Active');
                         </div>
                         <div class="showcase-footer">
                             <span>Apex Terminal v2.1</span>
@@ -1391,7 +1392,7 @@ const pool = new pg.Pool({
 });
 
 await pool.query('SELECT NOW()');
-console.log('✓ Database Connection Active');`,
+console.log('âœ“ Database Connection Active');`,
                 status: "STATUS: SYNCED"
             },
             ai: {
@@ -1403,7 +1404,7 @@ dirty_rows = apex_ai.load_unstructured()
 
 # Run clean operations
 clean_batch = apex_ai.models.de_duplicate(dirty_rows)
-print(f"✓ AI Scan Completed. Removed {len(clean_batch)} dirty records.")`,
+print(f"âœ“ AI Scan Completed. Removed {len(clean_batch)} dirty records.")`,
                 status: "STATUS: DE-DUP COMPLETED"
             },
             webhook: {
@@ -1464,3 +1465,4 @@ print(f"✓ AI Scan Completed. Removed {len(clean_batch)} dirty records.")`,
     </script>
 </body>
 </html>
+

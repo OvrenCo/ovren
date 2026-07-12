@@ -141,6 +141,19 @@ img { max-width:100%; height:auto; display:block; }
 body.theme-dark .sun-icon { display:block; }
 body.theme-dark .moon-icon { display:none; }
 
+@media (max-width: 992px) {
+    .theme-toggle {
+        background: var(--bg-secondary);
+        border: 1px solid rgba(15, 23, 42, 0.2);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    body.theme-dark .theme-toggle {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+}
+
 /* ----------------------------------------------------
    NEW LAYOUT: Split-Screen Storytelling
    ---------------------------------------------------- */
