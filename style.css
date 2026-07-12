@@ -542,7 +542,7 @@ body.theme-dark .moon-icon { display:none; }
 .portfolio-card:hover .p-arrow { opacity: 1; transform: translateX(0) rotate(-45deg); }
 
 /* Specific Portfolio Images */
-.p-apex { background-image: url('portfolio/apex-saas/thumb.png'); background-position: center; background-size: cover; animation: none; }
+
 .p-aurora { background-image: url('portfolio/aurora-spa/thumb.png'); background-position: center; background-size: cover; animation: none; }
 .p-hope { background-image: url('portfolio/hope-foundation/thumb.png'); background-position: center; background-size: cover; animation: none; }
 .p-vertex { background-image: url('portfolio/vertex-consulting/thumb.png'); background-position: center; background-size: cover; animation: none; }
